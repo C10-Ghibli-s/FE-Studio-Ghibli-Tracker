@@ -9,7 +9,6 @@ This is custom environment using react.
 These are the technologies we used to build this project.
 
 - React.js
-- Node.js
 <!-- GETTING STARTED -->
 
 ## Getting Started

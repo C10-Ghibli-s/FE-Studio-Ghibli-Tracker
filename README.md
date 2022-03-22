@@ -32,7 +32,7 @@ _Then, let's clone the repo, and install all the depencies of the project._
 
 2. Clone the repo
    ```sh
-   git clone git@github.com:AreYouIvan/config-environment.git
+   git clone git@github.com:C10-Ghibli-s/FE-Studio-Ghibli-Tracker.git
    ```
 3. Install NPM packages
    ```sh

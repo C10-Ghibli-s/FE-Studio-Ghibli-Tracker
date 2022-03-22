@@ -1,8 +1,13 @@
 import React from "react";
 import "./App.scss";
+import { SearchEngine } from "../SearchEngine";
 
 function App() {
-  return <h1>Hello world!</h1>;
+  return (
+    <>
+      <SearchEngine />
+    </>
+  );
 }
 
 export { App };

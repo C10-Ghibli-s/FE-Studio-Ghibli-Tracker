@@ -1,4 +1,4 @@
-/* ul {
+ul {
   padding: 10px;
   margin: 0;
   position: absolute;
@@ -7,9 +7,9 @@
 li {
   list-style-type: none;
   margin: 4px;
-} */
+}
 
-/* input {
+input {
   outline: rgb(163, 163, 163);
   position: relative;
   border: 1px solid rgb(202, 202, 202);
@@ -19,4 +19,4 @@ li {
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.12);
   border-radius: 20px;
   padding-left: 20px;
-} */
+}

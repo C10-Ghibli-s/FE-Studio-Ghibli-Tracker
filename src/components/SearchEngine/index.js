@@ -2,8 +2,10 @@ import React from "react";
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { debouncing } from "../../debouncing";
+import "./SearchEngine.css";
+import { Autocomplete } from "./Autocomplete";
 
-/* Maybe I will need to use react context and create a useInitialState
+/* [NOTE] Maybe I will need to use react context and create a useInitialState
   Process to make the Search Engine
   - Create a input bar
   - When the use will be writing make a consult using debouncing
@@ -26,6 +28,7 @@ function SearchEngine() {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState([]);
   const [films, SetFilms] = useState([]);
+  const [film, setFilm] = useState({});
 
   // Handles the input to makes querys
   const handleInput = (e) => {
@@ -33,7 +36,7 @@ function SearchEngine() {
     setSearchQuery(searchingQuery);
 
     // If searchQuery (state) has more length than 0,
-    // onto matches filter with regex and return the result.
+    // then, matches will filter using regex, and will returns the result.
     let matches = [];
     if (searchQuery.length > 0) {
       matches = films.filter((film) => {
@@ -42,7 +45,7 @@ function SearchEngine() {
       });
       setResults(matches);
     }
-    console.log("matches movies", results);
+    console.log("movies matched", results);
   };
 
   // useEffect executes when searchQuery is save it.
@@ -50,9 +53,6 @@ function SearchEngine() {
     const response = await axios.get("https://ghibliapi.herokuapp.com/films");
     SetFilms(response.data);
   }, []);
-
-  // console.log("searchQuery", searchQuery);
-  // console.log("results", results);
 
   /* // Debouncing algorithm
   const debouncedFetchData = useMemo(() => {
@@ -67,27 +67,32 @@ function SearchEngine() {
   }, []);
   // This useEffect is the first propose to make a search
   // Making multiple querys until make a match
-  // But it needs a "?search=" param
+  // But it needs a "?search=" param at the backend
   useEffect(() => {
     if (searchQuery !== "") {
       debouncedFetchData(searchQuery);
     }
   }, [searchQuery, debouncedFetchData]);
  */
-
   return (
-    <React.StrictMode>
-      <>
-        <input type="text" onChange={handleInput} />
-        <div>
-          Results:
-          <ul>
-            {!!searchQuery &&
-              results.map((film, index) => <li key={index}>{film.title}</li>)}
-          </ul>
-        </div>
-      </>
-    </React.StrictMode>
+    <>
+      <input
+        type="text"
+        onChange={handleInput}
+        onBlur={() => {
+          setTimeout(() => {
+            setResults([]);
+          }, 300);
+        }}
+      />
+      <Autocomplete
+        results={results}
+        searchQuery={searchQuery}
+        setResults={setResults}
+        film={film}
+        setFilm={setFilm}
+      />
+    </>
   );
 }
 

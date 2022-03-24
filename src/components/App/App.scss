@@ -1,3 +1,10 @@
+//basic css resets 
+@import "./css/basic-reset.scss";
+
+//Global variables
+@import "./css/global-variables.scss";
 h1 {
-  color: blue;
+  color: $primary-color--light-theme;
+  font-size: $movie__title; //prueba xd
 }
+

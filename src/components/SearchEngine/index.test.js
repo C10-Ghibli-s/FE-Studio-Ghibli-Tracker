@@ -1,8 +1,9 @@
-import { render } from "react-dom";
+import { renderer } from "react-test-renderer";
 import { SearchEngine } from "../SearchEngine";
+import test from "jest";
 import React from "react";
 
 test("render content", () => {
-  const component = render(<SearchEngine />);
+  const component = renderer(<SearchEngine />);
   console.log(component);
 });

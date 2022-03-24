@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 /* Custom Hook
   - This hook ables take the data from any API.
   - Import to your component: import { useGetData } from '../path'

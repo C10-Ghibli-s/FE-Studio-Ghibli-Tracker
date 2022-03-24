@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import "./SearchEngine.css";
+import "../SearchEngine/SearchEngine.css";
 
 function Autocomplete({ results, searchQuery, setResults, film, setFilm }) {
   // click the item and diplay it

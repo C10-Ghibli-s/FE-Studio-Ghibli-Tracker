@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { debouncing } from "../../debouncing";
 import "./SearchEngine.css";
-import { Autocomplete } from "./Autocomplete";
+import { Autocomplete } from "../Autocomplete";
 
 /* [NOTE] Maybe I will need to use react context and create a useInitialState
   Process to make the Search Engine

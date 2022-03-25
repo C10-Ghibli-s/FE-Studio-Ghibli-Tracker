@@ -45,7 +45,6 @@ function SearchEngine() {
       });
       setResults(matches);
     }
-    console.log("movies matched", results);
   };
 
   // useEffect executes when searchQuery is save it.

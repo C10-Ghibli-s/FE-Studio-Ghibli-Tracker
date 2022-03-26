@@ -2,11 +2,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
-/* Making a Filter
-  - must filter parameters
-  - 
-
-*/
 const spanStyle = {
   position: "relative",
 };
@@ -22,11 +17,6 @@ function Filter({ setFilms, films }) {
   const [runningTime, setIsRunningTime] = useState(false);
   const [score, setScore] = useState(false);
   const [isDate, setIsDate] = useState(false);
-
-  // console.log("is ascendant", isAscendant);
-  // console.log("running time", runningTime);
-  // console.log("score", score);
-  // console.log("is date", isDate);
 
   const handleRunningTime = () => {
     if (runningTime) {

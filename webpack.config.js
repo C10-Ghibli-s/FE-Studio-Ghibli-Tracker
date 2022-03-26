@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -5,8 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "index.js",
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
   mode: "development",
   resolve: {
@@ -44,4 +45,10 @@ module.exports = {
       filename: "[name].css",
     }),
   ],
+  devServer: {
+    allowedHosts: path.join(__dirname, "./dist"),
+    compress: true,
+    port: 3001,
+    historyApiFallback: true,
+  },
 };

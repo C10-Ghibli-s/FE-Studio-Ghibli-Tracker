@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
+import { Facebook } from "../../components/FacebookLogin";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
 
@@ -80,6 +81,9 @@ function Home() {
             <p>Score: {item.rt_score}</p>
           </div>
         ))}
+      </div>
+      <div>
+        <Facebook />
       </div>
     </>
   );

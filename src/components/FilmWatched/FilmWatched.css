@@ -1,0 +1,14 @@
+.film-watched-component{
+    display: flex;
+    min-height: 5vh;
+    margin: 10px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+.heart{
+    cursor: pointer;
+    transition: color 200ms;
+}

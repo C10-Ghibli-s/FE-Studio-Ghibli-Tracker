@@ -1,0 +1,15 @@
+.star-rating-component{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.star{
+    cursor: pointer;
+    transition: color 200ms;
+}

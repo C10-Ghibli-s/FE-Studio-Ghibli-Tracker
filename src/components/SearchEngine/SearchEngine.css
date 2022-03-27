@@ -3,6 +3,9 @@ ul {
   margin: 0;
   position: absolute;
   background: #f4f4f4;
+  top: 37px;
+  left: 20px;
+  z-index: 1;
 }
 
 li {

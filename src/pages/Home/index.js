@@ -46,8 +46,6 @@ function Home() {
         : [...films].sort((a, b) => a[sortProperty] - b[sortProperty]);
 
     setFilms(sorted);
-    console.log("property", sortProperty);
-    console.log(films);
   };
 
   return (

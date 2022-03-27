@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {FaStar} from 'react-icons/fa';
-import './StartRating.css'
+import './StarRating.css'
 
-function StartRating(){
+function StarRating(){
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
 
@@ -12,7 +12,7 @@ function StartRating(){
                 const ratingValue = i + 1;
 
                 return(
-                    <label>
+                    <label key={i}>
                         <input 
                             type="radio"
                             name="rating"
@@ -33,4 +33,4 @@ function StartRating(){
     );
 }
 
-export { StartRating }
+export { StarRating }

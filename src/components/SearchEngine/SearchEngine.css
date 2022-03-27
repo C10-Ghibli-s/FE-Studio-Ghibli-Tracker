@@ -2,6 +2,10 @@ ul {
   padding: 10px;
   margin: 0;
   position: absolute;
+  background: #f4f4f4;
+  top: 37px;
+  left: 20px;
+  z-index: 1;
 }
 
 li {
@@ -9,7 +13,7 @@ li {
   margin: 4px;
 }
 
-input {
+.searchBar {
   outline: rgb(163, 163, 163);
   position: relative;
   border: 1px solid rgb(202, 202, 202);

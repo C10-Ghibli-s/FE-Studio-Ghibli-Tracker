@@ -30,7 +30,6 @@ function SearchEngine() {
   const [results, setResults] = useState([]);
   const [films, SetFilms] = useState([]);
   const [film, setFilm] = useState({});
-
   // Handles the input to makes querys
   const handleInput = (e) => {
     const searchingQuery = e.target.value;
@@ -46,7 +45,6 @@ function SearchEngine() {
       });
       setResults(matches);
     }
-    console.log("movies matched", results);
   };
 
   // useEffect executes when searchQuery is save it.
@@ -78,6 +76,7 @@ function SearchEngine() {
   return (
     <>
       <input
+        className="searchBar"
         type="text"
         onChange={handleInput}
         onBlur={() => {
@@ -92,6 +91,7 @@ function SearchEngine() {
         setResults={setResults}
         film={film}
         setFilm={setFilm}
+        setSearchQuery={setSearchQuery}
       />
     </>
   );

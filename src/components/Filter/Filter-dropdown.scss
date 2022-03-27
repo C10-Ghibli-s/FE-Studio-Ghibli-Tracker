@@ -1,0 +1,14 @@
+.filter-properties {
+  position: relative;
+  animation: swipeTop 0.2s ease-out;
+  transform: translateY(15%);
+}
+
+@keyframes swipeTop {
+  0% {
+    top: -10px;
+  }
+  50% {
+    top: 0px;
+  }
+}

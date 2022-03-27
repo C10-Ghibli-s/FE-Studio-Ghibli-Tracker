@@ -11,7 +11,6 @@ function Autocomplete({ results, searchQuery, setResults, film, setFilm }) {
     });
     setFilm(object);
   };
-  console.log("returns", film);
 
   if (results.length > 0) {
     return (

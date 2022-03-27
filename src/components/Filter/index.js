@@ -2,10 +2,12 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
+import "./Filter-dropdown.scss";
+
 function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
   return (
     <>
-      <div>
+      <div className="filter-properties">
         <h4 style={{ margin: "4px" }}>Filter</h4>
         <label
           style={{ display: "flex", flexDirection: "column" }}

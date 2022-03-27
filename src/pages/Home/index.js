@@ -15,7 +15,11 @@ function Home() {
   // Filter state
   const [adjust, setAdjust] = useState("");
   const [categories, setCategories] = useState("");
+  const [toggleFilter, setToggleFilter] = useState(false);
 
+  const handleToggle = () => {
+    setToggleFilter(!toggleFilter);
+  };
   // Filter engine
   /*  Documentation
     - sortArray calls two arguments category and order
@@ -47,16 +51,23 @@ function Home() {
 
   return (
     <>
-      <SearchEngine />
-      <Filter
-        sortArray={sortArray}
-        adjust={adjust}
-        setAdjust={setAdjust}
-        categories={categories}
-        setCategories={setCategories}
-        films={films}
-        setFilms={setFilms}
-      />
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <SearchEngine />
+        <p style={{ margin: "5px" }} onClick={handleToggle}>
+          Filter
+        </p>
+      </div>
+      {!!toggleFilter && (
+        <Filter
+          sortArray={sortArray}
+          adjust={adjust}
+          setAdjust={setAdjust}
+          categories={categories}
+          setCategories={setCategories}
+          films={films}
+          setFilms={setFilms}
+        />
+      )}
       <div>
         {films.map((item) => (
           <div

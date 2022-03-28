@@ -1,0 +1,15 @@
+@import '../../routes/App.scss';
+@import '../../routes/css/Mixins/buttons.scss';
+
+.registerNow {
+    @include BasicButton--LightTheme;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    padding-block-start: 15px;
+    padding-block-end: 15px;
+    margin: 15px auto;
+    font-size: 3rem;
+    font-weight: 600;
+}

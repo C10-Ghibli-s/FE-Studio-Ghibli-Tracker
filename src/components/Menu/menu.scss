@@ -1,0 +1,27 @@
+@import '../../routes/App.scss';
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.menuContainer { 
+    background-color: $primary-color--light-theme;
+    display: flex;
+}
+.menu__openMenuButton {
+    display: inline;
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    margin: 10px;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    background-color: $secondary-color--light-theme;
+    & li a{
+        color: $base-color--light-theme;
+        text-decoration: none;
+    }
+}

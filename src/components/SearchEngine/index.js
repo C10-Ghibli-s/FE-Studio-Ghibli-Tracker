@@ -53,6 +53,8 @@ function SearchEngine() {
     SetFilms(response.data);
   }, []);
 
+  console.log("Film selected:", film);
+
   /* // Debouncing algorithm
   const debouncedFetchData = useMemo(() => {
     const fetchData = async () => {
@@ -76,6 +78,7 @@ function SearchEngine() {
   return (
     <>
       <input
+        placeholder="What movie are you looking for?"
         className="searchBar"
         type="text"
         onChange={handleInput}

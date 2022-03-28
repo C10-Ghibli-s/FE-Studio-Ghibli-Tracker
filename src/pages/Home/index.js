@@ -3,6 +3,7 @@ import { SearchEngine } from "../../components/SearchEngine";
 import { Facebook } from "../../components/FacebookLogin";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
+import { FaFilter } from "react-icons/fa";
 
 function Home() {
   // fetch Data
@@ -50,11 +51,20 @@ function Home() {
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <SearchEngine />
-        <p style={{ margin: "5px" }} onClick={handleToggle}>
-          Filter
-        </p>
+        <span
+          style={{ margin: "5px", cursor: "pointer" }}
+          onClick={handleToggle}
+        >
+          <FaFilter style={{ verticalAlign: "middle" }} />
+        </span>
       </div>
       {!!toggleFilter && (
         <Filter

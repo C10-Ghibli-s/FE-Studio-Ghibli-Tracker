@@ -20,8 +20,10 @@ function Film(){
             <div className="film-component">
                 <div className="film-container">
                     <div className="film-head">
-                        <h1>{films[2].title}</h1>
-                        <h2>{films[2].release_date}</h2>
+                        <div className="film-title">
+                            <h1>{films[2].title}</h1>
+                            <h2>{films[2].release_date}</h2>
+                        </div>
                         <FilmWatched />  
                     </div>
                     <div className="film-image">
@@ -31,16 +33,13 @@ function Film(){
                     <div className="film-body">
                         <p>{films[2].description}</p>
                     </div>
-                    <div className="film-btn">
-                        <button>
-                            <a>
-                                More info   
-                            </a>
-                            <span>
-                                <FaArrowRight />
-                            </span>
+                    <footer className="film-footer">
+                        <button className="film-btn">
+                            <span>More info</span>
+                            <FaArrowRight />
                         </button>
-                    </div>
+                    </footer>
+                    
                 </div>  
             </div>
         );

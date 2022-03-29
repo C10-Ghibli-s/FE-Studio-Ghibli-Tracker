@@ -4,7 +4,6 @@ import { FaArrowRight } from 'react-icons/fa';
 import { StarRating } from '../StarRating';
 import { FilmWatched } from '../FilmWatched';
 import axios from "axios";
-import "typeface-roboto"; //it should be in general config styles because the test fail
 
 function Film(){
     // fetch Data

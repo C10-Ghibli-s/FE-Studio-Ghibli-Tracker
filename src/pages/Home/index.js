@@ -3,6 +3,7 @@ import { SearchEngine } from "../../components/SearchEngine";
 import { Facebook } from "../../components/FacebookLogin";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
+import { HomeFilmCard } from "../../components/HomeFilmCard";
 
 function Home() {
   // fetch Data
@@ -69,6 +70,9 @@ function Home() {
           setFilms={setFilms}
         />
       )}
+      <div>
+        <HomeFilmCard />
+      </div>
       <div>
         {films.map((item) => (
           <div

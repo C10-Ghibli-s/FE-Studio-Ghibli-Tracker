@@ -11,7 +11,7 @@ function Facebook(){
             <FacebookLogin
                 /*this API_KEY should be in a .env file, but first we need to config environment variables in our webpack
                 because the webpack that we are using is own configuration it's not default create-react-app*/
-                appId="469241738264429"
+                appId={469241738264429}
                 autoLoad
                 callback={responseFacebook}
                 render={renderProps => (

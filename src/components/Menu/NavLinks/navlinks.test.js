@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLinks } from '.';
-import { render } from '@testing-library/react';
+import { getAllByTestId } from '@testing-library/react';
+import TestRenderer from 'react-test-renderer' 
+
 // BROUGHT FROM MENU
 const links = [{ route: '',page : 'Settings'}, 
 { route: '/home', page : 'home'}, 
@@ -10,13 +12,10 @@ const links = [{ route: '',page : 'Settings'},
 
 
 test('When the button is clicked needs to redirect to the Login page', () => {
-  const { getAllByTestId } = render(<NavLinks links={links} ></NavLinks>);
+  const component = TestRenderer.create(<NavLinks links={links} ></NavLinks>).findAllByType("a").toJSON();
 
-  const navBarLinks = getAllByTestId('navLink').map(li => li.children );
-
-  expect(navBarLinks).toMatchSnapshot()
+  expect(component).toMatchSnapshot()
 })
-
 
 
 // test('match snapshot', () => {

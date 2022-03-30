@@ -22,7 +22,10 @@ function NavLinks(props) {
                             transition={{delay: 0.10}}
                             key={link.route}
                         >
-                            <NavLink data-testid='navLink' page={link.route}> {link.page} </NavLink>
+                            <NavLink
+                                page={link.route}> 
+                                {link.page} 
+                            </NavLink>
                         </motion.li>
                     )
                 )

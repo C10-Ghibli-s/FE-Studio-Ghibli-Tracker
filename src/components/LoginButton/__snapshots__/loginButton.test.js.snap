@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`When the button is clicked needs to redirect to the Login page 1`] = `
+<a
+  className="loginButton"
+  href="/login"
+>
+  Login
+</a>
+`;

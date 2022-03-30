@@ -6,7 +6,7 @@ import axios from "axios";
 import { FaFilter } from "react-icons/fa";
 import { Menu } from '../../components/Menu'
 
-function Home() {
+function Scores() {
   // fetch Data
   const [films, setFilms] = useState([]);
 
@@ -99,4 +99,4 @@ function Home() {
   );
 }
 
-export { Home };
+export { Scores };

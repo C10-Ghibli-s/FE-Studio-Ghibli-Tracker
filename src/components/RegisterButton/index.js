@@ -1,13 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './registerNow.scss';
 
-function CTA_RegisterButton() {
-    return(
-        <>
-        <Link className='registerNow' to="/register"> Register Now! </Link>
-        </>
-    );
+function CTA_RegisterButton(props) {
+    return <a className='registerNow' href={props.page}>{props.children}</a>;
 }
 
 export { CTA_RegisterButton };

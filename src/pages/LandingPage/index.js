@@ -10,7 +10,7 @@ function LandingPage() {
         <React.Fragment>
             <section className='login'>
                 <p className='login__text'>have already an account?</p>
-                <LoginButton/>
+                <LoginButton page='/login'>Login</LoginButton>
             </section>
             <div className='landingContainer'>
                 <section className='landingPage__hero'>
@@ -29,7 +29,7 @@ function LandingPage() {
                             <p>and <span className='landing__text--rate'>Rate</span> them to share with everyone your love and thoughts for your favorite movies.</p>
                         </div>
                     </article>
-                    <CTA_RegisterButton />
+                    <CTA_RegisterButton page={'/register'}> Register Now!</CTA_RegisterButton>
                 </section>
             </div>
         </React.Fragment>

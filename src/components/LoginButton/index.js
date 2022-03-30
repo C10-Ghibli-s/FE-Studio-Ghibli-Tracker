@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './loginButton.scss';
 
-function LoginButton() {
-    return(
-        <>
-        <Link className='loginButton' to="/login"> Login </Link>
-        </>
-    );
+function LoginButton(props) {
+
+    return <a className='loginButton' href={props.page}>{props.children}</a>;
+
 }
 
 export { LoginButton };

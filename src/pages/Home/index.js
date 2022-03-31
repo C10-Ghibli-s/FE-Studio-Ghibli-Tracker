@@ -79,6 +79,9 @@ function Home() {
           setFilms={setFilms}
         />
       )}
+      {/*<div>
+        <HomeFilmCard />
+      </div>*/}
       <div>
         {films.map((item) => (
           <div

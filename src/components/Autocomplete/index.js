@@ -11,12 +11,13 @@ function Autocomplete({ results, searchQuery, setResults, setFilm }) {
     });
     setFilm(object);
   };
+  console.log("results", results);
 
   if (results.length > 0) {
     return (
-      <ul>
+      <ul aria-labelledby="list-results">
         {results.map((film, index) => (
-          <li onClick={handleItem} key={index}>
+          <li alt="item-result" onClick={handleItem} key={index}>
             {film.title}
           </li>
         ))}

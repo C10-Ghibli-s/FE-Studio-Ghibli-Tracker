@@ -54,6 +54,7 @@ body{
 .film-image img{
     overflow: hidden;
     height: 180px;
+    max-width: 70ch;
     margin-bottom: 1rem;
     background: #E5E5E5;
     border-radius: 8px;

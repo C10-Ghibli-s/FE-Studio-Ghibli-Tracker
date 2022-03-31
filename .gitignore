@@ -1,2 +1,9 @@
-coverage
+coverage/
 node_modules
+
+
+*.woff
+*.woff2
+*.svg
+*.png
+*.jpg

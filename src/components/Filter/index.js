@@ -8,15 +8,20 @@ function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
   return (
     <>
       <div className="filter-properties">
-        <h4 style={{ margin: "4px" }}>Filter</h4>
         <label
-          style={{ display: "flex", flexDirection: "column" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            margin: "0 30px",
+          }}
           onClick={() => sortArray(categories, adjust)}
         >
+          <p style={{ margin: "5px" }}>Sort by:</p>
           <select
             onChange={(e) => {
               setCategories(e.target.value);
             }}
+            className="select-categories"
           >
             <option value="none" selected disabled hidden>
               Select an Option
@@ -25,10 +30,12 @@ function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
             <option value="rt_score">Rate</option>
             <option value="release_date">Year</option>
           </select>
+          <p style={{ margin: "5px" }}>Order:</p>
           <select
             onChange={(e) => {
               setAdjust(e.target.value);
             }}
+            className="select-order"
           >
             <option value="none" selected disabled hidden>
               Select an Option

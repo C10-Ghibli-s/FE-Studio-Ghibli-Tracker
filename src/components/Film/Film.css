@@ -1,0 +1,88 @@
+.film-component {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    min-width: 300px;
+    background: #F4F4F4;
+    height: 100vh;
+    height: 100%;
+    padding: 0;
+}
+
+.film-container{
+    margin: 5rem;
+}
+
+.film-head{
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.film-head h1{
+    font-size: 35px;
+    line-height: 41px;
+    margin-bottom: 1rem;
+    color: #111111;
+    margin: 10px;
+}
+
+.film-head h2{
+    font-size: 25px;
+    line-height: 29px;
+    margin-bottom: 1rem;
+    color: #111111;
+    margin: 10px;
+}
+
+.film-image{
+    text-align: center;
+    
+}
+
+.film-image img{
+    overflow: hidden;
+    height: 180px;
+    margin-bottom: 1rem;
+    background: #E5E5E5;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px -5px;
+}
+
+.film-image img:hover{
+    transform: scale(1.01);
+}
+
+.film-body{
+    margin-bottom: 4rem;
+}
+
+.film-body p{
+    font-size: 15px;
+    line-height: 18px;
+    text-align: left;
+    color: #111111;
+}
+
+.film-btn{
+    display: flex;
+    justify-content: right;
+}
+
+.film-btn button{
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
+    transition: 0.2s;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.film-btn span{
+    margin: auto 0;
+    padding-top: 10px;
+}
+
+.film-btn button:hover{
+    font-weight: bold;
+}

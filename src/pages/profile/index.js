@@ -6,7 +6,7 @@ import axios from "axios";
 import { FaFilter } from "react-icons/fa";
 import { Menu } from '../../components/Menu'
 
-function Home() {
+function Profile() {
   // fetch Data
   const [films, setFilms] = useState([]);
 
@@ -79,9 +79,6 @@ function Home() {
           setFilms={setFilms}
         />
       )}
-      {/*<div>
-        <HomeFilmCard />
-      </div>*/}
       <div>
         {films.map((item) => (
           <div
@@ -102,4 +99,4 @@ function Home() {
   );
 }
 
-export { Home };
+export { Profile };

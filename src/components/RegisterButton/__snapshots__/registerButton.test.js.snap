@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot xd 1`] = `
+<a
+  className="registerNow"
+  href="register"
+>
+   Register Now! 
+</a>
+`;

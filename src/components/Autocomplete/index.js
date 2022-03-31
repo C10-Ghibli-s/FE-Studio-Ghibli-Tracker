@@ -2,7 +2,7 @@
 import React from "react";
 import "../SearchEngine/SearchEngine.css";
 
-function Autocomplete({ results, searchQuery, setResults, film, setFilm }) {
+function Autocomplete({ results, searchQuery, setResults, setFilm }) {
   // click the item and diplay it
   const handleItem = (e) => {
     let item = e.target.innerText;

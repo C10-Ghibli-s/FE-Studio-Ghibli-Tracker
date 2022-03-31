@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 .film-component {
     font-family: 'Roboto';
     font-style: normal;
@@ -7,14 +11,21 @@
     height: 100vh;
     height: 100%;
     padding: 0;
+    min-height: 100vh;
 }
 
 .film-container{
-    margin: 5rem;
+    padding: 24px;
 }
 
 .film-head{
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.film-title{
     display: flex;
     align-items: center;
 }
@@ -69,20 +80,25 @@
     justify-content: right;
 }
 
-.film-btn button{
+.film-btn{
     padding: 0.5rem;
     background-color: transparent;
     border: none;
     transition: 0.2s;
     margin-bottom: 0.5rem;
     cursor: pointer;
+    display: flex;
 }
 
 .film-btn span{
-    margin: auto 0;
-    padding-top: 10px;
+    margin-right: 8px;
 }
 
 .film-btn button:hover{
     font-weight: bold;
+}
+
+.film-footer{
+    display: flex;
+    justify-content: flex-end;
 }

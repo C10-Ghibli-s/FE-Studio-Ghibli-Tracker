@@ -1,0 +1,17 @@
+@import '../../routes/App.scss';
+@import '../../routes/css/Mixins/buttons.scss';
+
+.facebook-button{
+    @include SocialMediaButton--LightTheme;
+    font-size: $socialmedia-button;
+    font-weight: 400;
+    text-align: center;
+    padding: 8px 30px;
+    margin-left: 8px;
+    display: flex;
+    align-content: space-around;
+}
+
+.facebook-button span{
+    margin-left: 80px;
+}

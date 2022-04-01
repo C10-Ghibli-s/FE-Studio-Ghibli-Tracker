@@ -39,9 +39,10 @@ button {
             text-decoration: none;
             border-block-end: 3px solid $base-color--light-theme;
             padding-block-end: 5px;
-            &:active {
+            &:hover {
                 color: $movie__watched--active;
                 border-block-end: 3px solid $movie__watched--active;
+                cursor: pointer;
             }
         }
         &:first-child {
@@ -49,10 +50,6 @@ button {
             font-size: $menu__title;
             cursor: pointer;
             text-align: center;
-        }
-        & .active {
-            color: $movie__watched--active;
-            border-block-end: 3px solid $movie__watched--active;
         }
     }
 }

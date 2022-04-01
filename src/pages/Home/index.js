@@ -49,7 +49,6 @@ function Home() {
 
     setFilms(sorted);
   };
-
   return (
     <>
       <Menu/>

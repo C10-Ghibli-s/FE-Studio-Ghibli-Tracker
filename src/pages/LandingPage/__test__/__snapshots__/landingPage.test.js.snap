@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing Page testing the snapshot of the CTA buttons 1`] = `
+Array [
+  <section
+    className="login"
+  >
+    <p
+      className="login__text"
+    >
+      have already an account?
+    </p>
+    <a
+      className="loginButton"
+      href="/login"
+    >
+      Login
+    </a>
+  </section>,
+  <div
+    className="landingContainer"
+  >
+    <section
+      className="landingPage__hero"
+    >
+      <div
+        className="appLogo"
+      >
+        <picture
+          className="secondaryMarkLogotype"
+        >
+          <img
+            alt="Studio Ghibli Logotype"
+            src="test-file-stub"
+          />
+        </picture>
+        <picture
+          className="trackerLogotype"
+        >
+          <img
+            src="test-file-stub"
+          />
+        </picture>
+      </div>
+      <picture>
+        <img
+          alt="Studio Ghibli Works Catalogue"
+          className="landingPage__Image"
+          src="test-file-stub"
+        />
+      </picture>
+    </section>
+    <section
+      className="landingDescription"
+    >
+      <article
+        className="landingDescription__text"
+      >
+        <h2>
+           
+          <span
+            className="landing__text--search"
+          >
+            Search
+          </span>
+          , 
+          <span
+            className="landing__text--discover"
+          >
+            Discover
+          </span>
+          , 
+          <span
+            className="landing__text--rate"
+          >
+            Rate
+          </span>
+        </h2>
+        <div>
+          <p>
+            With Studio Ghibli 
+            <span
+              className="std_ghibli_tracker"
+            >
+              Tracker
+            </span>
+             you can:
+          </p>
+          <p>
+            <span
+              className="landing__text--search"
+            >
+              Search
+            </span>
+             all the animated masterpieces produced by Studio Ghibli,
+          </p>
+          <p>
+            <span
+              className="landing__text--discover"
+            >
+              Discover
+            </span>
+             the incredible and fascinating catalogue of memorable movies,
+          </p>
+          <p>
+            and 
+            <span
+              className="landing__text--rate"
+            >
+              Rate
+            </span>
+             them to share with everyone your love and thoughts for your favorite movies.
+          </p>
+        </div>
+      </article>
+      <a
+        className="registerNow"
+        href="/register"
+      >
+         Register Now!
+      </a>
+    </section>
+  </div>,
+]
+`;

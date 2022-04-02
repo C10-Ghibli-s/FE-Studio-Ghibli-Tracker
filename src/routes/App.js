@@ -16,7 +16,6 @@ import { Facebook } from "../components/FacebookLogin";
 import { StarRating } from "../components/StarRating";
 import { Film } from "../components/Film";
 
-
 function App() {
   return (
     <BrowserRouter>

@@ -3,27 +3,27 @@ import { useState } from 'react';
 import openMenuButton from './images/openMenuButton.png';
 import './menu.scss';
 import { NavLinks } from "./NavLinks";
+import { motion } from 'framer-motion';
 
 function Menu() {
     const [menuOpen, setMenuOpen] = useState(false);
-
-    //nav-menu links - USED IN THE TEST / EVERY CHANGE IN HERE, MUST BE IN THE TEST
-    const links = [{ route: '',page : 'Settings'}, 
-    { route: '/home', page : 'home'}, 
-    { route: '/profile', page: 'profile'},
-    { route: '/scores', page: 'scores'}
-    ];
-
+    //nav-menu links - USED IN THE TEST / EVERY CHANGE IN HERE, MUST BE IN THE TEST FILE
+    const links = [
+        { pageRoute: '/home', page : 'home'}, 
+        { pageRoute: '/profile', page: 'profile'},
+        { pageRoute: '/scores', page: 'scores'}
+        ];
     return(
         <React.Fragment>
-            <div className="menuContainer">
-                <button                             
+            <div data-testid="menu-Navbar" className="menuContainer">
+                <motion.button 
+                    data-testid="menuOpen-button"
+                    animate={{opacity : 1}}
                     className="menu__openMenuButton"
                     type="button"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                >
+                    onClick={() => setMenuOpen(!menuOpen)}>
                     <img src={openMenuButton}></img>
-                </button>
+                </motion.button>
                 <nav>
                     {menuOpen && <NavLinks links={links}/>}
                 </nav>

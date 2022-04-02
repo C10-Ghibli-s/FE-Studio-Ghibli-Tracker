@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Component match snapshots with the links 1`] = `
+<div
+  class="menuContainer"
+  data-testid="menu-Navbar"
+>
+  <button
+    class="menu__openMenuButton"
+    data-testid="menuOpen-button"
+    style="opacity: 0;"
+    type="button"
+  >
+    <img
+      src="test-file-stub"
+    />
+  </button>
+  <nav>
+    <ul
+      data-testid="navBar"
+      style="opacity: 0; transform: translateX(-20px) translateZ(0);"
+    >
+      <li
+        style="opacity: 0; transform: translateY(-40px) translateZ(0);"
+      >
+        Settings
+      </li>
+      <li
+        style="opacity: 0; transform: translateY(-40px) translateZ(0);"
+      >
+        <a
+          href="/home"
+        >
+          home
+        </a>
+      </li>
+      <li
+        style="opacity: 0; transform: translateY(-40px) translateZ(0);"
+      >
+        <a
+          href="/profile"
+        >
+          profile
+        </a>
+      </li>
+      <li
+        style="opacity: 0; transform: translateY(-40px) translateZ(0);"
+      >
+        <a
+          href="/scores"
+        >
+          scores
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

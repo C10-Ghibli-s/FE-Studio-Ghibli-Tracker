@@ -1,0 +1,9 @@
+@import '../../App.scss';
+@mixin BasicButton--LightTheme {
+    color: $base-color--light-theme;
+    background-color: $primary-color--light-theme;
+    /* shadow box */
+    box-shadow: 4px 0px 10px 4px #00000017;
+    border-radius: 7px;
+    text-decoration: none;
+}

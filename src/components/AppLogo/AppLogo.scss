@@ -1,0 +1,21 @@
+.appLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 auto;
+    margin-block-start: 15px;
+}
+.secondaryMarkLogotype {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    max-width: 100%;
+}
+.trackerLogotype {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+img {
+    width: 90%;
+}

@@ -4,9 +4,9 @@ import { Facebook } from "../../components/FacebookLogin";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
 import { FaFilter } from "react-icons/fa";
-import { Menu } from "../../components/Menu";
+import { Menu } from '../../components/Menu'
 
-function Home() {
+function Scores() {
   // fetch Data
   const [films, setFilms] = useState([]);
 
@@ -49,9 +49,10 @@ function Home() {
 
     setFilms(sorted);
   };
+
   return (
     <>
-      <Menu />
+      <Menu/>
       <div
         style={{
           display: "flex",
@@ -59,9 +60,9 @@ function Home() {
           justifyContent: "center",
         }}
       >
-        <SearchEngine films={films} />
+        <SearchEngine />
         <span
-          style={{ margin: "5px", cursor: "pointer", zIndex: 1 }}
+          style={{ margin: "5px", cursor: "pointer" }}
           onClick={handleToggle}
         >
           <FaFilter style={{ verticalAlign: "middle" }} />
@@ -78,9 +79,6 @@ function Home() {
           setFilms={setFilms}
         />
       )}
-      {/*<div>
-        <HomeFilmCard />
-      </div>*/}
       <div>
         {films.map((item) => (
           <div
@@ -94,9 +92,11 @@ function Home() {
           </div>
         ))}
       </div>
-      <div>{/* <Facebook /> */}</div>
+      <div>
+        <Facebook />
+      </div>
     </>
   );
 }
 
-export { Home };
+export { Scores };

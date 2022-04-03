@@ -1,0 +1,103 @@
+@import '../../routes/App.scss';
+
+body {
+    background-color: $base-color--light-theme;
+    max-width: 100vw;
+    height: 100vh;
+}
+
+.login {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-block-start: 25px;
+    padding-inline-end: 14px;
+    &__text {
+        margin-inline-end: 5px;
+        font-size: 1.4rem;
+        font-weight: 300;
+    }
+}
+
+picture {
+    max-width: 80vw;
+}
+
+.landingPage__hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landingPage__Image {
+    margin-block-start: 25px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 500px;
+}
+
+// Landing Description
+.landingDescription {
+    box-shadow: 4px 0px 10px 4px #00000017;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 20px 24px;
+}
+
+
+.landingDescription__text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    & div {
+        margin-block-start: 24px;
+        & p {
+            margin-block-start: 12px;
+        }
+    }
+}
+
+h2 {
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.landing__text{
+    &--search {
+        color: $primary-color--light-theme;
+    }
+    &--discover {
+        color: $success;
+    }
+    &--rate {
+    color: $movie__watched--active;
+    }
+}
+
+.std_ghibli_tracker {
+    color: $primary-color--light-theme;
+}
+
+
+
+@media (min-width: 800px) {
+    .landingContainer {
+        display: flex;
+        align-items: center;
+        padding: 30px 20px 0px;
+        height: 100%;
+        max-width: 860px;
+        margin: 0 auto;
+    }
+    .landingPage__hero {
+        width: 800px;
+        max-width: 360px;
+    }
+    .landingDescription {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .login {
+        margin-inline-end: 30px;
+    }
+}

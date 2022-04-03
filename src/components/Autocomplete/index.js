@@ -2,7 +2,7 @@
 import React from "react";
 import "../SearchEngine/SearchEngine.css";
 
-function Autocomplete({ results, searchQuery, setResults, setFilm }) {
+function Autocomplete({ results, setFilm }) {
   // click the item and diplay it
   const handleItem = (e) => {
     let item = e.target.innerText;
@@ -21,7 +21,6 @@ function Autocomplete({ results, searchQuery, setResults, setFilm }) {
             {film.title}
           </li>
         ))}
-        {!searchQuery && setResults([])}
       </ul>
     );
   } else {

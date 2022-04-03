@@ -58,7 +58,7 @@ function Home() {
           justifyContent: "center",
         }}
       >
-        <SearchEngine />
+        <SearchEngine films={films} />
         <span
           style={{ margin: "5px", cursor: "pointer" }}
           onClick={handleToggle}
@@ -90,9 +90,7 @@ function Home() {
           </div>
         ))}
       </div>
-      <div>
-        <Facebook />
-      </div>
+      <div>{/* <Facebook /> */}</div>
     </>
   );
 }

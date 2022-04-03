@@ -14,6 +14,7 @@ function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
             flexDirection: "column",
             margin: "0 30px",
           }}
+          aria-labelledby="filter-label"
           onClick={() => sortArray(categories, adjust)}
         >
           <p style={{ margin: "5px" }}>Sort by:</p>
@@ -23,9 +24,6 @@ function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
             }}
             className="select-categories"
           >
-            <option value="none" selected disabled hidden>
-              Select an Option
-            </option>
             <option value="running_time">Duration</option>
             <option value="rt_score">Rate</option>
             <option value="release_date">Year</option>
@@ -37,9 +35,6 @@ function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
             }}
             className="select-order"
           >
-            <option value="none" selected disabled hidden>
-              Select an Option
-            </option>
             <option value="ascendant">Ascendant</option>
             <option value="descendant">Descendant</option>
           </select>

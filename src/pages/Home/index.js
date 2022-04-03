@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
 import { Filter } from "../../components/Filter";
+import { FilmCard } from "../../components/FilmCard";
 import axios from "axios";
 import { FaFilter } from "react-icons/fa";
 import { Menu } from '../../components/Menu'
@@ -77,9 +78,6 @@ function Home() {
           setFilms={setFilms}
         />
       )}
-      {/*<div>
-        <HomeFilmCard />
-      </div>*/}
       <div>
         {films.map((item) => (
           <div
@@ -92,6 +90,9 @@ function Home() {
             <p>Score: {item.rt_score}</p>
           </div>
         ))}
+      </div>
+      <div>
+        <FilmCard />
       </div>
     </>
   );

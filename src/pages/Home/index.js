@@ -4,7 +4,7 @@ import { Facebook } from "../../components/FacebookLogin";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
 import { FaFilter } from "react-icons/fa";
-import { Menu } from '../../components/Menu'
+import { Menu } from "../../components/Menu";
 
 function Home() {
   // fetch Data
@@ -51,7 +51,7 @@ function Home() {
   };
   return (
     <>
-      <Menu/>
+      <Menu />
       <div
         style={{
           display: "flex",
@@ -61,7 +61,7 @@ function Home() {
       >
         <SearchEngine />
         <span
-          style={{ margin: "5px", cursor: "pointer" }}
+          style={{ margin: "5px", cursor: "pointer", zIndex: 1 }}
           onClick={handleToggle}
         >
           <FaFilter style={{ verticalAlign: "middle" }} />

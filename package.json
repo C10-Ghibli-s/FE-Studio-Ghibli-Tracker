@@ -23,10 +23,12 @@
     "css-loader": "^6.7.1",
     "eslint": "^8.11.0",
     "eslint-plugin-react": "^7.29.4",
+    "file-loader": "^6.2.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "jest-dom": "^4.0.0",
     "mini-css-extract-plugin": "^2.6.0",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.49.9",
@@ -37,12 +39,12 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "framer-motion": "^6.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-facebook-login": "^4.1.1",
     "react-icons": "^4.3.1",
-    "react-router-dom": "^6.2.2",
-    "typeface-roboto": "^1.1.13"
+    "react-router-dom": "^6.2.2"
   },
   "repository": {
     "type": "git",
@@ -55,8 +57,9 @@
   "homepage": "https://github.com/LilianaRestrepoTorres/FE-Studio-Ghibli-Tracker#readme",
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|scss)$": "identity-obj-proxy"
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy",
+      "\\.(svg|png)$": "identity-obj-proxy"
     }
   }
 }

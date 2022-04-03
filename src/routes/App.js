@@ -2,7 +2,16 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
+import { LandingPage } from '../pages/LandingPage';
 import { Home } from "../pages/Home";
+import { Login } from '../pages/Login';
+
+//pages copied by "home" just to make the representation of the menu functionallity
+import { Profile } from '../pages/profile';
+import { Scores } from '../pages/scores';
+import { Watched } from '../pages/watched';
+
+// componentes en prueba, mover en cuanto esten listos
 import { Facebook } from "../components/FacebookLogin";
 import { StarRating } from "../components/StarRating";
 import { Film } from "../components/Film";
@@ -13,7 +22,15 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="home" element={<Home />} />
-        <Route exact path="login" element={<Facebook />} />
+        <Route exact path="landing-page" element={<LandingPage/>} />
+        <Route exact path="profile" element={<Profile/>} />
+
+        <Route exact path="scores" element={<Scores/>} />
+        <Route exact path="watched" element={<Watched/>} />
+
+        <Route exact path="login" element={<Login/>} />
+
+        <Route exact path="fb" element={<Facebook />} />
         <Route exact path="star-rating" element={<StarRating />} />
         <Route exact path="film" element={<Film />} />
       </Routes>

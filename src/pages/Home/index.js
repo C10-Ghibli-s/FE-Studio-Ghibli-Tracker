@@ -93,10 +93,6 @@ function Home() {
           </div>
         ))}
       </div>
-<<<<<<< HEAD
-      <div>{/* <Facebook /> */}</div>
-=======
->>>>>>> main
     </>
   );
 }

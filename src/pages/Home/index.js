@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
-import { Facebook } from "../../components/FacebookLogin";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
 import { FaFilter } from "react-icons/fa";
@@ -94,7 +93,10 @@ function Home() {
           </div>
         ))}
       </div>
+<<<<<<< HEAD
       <div>{/* <Facebook /> */}</div>
+=======
+>>>>>>> main
     </>
   );
 }

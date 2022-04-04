@@ -5,7 +5,7 @@
   top: 60px;
   width: 100%;
   z-index: 1;
-  padding: 20px;
+  padding: 0 20px;
   background: $secondary-color--light-theme;
   color: $base-color--light-theme;
   font-size: $search-engine__autocomplete;
@@ -17,7 +17,7 @@
 
 li {
   list-style-type: none;
-  margin: 4px;
+  margin: 12px;
   &:hover { 
     color: $movie__watched--active;
     border-block-end: 3px solid $movie__watched--active;

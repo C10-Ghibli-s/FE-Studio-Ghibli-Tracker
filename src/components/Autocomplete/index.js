@@ -17,7 +17,12 @@ function Autocomplete({ results, setFilm }) {
     return (
       <ul aria-labelledby="list-results" className="autocomplete">
         {results.map((film, index) => (
-          <li alt="item-result" onClick={handleItem} key={index}>
+          <li
+            alt="item-result"
+            className="autocomplete--items"
+            onClick={handleItem}
+            key={index}
+          >
             {film.title}
           </li>
         ))}

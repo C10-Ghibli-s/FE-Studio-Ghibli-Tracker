@@ -76,6 +76,7 @@ function SearchEngine({ films }) {
  */
   return (
     <>
+      <span className="search-icon"></span>
       <input
         placeholder="What movie are you looking for?"
         autoComplete="off"

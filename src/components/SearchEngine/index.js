@@ -25,10 +25,9 @@ import { Autocomplete } from "../Autocomplete";
 
 */
 
-function SearchEngine() {
+function SearchEngine({ films }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState([]);
-  const [films, SetFilms] = useState([]);
   const [film, setFilm] = useState({});
   // Handles the input to makes querys
   const handleInput = (e) => {
@@ -39,19 +38,19 @@ function SearchEngine() {
     // then, matches will filter using regex, and will returns the result.
     let matches = [];
     if (searchQuery.length > 0) {
-      matches = films.filter((film) => {
-        const regex = new RegExp(`${searchQuery}`, "gi");
+      matches = [...films].filter((film) => {
+        const regex = new RegExp(`${searchQuery}`, "i");
         return film.title.match(regex);
       });
       setResults(matches);
     }
   };
 
-  // useEffect executes when searchQuery is save it.
-  useEffect(async () => {
-    const response = await axios.get("https://ghibliapi.herokuapp.com/films");
-    SetFilms(response.data);
-  }, []);
+  // // useEffect executes when searchQuery is save it.
+  // useEffect(async () => {
+  //   const response = await axios.get("https://ghibliapi.herokuapp.com/films");
+  //   SetFilms(response.data);
+  // }, []);
 
   console.log("Film selected:", film);
 
@@ -79,8 +78,10 @@ function SearchEngine() {
     <>
       <input
         placeholder="What movie are you looking for?"
+        autoComplete="off"
         className="searchBar"
         type="text"
+        id="search"
         onChange={handleInput}
         onBlur={() => {
           setTimeout(() => {

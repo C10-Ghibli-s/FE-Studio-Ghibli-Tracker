@@ -21,6 +21,9 @@ function Autocomplete({ results, setFilm }) {
             {film.title}
           </li>
         ))}
+        <li className="autocomplete--more-results">
+          See more results <span>➡</span>
+        </li>
       </ul>
     );
   } else {

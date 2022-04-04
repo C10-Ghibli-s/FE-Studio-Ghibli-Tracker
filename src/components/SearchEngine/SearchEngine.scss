@@ -5,7 +5,7 @@
   top: 60px;
   width: 100%;
   z-index: 1;
-  padding: 0 20px;
+  padding: 0;
   background: $secondary-color--light-theme;
   color: $base-color--light-theme;
   font-size: $search-engine__autocomplete;
@@ -18,12 +18,20 @@
 li {
   list-style-type: none;
   margin: 12px;
+  padding: 0 20px;
   &:hover { 
     color: $movie__watched--active;
     border-block-end: 3px solid $movie__watched--active;
     cursor: pointer;
   }
-
+}
+.autocomplete--more-results {
+  background-color: $primary-color--light-theme;
+  padding: 15px 20px;
+  margin: 0;
+  height: 50px;
+  width: 100%;
+  vertical-align: center;
 }
 
 .searchBar {

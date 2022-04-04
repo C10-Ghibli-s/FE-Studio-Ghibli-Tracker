@@ -27,7 +27,7 @@ it("should render a list and its items if there's elements in results state", ()
   });
   const { getAllByRole } = within(list);
   const items = getAllByRole("listitem");
-  expect(items.length).toBe(2);
+  expect(items.length).toBe(3);
 });
 
 it("should return a value if an item gets clicked", () => {

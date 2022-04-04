@@ -60,7 +60,14 @@ function Home() {
       >
         <SearchEngine films={films} />
         <span
-          style={{ margin: "5px", cursor: "pointer", zIndex: 1 }}
+          style={{
+            margin: "5px 0",
+            cursor: "pointer",
+            zIndex: 1,
+            position: "fixed",
+            top: "20px",
+            right: "50px",
+          }}
           onClick={handleToggle}
         >
           <FaFilter style={{ verticalAlign: "middle" }} />

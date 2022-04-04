@@ -1,0 +1,50 @@
+@import '../../routes/App.scss';
+
+.autocomplete {
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  z-index: 1;
+  padding: 20px;
+  background: $secondary-color--light-theme;
+  color: $base-color--light-theme;
+  font-size: $search-engine__autocomplete;
+  text-align: left;
+  text-indent: 20px;
+
+  
+}
+
+li {
+  list-style-type: none;
+  margin: 4px;
+  &:hover { 
+    color: $movie__watched--active;
+    border-block-end: 3px solid $movie__watched--active;
+    cursor: pointer;
+  }
+
+}
+
+.searchBar {
+  outline: rgb(163, 163, 163);
+  position: fixed;
+  top: -16px;
+  border: 1px solid rgb(202, 202, 202);
+  background: #f4f4f4;
+  width: 50%;
+  min-width: 270px;
+  height: 35px;
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  padding-left: 20px;
+  margin: 30px 0;
+  font-size: $search-engine__autocomplete;
+  text-indent: 15px;
+}
+
+@media (max-width: 400px) {
+  .searchBar {
+    font-size: 1.4rem;
+  }
+}

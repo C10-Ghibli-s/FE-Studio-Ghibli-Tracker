@@ -7,3 +7,12 @@
     border-radius: 7px;
     text-decoration: none;
 }
+@mixin SocialMediaButton--LightTheme {
+    color: $base-color--light-theme;
+    background-color: $secondary-color--light-theme;
+    /* shadow box */
+    box-shadow: 4px 0px 10px 4px #00000017;
+    border-radius: 6px;
+    text-decoration: none;
+    min-width: 300px;
+}

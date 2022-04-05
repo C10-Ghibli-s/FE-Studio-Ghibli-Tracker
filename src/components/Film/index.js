@@ -46,12 +46,7 @@ function Film(){
         return(
             null
         );
-    }
-
-
-
-
-    
+    }    
 }
 
 export { Film }

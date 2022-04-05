@@ -3,9 +3,11 @@ import { SearchEngine } from "../../components/SearchEngine";
 import { Filter } from "../../components/Filter";
 import { FilmCard } from "../../components/FilmCard";
 import axios from "axios";
-import { FaFilter } from "react-icons/fa";
-import { Menu } from '../../components/Menu'
-import './Home.css';
+import { Menu } from "../../components/Menu";
+import "./Home.scss";
+
+// styles
+import "../Home/Home.css";
 
 function Home() {
   // fetch Data
@@ -61,19 +63,7 @@ function Home() {
         }}
       >
         <SearchEngine films={films} />
-        <span
-          style={{
-            margin: "5px 0",
-            cursor: "pointer",
-            zIndex: 1,
-            position: "fixed",
-            top: "20px",
-            right: "50px",
-          }}
-          onClick={handleToggle}
-        >
-          <FaFilter style={{ verticalAlign: "middle" }} />
-        </span>
+        <span onClick={handleToggle} className="filter-icon" />
       </div>
       {!!toggleFilter && (
         <Filter
@@ -88,11 +78,8 @@ function Home() {
       )}
       <div className="film-cards-container">
         {films.map((item) => (
-          <div
-            style={{ margin: "10px" }}
-            key={item.id}
-          >
-            <FilmCard film={item}/>
+          <div style={{ margin: "10px" }} key={item.id}>
+            <FilmCard film={item} />
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import "../SearchEngine/SearchEngine.css";
+import "../SearchEngine/SearchEngine.scss";
 
 function Autocomplete({ results, setFilm }) {
   // click the item and diplay it
@@ -15,12 +15,20 @@ function Autocomplete({ results, setFilm }) {
 
   if (results.length > 0) {
     return (
-      <ul aria-labelledby="list-results">
+      <ul aria-labelledby="list-results" className="autocomplete">
         {results.map((film, index) => (
-          <li alt="item-result" onClick={handleItem} key={index}>
+          <li
+            alt="item-result"
+            className="autocomplete--items"
+            onClick={handleItem}
+            key={index}
+          >
             {film.title}
           </li>
         ))}
+        <li className="autocomplete--more-results">
+          See more results <span>➡</span>
+        </li>
       </ul>
     );
   } else {

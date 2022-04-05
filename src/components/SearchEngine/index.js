@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { debouncing } from "../../debouncing";
-import "./SearchEngine.css";
+import "./SearchEngine.scss";
 import { Autocomplete } from "../Autocomplete";
 
 /* [NOTE] Maybe I will need to use react context and create a useInitialState
@@ -76,6 +76,7 @@ function SearchEngine({ films }) {
  */
   return (
     <>
+      <span className="search-icon"></span>
       <input
         placeholder="What movie are you looking for?"
         autoComplete="off"

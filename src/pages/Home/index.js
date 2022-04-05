@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
 import { Filter } from "../../components/Filter";
 import axios from "axios";
-import { FaFilter } from "react-icons/fa";
 import { Menu } from "../../components/Menu";
+
+// styles
+import "../Home/Home.scss";
 
 function Home() {
   // fetch Data
@@ -59,19 +61,7 @@ function Home() {
         }}
       >
         <SearchEngine films={films} />
-        <span
-          style={{
-            margin: "5px 0",
-            cursor: "pointer",
-            zIndex: 1,
-            position: "fixed",
-            top: "20px",
-            right: "50px",
-          }}
-          onClick={handleToggle}
-        >
-          <FaFilter style={{ verticalAlign: "middle" }} />
-        </span>
+        <span onClick={handleToggle} className="filter-icon" />
       </div>
       {!!toggleFilter && (
         <Filter

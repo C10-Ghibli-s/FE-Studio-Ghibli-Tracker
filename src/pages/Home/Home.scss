@@ -1,0 +1,26 @@
+@import '../../routes/App.scss';
+
+.filter-icon {
+  margin: 5px 0;
+  cursor: pointer;
+  z-index: 1;
+  position: fixed;
+  top: 12px;
+  left: calc(85% + 1rem);
+  width: 30px;
+  height: 30px;
+  background: url(../../components/Filter/images/filter-icon.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: ease-in-out .3s;
+  background-color: #2d9cfda1;
+  border-radius: 50px;
+  &:hover{
+    border: 1px solid #2d9cfda1;
+
+  }
+  &:active {
+    border: 1px solid #2d9cfda1;
+  }
+
+}

@@ -6,41 +6,35 @@ import "./Filter-dropdown.scss";
 
 function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
   return (
-    <>
-      <div className="filter-properties">
-        <label
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            margin: "0 30px",
+    <div className="filter-container">
+      <label
+        className="filter--label"
+        aria-labelledby="filter-label"
+        onClick={() => sortArray(categories, adjust)}
+      >
+        <p className="select--text">Sort by:</p>
+        <select
+          onChange={(e) => {
+            setCategories(e.target.value);
           }}
-          aria-labelledby="filter-label"
-          onClick={() => sortArray(categories, adjust)}
+          className="select"
         >
-          <p style={{ margin: "5px" }}>Sort by:</p>
-          <select
-            onChange={(e) => {
-              setCategories(e.target.value);
-            }}
-            className="select-categories"
-          >
-            <option value="running_time">Duration</option>
-            <option value="rt_score">Rate</option>
-            <option value="release_date">Year</option>
-          </select>
-          <p style={{ margin: "5px" }}>Order:</p>
-          <select
-            onChange={(e) => {
-              setAdjust(e.target.value);
-            }}
-            className="select-order"
-          >
-            <option value="ascendant">Ascendant</option>
-            <option value="descendant">Descendant</option>
-          </select>
-        </label>
-      </div>
-    </>
+          <option value="running_time">Duration</option>
+          <option value="rt_score">Rate</option>
+          <option value="release_date">Year</option>
+        </select>
+        <p className="select--text">Order:</p>
+        <select
+          onChange={(e) => {
+            setAdjust(e.target.value);
+          }}
+          className="select"
+        >
+          <option value="ascendant">Ascendant</option>
+          <option value="descendant">Descendant</option>
+        </select>
+      </label>
+    </div>
   );
 }
 

@@ -12,15 +12,14 @@
   background: url(../../components/Filter/images/filter-icon.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  transition: ease-in-out .3s;
-  background-color: #2d9cfda1;
+  transition: ease-in-out .1s;
   border-radius: 50px;
   &:hover{
-    border: 1px solid #2d9cfda1;
-
+    outline: 2px solid rgba(230, 248, 255, 0.781);
   }
   &:active {
-    border: 1px solid #2d9cfda1;
+    width: 33px;
+    height: 33px;
   }
 
 }

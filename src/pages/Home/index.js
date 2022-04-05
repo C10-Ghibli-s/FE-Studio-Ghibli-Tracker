@@ -4,12 +4,8 @@ import { Filter } from "../../components/Filter";
 import { FilmCard } from "../../components/FilmCard";
 import axios from "axios";
 import { FaFilter } from "react-icons/fa";
-<<<<<<< HEAD
-import { Menu } from "../../components/Menu";
-=======
 import { Menu } from '../../components/Menu'
 import './Home.css';
->>>>>>> filmcardhome
 
 function Home() {
   // fetch Data

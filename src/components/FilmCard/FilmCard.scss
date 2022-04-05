@@ -1,0 +1,82 @@
+@import '../../routes/css/variables/global-vars--font-sizes-mobile.scss';
+
+h2{
+    font-size: $card__title;
+}
+
+h3{
+    font-size: $card__year;
+}
+
+p{
+    font-size: $card__description;
+}
+
+.film-card-container{
+    margin: auto;
+    position: relative;
+    display: flex;
+    background-color: white;
+    border-radius: 8px;
+    width: 100%;
+    height: 200px;
+    z-index: -2;
+}
+
+.film-card-image{
+    width: 30%;
+}
+
+.film-card-content{
+    width: 70%;
+    padding: 15px;
+}
+
+.film-card-container:hover{
+    transform: scale(1.005);
+}
+
+.film-card-head{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.film-card-head h2{
+    text-align: left;
+}
+
+.film-card-image img{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    background: #E5E5E5;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px -5px;
+}
+
+.img-background {
+    width: 80px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: -1;
+}
+
+.film-card-image img:hover{
+    transform: scale(1.01);
+}
+
+.film-card-title{
+    align-items: center;
+}
+
+.film-card-body p{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* Limit the text block to three lines */
+    -webkit-line-clamp: 4;
+}

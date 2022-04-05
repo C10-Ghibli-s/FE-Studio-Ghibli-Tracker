@@ -5,6 +5,7 @@ import { FilmCard } from "../../components/FilmCard";
 import axios from "axios";
 import { FaFilter } from "react-icons/fa";
 import { Menu } from '../../components/Menu'
+import './Home.css';
 
 function Home() {
   // fetch Data
@@ -78,7 +79,7 @@ function Home() {
           setFilms={setFilms}
         />
       )}
-      <div>
+      <div className="film-cards-container">
         {films.map((item) => (
           <div
             style={{ margin: "30px", border: "1px solid black" }}

@@ -1,0 +1,7 @@
+.film-cards-container{
+    display: grid;
+    grid-template-columns: minmax(340px, 700px);
+    margin: 10px;
+    margin-top: 60px;
+    align-items: center;
+}

@@ -82,13 +82,10 @@ function Home() {
       <div className="film-cards-container">
         {films.map((item) => (
           <div
-            style={{ margin: "30px", border: "1px solid black" }}
+            style={{ margin: "10px" }}
             key={item.id}
           >
-            <h4>{item.title}</h4>
-            <p>Date: {item.release_date}</p>
-            <p>Running Time: {item.running_time}</p>
-            <p>Score: {item.rt_score}</p>
+            <FilmCard film={item}/>
           </div>
         ))}
       </div>

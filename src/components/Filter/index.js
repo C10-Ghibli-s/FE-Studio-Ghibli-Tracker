@@ -1,10 +1,39 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 
 import "./Filter-dropdown.scss";
 
-function Filter({ sortArray, setAdjust, adjust, categories, setCategories }) {
+function Filter({ films, setFilms }) {
+  const [adjust, setAdjust] = useState("");
+  const [categories, setCategories] = useState("");
+
+  /*  sortArray Function
+    - sortArray receives two arguments 'category' and 'order'.
+    - Then initialize the variable "categories" which is an object.
+    - Every property is a property of the API as well
+    - Then another variable is initialized "sortProperty" that storages the "categories" properties
+    - Then initialize a variable "sorted" that executes the sort
+    - This is a validation if order(argument) is equal to "ascendant"
+    - Then complement or change the content in "films" state with the .sort order
+    - Else executes the same .sort with the reverse order
+    - At the last, update the "films" state with the "sorted" results
+  */
+
+  const sortArray = (category, order) => {
+    const categories = {
+      running_time: "running_time",
+      release_date: "release_date",
+      rt_score: "rt_score",
+    };
+    const sortProperty = categories[category];
+    const sorted =
+      order === "ascendant"
+        ? [...films].sort((a, b) => b[sortProperty] - a[sortProperty])
+        : [...films].sort((a, b) => a[sortProperty] - b[sortProperty]);
+
+    setFilms(sorted);
+    console.log("films sorted", films);
+  };
   return (
     <div className="filter-container">
       <label

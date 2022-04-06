@@ -6,9 +6,6 @@ import axios from "axios";
 import { Menu } from "../../components/Menu";
 import "./Home.scss";
 
-// styles
-import "../Home/Home.css";
-
 function Home() {
   // fetch Data
   const [films, setFilms] = useState([]);

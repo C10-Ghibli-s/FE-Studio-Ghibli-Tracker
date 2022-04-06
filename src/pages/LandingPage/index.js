@@ -6,6 +6,9 @@ import './landing.scss';
 import { AppLogo } from '../../components/AppLogo';
 
 function LandingPage() {
+    // setting mainCurrPage
+    localStorage.setItem("currMainPage", window.location.pathname);
+
     return(
         <React.Fragment>
             <section className='login'>

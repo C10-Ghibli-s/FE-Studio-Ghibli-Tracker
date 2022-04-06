@@ -79,7 +79,7 @@ function FilmView() {
           setFilms={setFilms}
         />
       )}
-      <div style={{ margin: "50px" }}>
+      <div style={{ margin: "20px" }}>
           <Film />
       </div>
     </>

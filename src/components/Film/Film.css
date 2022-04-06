@@ -103,3 +103,9 @@ body{
     display: flex;
     justify-content: flex-end;
 }
+
+.film-btn a{
+    text-decoration: none;
+    text-decoration-color: #111111;
+}
+

@@ -1,0 +1,13 @@
+@import '../../routes/App.scss';
+
+.gobackbutton-container {
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    background-color: $primary-color--light-theme;
+    display: flex;
+}
+
+.film-container{
+    margin-top: 5px;
+}

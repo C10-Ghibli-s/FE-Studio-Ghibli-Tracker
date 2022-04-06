@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
 import { Film } from "../../components/Film";
 import axios from "axios";
-import { Menu } from "../../components/Menu";
-import "./FilmView.css";
+import "./FilmView.scss";
+import { GoBackButton } from "../../components/BackLink";
 
 function FilmView() {
   // fetch Data
@@ -21,7 +21,9 @@ function FilmView() {
   };
   return (
     <>
-      <Menu />
+      <div className="gobackbutton-container">
+        <GoBackButton />
+      </div>
       <div
         style={{
           display: "flex",

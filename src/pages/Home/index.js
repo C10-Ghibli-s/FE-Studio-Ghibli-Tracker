@@ -11,6 +11,10 @@ function Home() {
   const [films, setFilms] = useState([]);
   // Filter toggle state
   const [toggleFilter, setToggleFilter] = useState(false);
+  // setting mainCurrPage
+  localStorage.setItem("currMainPage", window.location.pathname);
+
+
 
   useEffect(async () => {
     const response = await axios.get("https://ghibliapi.herokuapp.com/films");

@@ -3,9 +3,9 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 //social Media
 import { Facebook } from "../../components/FacebookLogin";
 
-import "./Login.scss";
-import image from "./images/tracker-totoro.png";
-function Login() {
+import "../Login/Login.scss";
+import image from "../Login/images/tracker-totoro.png";
+function Register() {
   return (
     <>
       <div className="contenedor">
@@ -75,4 +75,4 @@ function Login() {
   );
 }
 
-export { Login };
+export { Register };

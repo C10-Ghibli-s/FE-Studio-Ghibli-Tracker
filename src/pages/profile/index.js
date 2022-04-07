@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GoBackButton } from '../../components/BackLink';
 import './profile.scss';
 import userImageProfile from './images/user-image-profile.png';
 import linkArrow from './images/linkArrow.png'
+import { motion } from 'framer-motion';
 
 function Profile() {
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const linkAnimateFrom = {opacity: 0, y: -40};
+  const linkAnimateTo = {opacity: 1, y: 0};
   return (
-    <>
+    <div className="profilePageContainer">
       <header className="profile-header"> <GoBackButton/> </header>
       <main className="profile-main">
         <div className="user">
@@ -16,14 +20,47 @@ function Profile() {
           <h1>Username</h1>
         </div>
         <section className="options">
-          <span><a href="/scores"> Scores </a> <img src={linkArrow}></img></span>
-          <span><a href="/settings"> Settings </a> <img src={linkArrow}></img></span>
+          <motion.span
+            initial={linkAnimateFrom}
+            animate={linkAnimateTo}
+            transition={{delay: 0.10}}
+          >
+            <a href="/scores"> Scores <img src={linkArrow}></img></a>
+          </motion.span>
+          <motion.span
+            initial={linkAnimateFrom}
+            animate={linkAnimateTo}
+            transition={{delay: 0.10}}
+          >
+            <button type="button" onClick={()=> setSettingsOpen(!settingsOpen)}> Settings <img src={linkArrow}></img></button>
+          </motion.span>
+            { settingsOpen &&
+              <div className="settings">
+                <motion.button 
+                  initial={linkAnimateFrom}
+                  animate={linkAnimateTo}
+                  transition={{delay: 0.10}}
+                  type="button"
+                >
+                  Change Password
+                </motion.button>
+                <motion.button 
+                  initial={linkAnimateFrom}
+                  animate={linkAnimateTo}
+                  transition={{delay: 0.10}}
+                  type="button"
+                >
+                  Themes
+                </motion.button>
+              </div>
+            }
         </section>
-
-        <progress className="movies-watched--bar" id="movies-watched--bar" value="70" max="100"> </progress>
-        <label for="movies-watched--bar">Ghibli Movies you've watched</label>
+        <div className="progressBar-container">
+          <label for="movies-watched--bar">Ghibli Movies you've watched</label>
+          <progress className="movies-watched--bar" id="movies-watched--bar" value="70" max="100"> </progress>
+        </div>
       </main>
-    </>
+    </div>
   );
 }
 

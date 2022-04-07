@@ -2,15 +2,11 @@ import React, {useState} from "react";
 import { FaHeart } from 'react-icons/fa';
 import './FilmWatched.css'
 
-//we should receive props with the value watched true or false
-function FilmWatched(){
-    //This value should be replaced by props
-    const [watched, setWatched] = useState(false);
+function FilmWatched({filmWatched}){
+    const [watched, setWatched] = useState(filmWatched);
     const [hoverWatched, setHoverWatched] = useState(false);
 
     return(
-
-        //Create a function to change value of watched when the user click the component
         //Add validation and restriction with StarRating
         
         <div className="film-watched-component">
@@ -18,7 +14,7 @@ function FilmWatched(){
                 <input
                     type="checkbox"
                     name="watched"
-                    onClick={()=>setWatched(true)}
+                    onClick={()=>{watched === true ? setWatched(false) : setWatched(true)}}
                 />
                 <FaHeart
                     className="heart"

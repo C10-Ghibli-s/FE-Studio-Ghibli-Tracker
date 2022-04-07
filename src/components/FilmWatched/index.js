@@ -8,7 +8,6 @@ function FilmWatched({filmWatched}){
 
     return(
         //Add validation and restriction with StarRating
-        
         <div className="film-watched-component">
             <label>
                 <input
@@ -21,7 +20,10 @@ function FilmWatched({filmWatched}){
                     size={20}
                     color={((watched || hoverWatched) === true) ? "#C22F80" : "#e4e5e9"}
                     onMouseEnter = {()=> setHoverWatched(true)}
+                    //Desktop version
                     onMouseLeave = {() => setHoverWatched(false)}
+                    //Mobile version
+                    onTouchEnd = {() => setHoverWatched(false)}
                 />
             </label>
         </div>

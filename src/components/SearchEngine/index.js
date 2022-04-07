@@ -25,7 +25,7 @@ import { Autocomplete } from "../Autocomplete";
 
 */
 
-function SearchEngine({ films }) {
+function SearchEngine({ films, menuOpen, setMenuOpen }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState([]);
   const [film, setFilm] = useState({});
@@ -84,6 +84,7 @@ function SearchEngine({ films }) {
         type="text"
         id="search"
         onChange={handleInput}
+        onClick={() => {if(menuOpen){setMenuOpen(!menuOpen)}}}
         onBlur={() => {
           setTimeout(() => {
             setResults([]);

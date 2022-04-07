@@ -80,6 +80,7 @@ function Register() {
                   type="text"
                   placeholder="yourmail@mail.com"
                 />
+                <span className="email-icon"></span>
                 <ErrorMessage
                   name="email"
                   component={() => <div className="error">{errors.email}</div>}
@@ -93,6 +94,7 @@ function Register() {
                   type="text"
                   placeholder="username"
                 />
+                <span className="user-icon"></span>
                 <ErrorMessage
                   name="username"
                   component={() => (
@@ -108,6 +110,7 @@ function Register() {
                   type="password"
                   placeholder="password"
                 />
+                <span className="password-icon"></span>
                 <ErrorMessage
                   name="password"
                   component={() => (
@@ -123,6 +126,7 @@ function Register() {
                   type="password"
                   placeholder="confirm password"
                 />
+                <span className="password-icon"></span>
                 <ErrorMessage
                   name="confirmPassword"
                   component={() => (

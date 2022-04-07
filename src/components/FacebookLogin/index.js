@@ -18,8 +18,8 @@ function Facebook() {
         callback={responseFacebook}
         render={(renderProps) => (
           <button className="facebook-button" onClick={renderProps.onClick}>
-            <FaFacebook />
-            <span>Register with Facebook</span>
+            <FaFacebook className="facebook-icon" />
+            <p>Connect with Facebook</p>
           </button>
         )}
       />

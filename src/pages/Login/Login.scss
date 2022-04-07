@@ -11,9 +11,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  img {
-    margin: 0 auto
-  };
   .hero-tracker {
     font-weight: 500;
     font-size: 24px;
@@ -36,6 +33,7 @@
 
 .formulario>div {
   margin-bottom: 20px;
+  position: relative;
 }
 
 .formulario label {
@@ -56,7 +54,29 @@
   padding: 10px;
   margin-bottom: 5px;
   color: #1f1f1f;
+  text-indent: 27px;
 }
+
+.user-icon, .email-icon, .password-icon {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 9px;
+  top: 32px;
+}
+.user-icon {
+  background: url(./images/user-icon.svg);
+}
+.email-icon {
+  background: url(./images/email-icon.svg);
+}
+.password-icon {
+  background: url(./images/password-icon.svg);
+}
+
+
 
 .formulario input:focus {
   outline: none;
@@ -82,10 +102,11 @@
   color: #fff;
   font-size: 16px;
   transition: .3s ease all;
+  margin: 50px 0 0 0;
 }
 
 .formulario button[type="submit"]:hover {
-  background: #0051ff;
+  background: #0071db;
 }
 
 .formulario .exito {

@@ -19,11 +19,17 @@ function Login() {
             let errors = {};
             //User validation
             if (!values.user) {
-              errors.user = "Please enter your username";
+              errors.user = "Enter your username";
+            } else if (
+              !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
+                values.user
+              )
+            ) {
+              errors.user = "Enter a valid username";
             }
             if (!values.password) {
               //Password validation
-              errors.password = "Please enter your password";
+              errors.password = "Enter your password";
             }
             return errors;
           }}
@@ -45,6 +51,7 @@ function Login() {
                   type="text"
                   placeholder="username"
                 />
+                <span className="user-icon"></span>
                 <ErrorMessage
                   name="user"
                   component={() => <div className="error">{errors.user}</div>}
@@ -58,6 +65,7 @@ function Login() {
                   type="password"
                   placeholder="password"
                 />
+                <span className="password-icon"></span>
                 <ErrorMessage
                   name="password"
                   component={() => (
@@ -66,7 +74,7 @@ function Login() {
                 />
               </div>
               <button type="submit">Login</button>
-              {/* <Facebook /> */}
+              <Facebook />
             </Form>
           )}
         </Formik>

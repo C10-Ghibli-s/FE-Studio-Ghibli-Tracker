@@ -23,7 +23,8 @@ function Film(){
                             <h1>{films[2].title}</h1>
                             <h2>{films[2].release_date}</h2>
                         </div>
-                        <FilmWatched />  
+                        {/*We should sent films.movie_watched */}
+                        <FilmWatched filmWatched={false}/>  
                     </div>
                     <div className="film-image">
                         <img src={films[2].movie_banner} alt=''/>

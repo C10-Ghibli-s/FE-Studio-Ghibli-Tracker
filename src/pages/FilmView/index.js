@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
-import { Filter } from "../../components/Filter";
-import { FilmCard } from "../../components/FilmCard";
+import { Film } from "../../components/Film";
 import axios from "axios";
-import { Menu } from "../../components/Menu";
-import "./Home.scss";
+import "./FilmView.scss";
+import { GoBackButton } from "../../components/BackLink";
 
-function Home() {
+function FilmView() {
   // fetch Data
   const [films, setFilms] = useState([]);
   // Filter toggle state
   const [toggleFilter, setToggleFilter] = useState(false);
-  // setting mainCurrPage
-  localStorage.setItem("currMainPage", window.location.pathname);
-
-
 
   useEffect(async () => {
     const response = await axios.get("https://ghibliapi.herokuapp.com/films");
@@ -26,7 +21,9 @@ function Home() {
   };
   return (
     <>
-      <Menu />
+      <div className="gobackbutton-container">
+        <GoBackButton />
+      </div>
       <div
         style={{
           display: "flex",
@@ -35,21 +32,12 @@ function Home() {
         }}
       >
         <SearchEngine films={films} />
-        <span onClick={handleToggle} className="filter-icon" />
       </div>
-      {!!toggleFilter && <Filter films={films} setFilms={setFilms} />}
-      <div className="film-cards-container">
-        {films.map((item) => (
-          <div style={{ margin: "10px" }} key={item.id}>
-            <FilmCard film={item} />
-          </div>
-        ))}
-      </div>
-      <div>
-        <FilmCard />
+      <div className="film-container">
+          <Film />
       </div>
     </>
   );
 }
 
-export { Home };
+export { FilmView };

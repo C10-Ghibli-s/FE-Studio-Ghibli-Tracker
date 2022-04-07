@@ -34,11 +34,13 @@ function Film(){
                     </div>
                     <footer className="film-footer">
                         <button className="film-btn">
-                            <span>More info</span>
-                            <FaArrowRight />
+                            {/*This URL should be replaced by the object film.link_wiki that this component will receive*/}
+                            <a href="https://ghibli.fandom.com/wiki/My_Neighbor_Totoro" target={"_blank"}>
+                                <span>More info</span>
+                                <FaArrowRight />
+                            </a>
                         </button>
-                    </footer>
-                    
+                    </footer>      
                 </div>  
             </div>
         );

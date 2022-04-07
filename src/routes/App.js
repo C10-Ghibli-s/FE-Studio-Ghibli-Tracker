@@ -11,11 +11,11 @@ import { Register } from "../pages/Register";
 import { Profile } from "../pages/profile";
 import { Scores } from "../pages/scores";
 import { Watched } from "../pages/watched";
+import { FilmView } from "../pages/FilmView";
 
 // componentes en prueba, mover en cuanto esten listos
 import { Facebook } from "../components/FacebookLogin";
 import { StarRating } from "../components/StarRating";
-import { Film } from "../components/Film";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
 
         <Route exact path="fb" element={<Facebook />} />
         <Route exact path="star-rating" element={<StarRating />} />
-        <Route exact path="film" element={<Film />} />
+        <Route exact path="film" element={<FilmView />} />
       </Routes>
     </BrowserRouter>
   );

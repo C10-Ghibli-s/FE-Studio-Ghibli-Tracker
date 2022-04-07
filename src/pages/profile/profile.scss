@@ -1,0 +1,46 @@
+@import '../../routes/App.scss';
+
+.profile-header {
+    height: 60px;
+    width: 100vw;
+    background-color: $primary-color--light-theme;
+}
+.profile-main {
+    background-color: $primary-color--light-theme;
+}
+
+progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 250px;
+    height: 20px;
+    &::-webkit-progress-value {
+        background-color: $movie__watched--active;
+        border-radius: 80px;
+    }
+    &::-webkit-progress-bar {
+        background-color: $base-color--light-theme;
+        border: 2px solid $base-color--light-theme;
+        border-radius: 80px;
+    }
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & span {
+        
+        & a {
+            font-weight: 700;
+            color: $base-color--light-theme;
+            font-size: $menu__title;
+            text-decoration: none;
+        }
+        & img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}

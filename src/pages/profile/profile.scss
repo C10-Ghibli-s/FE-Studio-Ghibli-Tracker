@@ -5,42 +5,139 @@
     width: 100vw;
     background-color: $primary-color--light-theme;
 }
-.profile-main {
+.profilePageContainer {
+    height: 100vh;
     background-color: $primary-color--light-theme;
 }
 
-progress[value] {
-    /* Reset the default appearance */
-    -webkit-appearance: none;
-    appearance: none;
-    width: 250px;
-    height: 20px;
-    &::-webkit-progress-value {
-        background-color: $movie__watched--active;
-        border-radius: 80px;
+.profile-main {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    & .user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & picture img {
+            height: 220px;
+            width: 220px;
+        }
+        & h1 {
+            color: $base-color--light-theme;
+            font-weight: 500;
+        }
     }
-    &::-webkit-progress-bar {
-        background-color: $base-color--light-theme;
-        border: 2px solid $base-color--light-theme;
-        border-radius: 80px;
+    // Link options (Scores, Settings)
+    & .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & span {
+            border-block-end: 1px solid $base-color--light-theme;
+            margin-block-end: 10px;
+            & a, & button {
+                display: flex;
+                font-weight: 700;
+                color: $base-color--light-theme;
+                font-size: $menu__title;
+                text-decoration: none;
+                & img {
+                    width: 35px;
+                    height: 35px;
+                    margin-inline-start: 12px;
+                }
+                &:hover {
+                    color:peachpuff;
+                }
+            }
+        }
+        & .settings {
+            margin: 8px;
+            & button {
+            display: flex;
+            font-weight: 700;
+            color: $base-color--light-theme;
+            background-color: $secondary-color--light-theme;
+            font-size: 2rem;
+            text-decoration: none;
+            margin-block-end: 10px;
+            padding: 10px;
+            &:hover {
+                color:peachpuff;
+            }
+            }
+        }
+    }
+
+    // PROGRESS BAR
+
+    & .progressBar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 150px;
+        & label {
+            font-size: 1.8rem;
+            color: $base-color--light-theme;
+            margin-block-end: 10px;
+            border-block-end: 1px solid $base-color--light-theme;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        & span {
+            color: $base-color--light-theme;
+            font-size: 2rem;
+            margin-block-start: 10px;
+        }
+        & progress[value] {
+            /* Reset the default appearance */
+            -webkit-appearance: none;
+            appearance: none;
+            width: 300px;
+            height: 45px;
+            cursor: pointer;
+            &::-webkit-progress-value {
+                background-color: $movie__watched--active;
+                border-radius: 80px;
+            }
+            &::-webkit-progress-bar {
+                background-color: $base-color--light-theme;
+                border: 4px solid $base-color--light-theme;
+                border-radius: 80px;
+            }
+        }
+        & a {
+            display: none;
+        }
     }
 }
 
-.options {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    & span {
-        
-        & a {
-            font-weight: 700;
-            color: $base-color--light-theme;
-            font-size: $menu__title;
-            text-decoration: none;
+@media (min-width: 680px) {
+    .profile-main {
+        display: grid;
+        max-width: 800px;
+        margin: 0 auto;
+        & .user {
+            grid-area: userInfo;
+            margin-block-start: 50px;
         }
-        & img {
-            width: 35px;
-            height: 35px;
+        & .options {
+            grid-area: optionLinks;
+            margin: auto 0;
         }
+        & .progressBar-container {
+            grid-area: watchedProgressBar;
+            margin-block-start: 85px;
+        }
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(2, 50%);
+        grid-template-areas: "userInfo optionLinks"
+                             "watchedProgressBar optionLinks";
     }
 }
+
+
+
+

@@ -13,8 +13,8 @@ function Home() {
   const [toggleFilter, setToggleFilter] = useState(false);
   // setting mainCurrPage
   localStorage.setItem("currMainPage", window.location.pathname);
-
-
+  // Menu toggle
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(async () => {
     const response = await axios.get("https://ghibliapi.herokuapp.com/films");
@@ -26,7 +26,11 @@ function Home() {
   };
   return (
     <>
-      <Menu />
+      <Menu 
+      menuOpen={menuOpen}
+      setMenuOpen={setMenuOpen}
+      toggleFilter={toggleFilter} 
+      setToggleFilter={setToggleFilter}/>
       <div
         style={{
           display: "flex",
@@ -34,8 +38,16 @@ function Home() {
           justifyContent: "center",
         }}
       >
-        <SearchEngine films={films} />
-        <span onClick={handleToggle} className="filter-icon" />
+        <SearchEngine 
+          films={films} 
+          menuOpen={menuOpen} 
+          setMenuOpen={setMenuOpen}
+        />
+        <span onClick={()=> {handleToggle();
+          if(menuOpen) {
+            setMenuOpen(!menuOpen)
+          }
+        }} className="filter-icon" />
       </div>
       {!!toggleFilter && <Filter films={films} setFilms={setFilms} />}
       <div className="film-cards-container">

@@ -33,15 +33,17 @@ button {
     background-color: $secondary-color--light-theme;
     & li {
         margin-block-start: 35px;
+        padding-block-end: 10px;
         & a{
             font-size: $menu__font-size;
             color: $base-color--light-theme;
             text-decoration: none;
-            border-block-end: 3px solid $base-color--light-theme;
             padding-block-end: 5px;
+            border-block-end: 3px solid $base-color--light-theme;
             &:hover {
-                color: $movie__watched--active;
-                border-block-end: 3px solid $movie__watched--active;
+                background-color: $primary-color--light-theme;
+                border-radius: 5px;
+                padding: 8px 12px;
                 cursor: pointer;
             }
         }

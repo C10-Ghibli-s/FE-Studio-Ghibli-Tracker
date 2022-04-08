@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { Link } from "react-router-dom";
 import "../SearchEngine/SearchEngine.scss";
 
 function Autocomplete({ results, setFilm }) {
@@ -23,7 +24,9 @@ function Autocomplete({ results, setFilm }) {
             onClick={handleItem}
             key={index}
           >
-            {film.title}
+            <Link className="autocomplete--items-anchor" to={"/film"}>
+              {film.title}
+            </Link>
           </li>
         ))}
         <li className="autocomplete--more-results">

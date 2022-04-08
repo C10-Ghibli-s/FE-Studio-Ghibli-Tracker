@@ -21,9 +21,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route exact path="home" element={<Home />} />
-        <Route exact path="landing-page" element={<LandingPage />} />
         <Route exact path="profile" element={<Profile />} />
 
         <Route exact path="scores" element={<Scores />} />

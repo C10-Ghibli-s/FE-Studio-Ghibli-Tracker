@@ -4,14 +4,27 @@
 .facebook-button{
     @include SocialMediaButton--LightTheme;
     font-size: $socialmedia-button;
-    font-weight: 400;
-    text-align: center;
-    padding: 8px 30px;
-    margin-left: 8px;
-    display: flex;
-    align-content: space-around;
+    font-weight: 600;
+    display: block;
+    margin-top: 90px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    min-width: 280px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: .3s ease all;
+    &:hover {
+        background: #0071db;
+    }
 }
 
-.facebook-button span{
-    margin-left: 80px;
+.facebook-icon {
+    position: absolute;
+    left: 9px;
+    width: 24px;
+    height: 24px;
+    top: 7px;
 }
+

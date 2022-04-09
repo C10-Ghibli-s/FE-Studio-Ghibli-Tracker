@@ -1,9 +1,9 @@
 import React,{ useState, useEffect } from "react";
 import './Film.css';
 import { FaArrowRight } from 'react-icons/fa';
-import { StarRating } from '../StarRating';
 import { FilmWatched } from '../FilmWatched';
 import axios from "axios";
+import { DoubleRating } from "../DoubleRating";
 
 function Film(){
     // fetch Data
@@ -23,13 +23,16 @@ function Film(){
                             <h1>{films[2].title}</h1>
                             <h2>{films[2].release_date}</h2>
                         </div>
-                        {/*We should sent films.movie_watched */}
-                        <FilmWatched filmWatched={false}/>  
+                        {/*We should send films.movie_watched */}
+                        <FilmWatched filmWatched={true}/>  
                     </div>
                     <div className="film-image">
                         <img src={films[2].movie_banner} alt=''/>
                     </div>
-                    <StarRating />
+                    {/*We should send films.score_by_stars */}
+                    {/*<StarRating scoreRatingUser={2} />*/}
+                    {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
+                    <DoubleRating filmWatched={true} scoreRatingUser={2} audienceScoreRating={4}/>
                     <div className="film-body">
                         <p>{films[2].description}</p>
                     </div>

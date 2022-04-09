@@ -35,10 +35,17 @@
   list-style-type: none;
   margin: 12px;
   padding: 0 20px;
-  &:hover { 
-    color: $movie__watched--active;
-    border-block-end: 3px solid $movie__watched--active;
-    cursor: pointer;
+  transition: .3s ease all;
+
+  .autocomplete--items-anchor {
+    color: $base-color--light-theme;
+    list-style-type: none;
+    text-decoration: none;
+    transition: .3s ease all;
+    &:hover {
+      color: $movie__watched--active;
+      cursor: pointer;
+    }
   }
 }
 .autocomplete {
@@ -60,9 +67,9 @@
   height: 50px;
   width: 100%;
   vertical-align: center;
+  transition: .3s ease all;
   &:hover {
     color: $movie__watched--active;
-    border-block-end: 3px solid $movie__watched--active;
     cursor: pointer;
   }
 }

@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import './Film.css';
 import { FaArrowRight } from 'react-icons/fa';
-import { StarRating } from '../StarRating';
 import { FilmWatched } from '../FilmWatched';
 import axios from "axios";
 import { DoubleRating } from "../DoubleRating";

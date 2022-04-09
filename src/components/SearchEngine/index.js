@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { useState, useEffect, useMemo } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { debouncing } from "../../debouncing";
 import "./SearchEngine.scss";
 import { Autocomplete } from "../Autocomplete";
@@ -52,8 +51,6 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
   //   SetFilms(response.data);
   // }, []);
 
-  console.log("Film selected:", film);
-
   /* // Debouncing algorithm
   const debouncedFetchData = useMemo(() => {
     const fetchData = async () => {
@@ -84,7 +81,11 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         type="text"
         id="search"
         onChange={handleInput}
-        onClick={() => {if(menuOpen){setMenuOpen(!menuOpen)}}}
+        onClick={() => {
+          if (menuOpen) {
+            setMenuOpen(!menuOpen);
+          }
+        }}
         onBlur={() => {
           setTimeout(() => {
             setResults([]);

@@ -3,7 +3,9 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import axios from "axios";
 import "../Login/Login.scss";
 import image from "../Login/images/tracker-totoro.png";
+import { useNavigate } from "react-router-dom";
 function Register() {
+  let navigate = useNavigate();
   return (
     <>
       <div className="contenedor">
@@ -78,6 +80,7 @@ function Register() {
                 console.log(error.response.data);
               });
             resetForm();
+            navigate("/login");
           }}
         >
           {({ errors }) => (

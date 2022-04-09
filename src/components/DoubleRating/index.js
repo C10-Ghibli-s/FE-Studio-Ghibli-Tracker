@@ -1,5 +1,6 @@
 import React from "react";
 import { StarRating } from "../StarRating";
+import "./DoubleRating.css";
 
 function DoubleRating({filmWatched, scoreRatingUser, audienceScoreRating}){
     //if filmWatched is true show star component with userscore
@@ -13,11 +14,15 @@ function DoubleRating({filmWatched, scoreRatingUser, audienceScoreRating}){
         );
     } else {
         return(
-            <div>
-                <p>Audience Score</p>
-                <StarRating scoreRatingUser={audienceScoreRating} />
-                <p>Your Score</p>
-                <StarRating scoreRatingUser={scoreRatingUser} />
+            <div className="score-rating-container">
+                <div className="score-audience-content">
+                    <p>Audience Score</p>
+                    <StarRating scoreRatingUser={audienceScoreRating} />
+                </div>
+                <div className="score-user-content">
+                    <p>Your Score</p>
+                    <StarRating scoreRatingUser={scoreRatingUser} />
+                </div>
             </div>
         );
     }

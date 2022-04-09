@@ -58,7 +58,8 @@ button {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgba(244, 244, 244, 0.82);
+            background-color: rgba(244, 244, 244, 0.85);
+            box-shadow: 8px 10px rgba(244, 244, 244, 0.22);
             min-width: 160px;
             max-width: 250px; 
             margin: 20px auto 0 auto;
@@ -75,4 +76,5 @@ button {
             margin-block-start: 20px;
         }
     }
+    .menu__openMenuButton {margin-inline-start: 20px; padding: 2px;}
 }

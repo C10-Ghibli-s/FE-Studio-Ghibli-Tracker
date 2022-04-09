@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 6vh;
+    min-height: 4vh;
 }
 
 input[type="radio"]{

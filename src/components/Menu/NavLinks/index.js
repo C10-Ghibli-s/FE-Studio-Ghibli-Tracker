@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from 'framer-motion';
 import { NavLink } from "./navLink";
 import PropTypes from 'prop-types';
+import secondary_mark from '../../../pages/LandingPage/images/secondary_mark-logotype.png';
+import tracker from '../../../pages/LandingPage/images/tracker.png';
 
 NavLinks.propTypes = {
     links: PropTypes.array.isRequired,
@@ -12,7 +14,7 @@ const navAnimateTo = {opacity: 1, x: 0};
 const linkAnimateFrom = {opacity: 0, y: -40};
 const linkAnimateTo = {opacity: 1, y: 0};
 
-function NavLinks(props) {
+function NavLinks({links}) {
     return (
         <motion.ul
         data-testid="navBar"
@@ -27,9 +29,10 @@ function NavLinks(props) {
                 transition={{delay: 0.10}}
                 key="settings"
             >
-                    Settings 
+                <img src={secondary_mark}></img>
+                <img src={tracker}></img>
             </motion.li>
-            {props.links.map(link => (
+            {links.map(link => (
                 <motion.li
                 initial={linkAnimateFrom}
                 animate={linkAnimateTo}
@@ -39,6 +42,7 @@ function NavLinks(props) {
                     pageRoute={link.pageRoute} 
                     page={link.page}
                     key={link.pageRoute}
+                    icon={link.icon}
                     >
                     </NavLink>
                 </motion.li>

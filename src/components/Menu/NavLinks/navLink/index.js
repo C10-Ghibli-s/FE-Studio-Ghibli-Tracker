@@ -7,8 +7,8 @@ NavLink.propTypes = {
 }
 
 
-function NavLink(props) {
-    return <a href={props.pageRoute}>{props.page}</a>;
+function NavLink({pageRoute, page, icon}) {
+    return <a href={pageRoute}><img src={icon}></img>{page}</a>;
 }
 
 export { NavLink };

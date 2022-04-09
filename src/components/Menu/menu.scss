@@ -29,7 +29,7 @@ button {
     display: flex;
     flex-direction: column;
     margin-block-start: 60px;
-    padding: 0 40px;
+    padding: 0 35px;
     background-color: $secondary-color--light-theme;
     & li {
         margin-block-start: 35px;
@@ -40,25 +40,39 @@ button {
             text-decoration: none;
             padding-block-end: 5px;
             border-block-end: 3px solid $base-color--light-theme;
+            & img {
+                width: 30px;
+                height: 30px;
+                margin-inline-end: 10px;
+            }
             &:hover {
                 background-color: $primary-color--light-theme;
-                border-radius: 5px;
-                padding: 8px 12px;
+                border-radius: 8px;
+                padding: 10px 15px;
                 cursor: pointer;
             }
         }
         &:first-child {
-            color: $base-color--light-theme;
-            font-size: $menu__title;
+            border-radius: 10px;
             cursor: pointer;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(244, 244, 244, 0.82);
+            min-width: 160px;
+            max-width: 250px; 
+            margin: 20px auto 0 auto;
         }
     }
 }
 
-@media (min-width: 550px) {
+@media (min-width: 600px) {
     .menuContainer nav ul {
-        width: 35%;
-        max-width: 250px;
+        width: 40%;
+        padding: 0 35px 0 20px;
+        max-width: 300px;
+        & li:first-child {
+            margin-block-start: 20px;
+        }
     }
 }

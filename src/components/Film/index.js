@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Film.scss";
 import { FaArrowRight } from "react-icons/fa";
-import { StarRating } from "../StarRating";
+import { DoubleRating } from "../DoubleRating";
 import { FilmWatched } from "../FilmWatched";
 import { AppContext } from "../../context/AppContext";
 
@@ -21,12 +21,13 @@ function Film() {
               <h2>{film.release_date}</h2>
             </div>
             {/*We should sent films.movie_watched */}
-            <FilmWatched filmWatched={false} />
+            <FilmWatched filmWatched={true} />
           </div>
           <div className="film-image">
             <img src={film.movie_banner} alt="" />
           </div>
-          <StarRating />
+          {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
+          <DoubleRating filmWatched={true} scoreRatingUser={2} audienceScoreRating={4}/>
           <div className="film-body">
             <p>{film.description}</p>
           </div>

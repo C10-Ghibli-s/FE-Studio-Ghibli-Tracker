@@ -12,3 +12,7 @@
 .score-user-content{
     margin-top: 1rem;
 }
+
+.score-audience-content {
+    pointer-events: none;
+}

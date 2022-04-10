@@ -11,13 +11,13 @@ describe("Profile page", ()=>{
     test("rendering all elements in the component but not the settings-subMenu", ()=> {
         render(<Profile/>);
         const userPhoto = screen.getByTestId("user--photo");
-        const userName = screen.getByText("justin");
+        const userName = screen.getByAltText("userName");
         const profileMenu = screen.getByTestId("options");
         const settingsOptions = screen.getAllByTestId("configOptions");
         expect(userPhoto).toBeInTheDocument();
         expect(userName).toBeInTheDocument();
         expect(profileMenu).toBeInTheDocument();
-        expect(settingsOptions).toBe(null);
+        expect(settingsOptions).not.toBeInTheDocument();
     });
     test("Given the event 'click' in the settings button, must render a list of config options", ()=> {
         render(<Profile/>);
@@ -29,7 +29,7 @@ describe("Profile page", ()=>{
     test("given the moviesWatched by the user, must show in a label the amount over the total", ()=> {
         render(<Profile/>);
         const moviesWatchedLabel = screen.getByTestId('moviesWatched');
-        expect(moviesWatchedLabel).toBe(" 23/24 ")
+        expect(moviesWatchedLabel).toBe("23/24")
     })
 });
 

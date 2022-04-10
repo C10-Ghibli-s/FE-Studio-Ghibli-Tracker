@@ -1,4 +1,4 @@
-@import '../../routes/css/variables/global-vars--font-sizes-mobile.scss';
+@import '../../routes/App.scss';
 
 .film-card-title {
     & h2{
@@ -13,14 +13,17 @@
 }
 
 .film-card-container{
-    margin: auto;
     position: relative;
     display: flex;
-    background-color: white;
-    border-radius: 8px;
+    background-color: $base-color--light-theme;
+    border-radius: 10px;
     width: 90%;
     height: 200px;
-    z-index: -2;
+    z-index: 1;
+    box-shadow: 2px 2px 12px 2px #0000001A;
+    margin: 12px auto;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .film-card-image{
@@ -30,10 +33,6 @@
 .film-card-content{
     width: 70%;
     padding: 15px;
-}
-
-.film-card-container:hover{
-    transform: scale(1.005);
 }
 
 .film-card-head{
@@ -54,15 +53,15 @@
     margin-bottom: 1rem;
     background: #E5E5E5;
     border-radius: 8px;
-    box-shadow: 0px 0px 15px -5px;
+    box-shadow: 0px 0px 12px -5px;
 }
 
 .img-background {
     width: 80px;
     position: absolute;
     right: 10px;
-    bottom: 10px;
-    z-index: -1;
+    bottom: -15px;
+    z-index: 2;
 }
 
 .film-card-image img:hover{

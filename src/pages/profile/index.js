@@ -7,15 +7,17 @@ import linkArrow from './images/linkArrow.png'
 import { motion } from 'framer-motion';
 
 function Profile() {
-  // to test //
-    localStorage.setItem("userId", "2");
-  //
-  const [user, setUser] = useState({});
 
-  useEffect(async () => {
-    const response = await axios.get(`https://serene-coast-44000.herokuapp.com/users/profile/${localStorage.getItem("userId")}`);
-    setUser(response.data);
-  });
+  // THI IS COMMENTED UNTIL WE CAN USE THE DB CORRECTLY
+  // to test //
+    // localStorage.setItem("userId", "2");
+  //
+  // const [user, setUser] = useState({});
+
+  // useEffect(async () => {
+  //   const response = await axios.get(`https://serene-coast-44000.herokuapp.com/users/profile/${localStorage.getItem("userId")}`);
+  //   setUser(response.data);
+  // });
   const [settingsOpen, setSettingsOpen] = useState(false);
   const linkAnimateFrom = {opacity: 0, y: -40};
   const linkAnimateTo = {opacity: 1, y: 0};
@@ -27,7 +29,8 @@ function Profile() {
           <picture>
             <img alt="user photo" data-testid="user--photo" src={userImageProfile}></img>
           </picture>
-          <h1>{user.nickname}</h1>
+          {/* <h1>{user.nickname}</h1> */}
+          <h1 alt="userName">xXSearchEngineXx</h1>
         </div>
         <section className="options" data-testid="options">
           <motion.div
@@ -75,9 +78,11 @@ function Profile() {
         </section>
         <div className="progressBar-container">
           <label htmlFor="movies-watched--bar">Ghibli Movies you've watched</label>
-          <progress className="movies-watched--bar" id="movies-watched--bar" value={user.movieWatched} max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress>
+          {/* <progress className="movies-watched--bar" id="movies-watched--bar" value={user.movieWatched} max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress> */}
+          <progress className="movies-watched--bar" id="movies-watched--bar" value="23" max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress>
           <a id="scoresLink" href="/scores"></a>
-          <span data-testid='moviesWatched'> {user.movieWatched}/24 </span>
+          {/* <span data-testid='moviesWatched'> {user.movieWatched}/24 </span> */}
+          <span data-testid='moviesWatched'> 23/24 </span>
         </div>
       </main>
     </div>

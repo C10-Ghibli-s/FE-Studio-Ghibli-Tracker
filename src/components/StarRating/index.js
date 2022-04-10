@@ -21,7 +21,7 @@ function StarRating({scoreRatingUser}){
                         />
                         <FaStar
                             className="star"
-                            color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9" }
+                            color={ratingValue <= (hover || rating) ? "#ffc107" : "#D2D2D2" }
                             size={20}
                             onMouseEnter = {()=> setHover(ratingValue)}
                             onMouseLeave = {() => setHover(null)}

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import "./Film.css";
-//import "./Film.scss";
+import "./Film.scss";
 import { FaArrowRight } from "react-icons/fa";
 import { StarRating } from "../StarRating";
 import { FilmWatched } from "../FilmWatched";

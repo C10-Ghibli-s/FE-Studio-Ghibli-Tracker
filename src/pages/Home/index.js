@@ -69,9 +69,6 @@ function Home() {
           </Link>
         ))}
       </div>
-      <div>
-        <FilmCard />
-      </div>
     </>
   );
 }

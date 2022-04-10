@@ -10,6 +10,7 @@ function Film() {
   const {
     film: { film },
   } = useContext(AppContext);
+     
   // console.log("film in film page", film[0].title);
   if (film) {
     return (

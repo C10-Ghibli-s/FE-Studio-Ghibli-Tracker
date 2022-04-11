@@ -4,9 +4,7 @@ import "./DoubleRating.css";
 import { AppContext } from "../../context/AppContext";
 
 function DoubleRating({filmWatched, scoreRatingUser, audienceScoreRating}){
-    //if filmWatched is true show star component with userscore
-    //  and show star component with audence_score
-    //if filmWatched is false show star component with usescore=0
+    
     // here it should receive an state of isWatched.
     const {
         isWatched: { isWatched }

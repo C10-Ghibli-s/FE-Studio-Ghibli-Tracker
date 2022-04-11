@@ -47,12 +47,10 @@ function Film(){
                     </footer>      
                 </div>  
             </div>
-        );
-    }else{
-        return(
-            null
-        );
-    }    
+    );
+  } else {
+    return <p>"error";</p>;
+  }
 }
 
-export { Film }
+export { Film };

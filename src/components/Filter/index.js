@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
-
+import { motion } from "framer-motion";
 import "./Filter-dropdown.scss";
+
+const filterFrom = {opacity: 0, y:40};
+const filterTo = {opacity: 1, y: 60};
 
 function Filter({ films, setFilms }) {
   const [adjust, setAdjust] = useState("");
@@ -35,7 +38,11 @@ function Filter({ films, setFilms }) {
     console.log("films sorted", films);
   };
   return (
-    <div className="filter-container">
+    <motion.div 
+    initial={filterFrom} 
+    animate={filterTo} 
+    transition={{delay: 0.1}}
+    className="filter-container">
       <label
         className="filter--label"
         aria-labelledby="filter-label"
@@ -63,7 +70,7 @@ function Filter({ films, setFilms }) {
           <option value="descendant">Descendant</option>
         </select>
       </label>
-    </div>
+    </motion.div>
   );
 }
 

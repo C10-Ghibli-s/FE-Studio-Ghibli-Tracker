@@ -18,7 +18,7 @@ function FilmWatched({filmWatched}){
                 <FaHeart
                     className="heart"
                     size={20}
-                    color={((watched || hoverWatched) === true) ? "#C22F80" : "#e4e5e9"}
+                    color={((watched || hoverWatched) === true) ? "#C22F80" : "#D2D2D2"}
                     onMouseEnter = {()=> setHoverWatched(true)}
                     //Desktop version
                     onMouseLeave = {() => setHoverWatched(false)}

@@ -1,18 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import "../SearchEngine/SearchEngine.scss";
-
-function Autocomplete({ results, setFilm }) {
+import { AppContext } from "../../context/AppContext";
+function Autocomplete({ results }) {
+  const { callFilm } = useContext(AppContext);
   // click the item and diplay it
-  const handleItem = (e) => {
-    let item = e.target.innerText;
-    let object = results.filter((element) => {
-      return element.title === item;
-    });
-    setFilm(object);
-  };
-  console.log("results", results);
-
   if (results.length > 0) {
     return (
       <ul aria-labelledby="list-results" className="autocomplete">
@@ -20,10 +13,12 @@ function Autocomplete({ results, setFilm }) {
           <li
             alt="item-result"
             className="autocomplete--items"
-            onClick={handleItem}
+            onClick={() => callFilm(film)}
             key={index}
           >
-            {film.title}
+            <Link className="autocomplete--items-anchor" to={"/film"}>
+              {film.title}
+            </Link>
           </li>
         ))}
         <li className="autocomplete--more-results">

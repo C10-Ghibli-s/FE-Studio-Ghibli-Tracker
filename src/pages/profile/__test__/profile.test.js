@@ -17,7 +17,7 @@ describe("Profile page", ()=>{
         expect(userPhoto).toBeInTheDocument();
         expect(userName).toBeInTheDocument();
         expect(profileMenu).toBeInTheDocument();
-        expect(settingsOptions).toBe(null);
+        expect(settingsOptions).not.toBeInTheDocument();
     });
     test("Given the event 'click' in the settings button, must render a list of config options", ()=> {
         render(<Profile/>);
@@ -29,7 +29,7 @@ describe("Profile page", ()=>{
     test("given the moviesWatched by the user, must show in a label the amount over the total", ()=> {
         render(<Profile/>);
         const moviesWatchedLabel = screen.getByTestId('moviesWatched');
-        expect(moviesWatchedLabel).toBe(" 23/24 ")
+        expect(moviesWatchedLabel).toBe("23/24")
     })
 });
 

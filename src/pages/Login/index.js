@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
+import axios from "axios";
+
 //social Media
 import { Facebook } from "../../components/FacebookLogin";
 
@@ -33,12 +35,24 @@ function Login() {
             }
             return errors;
           }}
-          onSubmit={(values) => {
-            try {
-              console.log("data", values);
-            } catch (err) {
-              console.log("error", err);
-            }
+          onSubmit={(values, { resetForm }) => {
+            axios
+              .post("https://serene-coast-44000.herokuapp.com/users/signup", {
+                nickname: values.username,
+                password: values.password,
+                profilePicture: "imageurllol.com",
+                twitter: "twitter",
+                facebook: "facebook",
+                movieWatched: 1,
+                email: values.email,
+              })
+              .then((response) => {
+                console.log(response);
+              })
+              .catch((error) => {
+                console.log(error.response.data);
+              });
+            resetForm();
           }}
         >
           {({ errors }) => (

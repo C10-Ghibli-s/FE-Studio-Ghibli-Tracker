@@ -6,11 +6,10 @@
   background-size: cover;
   width: 25px;
   height: 25px;
-  z-index: 1;
+  z-index: 5;
   position: fixed;
   top: 19px;
   left: 15.7%;
-  
 }
 
 .searchBar {
@@ -28,24 +27,34 @@
   background: #f4f4f4;
   font-size: $search-engine__autocomplete;
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.12);
+  z-index: 4;
+  &__mobile {
+    display: none;
+  }
 }
-
 
 .autocomplete--items {
   list-style-type: none;
   margin: 12px;
   padding: 0 20px;
-  &:hover { 
-    color: $movie__watched--active;
-    border-block-end: 3px solid $movie__watched--active;
-    cursor: pointer;
+  transition: .3s ease all;
+  z-index: 4;
+  .autocomplete--items-anchor {
+    color: $base-color--light-theme;
+    list-style-type: none;
+    text-decoration: none;
+    transition: .3s ease all;
+    &:hover {
+      color: $movie__watched--active;
+      cursor: pointer;
+    }
   }
 }
 .autocomplete {
   position: fixed;
   top: 60px;
   width: 100%;
-  z-index: 1;
+  z-index: 4;
   padding: 0;
   color: $base-color--light-theme;
   background: $secondary-color--light-theme;
@@ -60,16 +69,41 @@
   height: 50px;
   width: 100%;
   vertical-align: center;
+  transition: .3s ease all;
   &:hover {
     color: $movie__watched--active;
-    border-block-end: 3px solid $movie__watched--active;
     cursor: pointer;
   }
 }
 
+@media (max-width: 375px) {
+  .searchBar {
+    display: none;
+    &__mobile {
+      display: block;
+      outline: rgb(163, 163, 163);
+      position: fixed;
+      top: -16px;
+      width: 65%;
+      height: 35px;
+      // min-width: 200px;
+      margin: 30px 0;
+      padding-left: 20px;
+      border-radius: 20px;
+      border: 1px solid rgb(202, 202, 202);
+      text-indent: 20px;
+      background: #f4f4f4;
+      font-size: $search-engine__autocomplete;
+      box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.12);
+      z-index: 4;
+    }
+  }
+}
+
+
 @media (max-width: 500px) {
   .searchBar {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
   .search-icon {
     left: 18%;

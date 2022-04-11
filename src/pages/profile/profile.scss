@@ -34,7 +34,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        & span {
+        & div {
             border-block-end: 1px solid $base-color--light-theme;
             margin-block-end: 10px;
             & a, & button {
@@ -53,9 +53,10 @@
                 }
             }
         }
-        & .settings {
+        & .config {
             margin: 8px;
             & button {
+            border-radius: 10px;
             display: flex;
             font-weight: 700;
             color: $base-color--light-theme;
@@ -64,9 +65,9 @@
             text-decoration: none;
             margin-block-end: 10px;
             padding: 10px;
-            &:hover {
-                color:peachpuff;
-            }
+                &:hover {
+                    color:peachpuff;
+                }
             }
         }
     }
@@ -96,7 +97,7 @@
             -webkit-appearance: none;
             appearance: none;
             width: 300px;
-            height: 45px;
+            height: 50px;
             cursor: pointer;
             &::-webkit-progress-value {
                 background-color: $movie__watched--active;
@@ -106,6 +107,8 @@
                 background-color: $base-color--light-theme;
                 border: 4px solid $base-color--light-theme;
                 border-radius: 80px;
+                padding-inline-start: 5px;
+                padding-inline-end: 5px;
             }
         }
         & a {
@@ -117,7 +120,7 @@
 @media (min-width: 680px) {
     .profile-main {
         display: grid;
-        max-width: 800px;
+        max-width: 700px;
         margin: 0 auto;
         & .user {
             grid-area: userInfo;
@@ -125,16 +128,16 @@
         }
         & .options {
             grid-area: optionLinks;
-            margin: auto 0;
+            margin-block-start: 70px;
         }
         & .progressBar-container {
             grid-area: watchedProgressBar;
-            margin-block-start: 85px;
+            margin-block-start: 70px;
         }
         grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(2, 50%);
-        grid-template-areas: "userInfo optionLinks"
-                             "watchedProgressBar optionLinks";
+        grid-template-areas: "userInfo userInfo"
+                             "optionLinks watchedProgressBar";
     }
 }
 

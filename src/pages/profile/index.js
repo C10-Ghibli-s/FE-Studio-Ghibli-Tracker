@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { GoBackButton } from '../../components/BackLink';
 import './profile.scss';
 import userImageProfile from './images/user-image-profile.png';
@@ -6,6 +7,17 @@ import linkArrow from './images/linkArrow.png'
 import { motion } from 'framer-motion';
 
 function Profile() {
+
+  // THI IS COMMENTED UNTIL WE CAN USE THE DB CORRECTLY
+  // to test //
+    // localStorage.setItem("userId", "2");
+  //
+  // const [user, setUser] = useState({});
+
+  // useEffect(async () => {
+  //   const response = await axios.get(`https://serene-coast-44000.herokuapp.com/users/profile/${localStorage.getItem("userId")}`);
+  //   setUser(response.data);
+  // });
   const [settingsOpen, setSettingsOpen] = useState(false);
   const linkAnimateFrom = {opacity: 0, y: -40};
   const linkAnimateTo = {opacity: 1, y: 0};
@@ -15,27 +27,28 @@ function Profile() {
       <main className="profile-main">
         <div className="user">
           <picture>
-            <img src={userImageProfile}></img>
+            <img alt="user photo" data-testid="user--photo" src={userImageProfile}></img>
           </picture>
-          <h1>Username</h1>
+          {/* <h1>{user.nickname}</h1> */}
+          <h1 alt="userName">xXSearchEngineXx</h1>
         </div>
-        <section className="options">
-          <motion.span
+        <section className="options" data-testid="options">
+          <motion.div
             initial={linkAnimateFrom}
             animate={linkAnimateTo}
             transition={{delay: 0.10}}
           >
             <a href="/scores"> Scores <img src={linkArrow}></img></a>
-          </motion.span>
-          <motion.span
+          </motion.div>
+          <motion.div
             initial={linkAnimateFrom}
             animate={linkAnimateTo}
             transition={{delay: 0.10}}
           >
             <button type="button" onClick={()=> setSettingsOpen(!settingsOpen)}> Settings <img src={linkArrow}></img></button>
-          </motion.span>
+          </motion.div>
             { settingsOpen &&
-              <div className="settings">
+              <div className="config" data-testid="configOptions">
                 <motion.button 
                   initial={linkAnimateFrom}
                   animate={linkAnimateTo}
@@ -64,10 +77,12 @@ function Profile() {
             }
         </section>
         <div className="progressBar-container">
-          <label for="movies-watched--bar">Ghibli Movies you've watched</label>
-          <progress className="movies-watched--bar" id="movies-watched--bar" value="70" max="100" onClick={()=>{document.getElementById("scoresLink").click();}}>14/20</progress>
+          <label htmlFor="movies-watched--bar">Ghibli Movies you've watched</label>
+          {/* <progress className="movies-watched--bar" id="movies-watched--bar" value={user.movieWatched} max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress> */}
+          <progress className="movies-watched--bar" id="movies-watched--bar" value="23" max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress>
           <a id="scoresLink" href="/scores"></a>
-          <span> 14/20 </span>
+          {/* <span data-testid='moviesWatched'> {user.movieWatched}/24 </span> */}
+          <span data-testid='moviesWatched'> 23/24 </span>
         </div>
       </main>
     </div>

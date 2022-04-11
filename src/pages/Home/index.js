@@ -37,13 +37,7 @@ function Home() {
         toggleFilter={toggleFilter}
         setToggleFilter={setToggleFilter}
       />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="searchContainer">
         <SearchEngine
           films={films}
           menuOpen={menuOpen}
@@ -62,12 +56,11 @@ function Home() {
       {!!toggleFilter && <Filter films={films} setFilms={setFilms} />}
       <div className="film-cards-container">
         {films.map((item, key) => (
-          <Link key={key} className="autocomplete--items-anchor" to={"/film"}>
-            <div onClick={() => callFilm(item)} style={{ margin: "10px" }}>
-              <FilmCard style={{ margin: "10px" }} film={item} />
-            </div>
-          </Link>
+              <FilmCard 
+                key={key}
+                film={item} callFilm={callFilm}/>
         ))}
+        <a className="linkFilm" id="linkFilm" href="/film"></a>
       </div>
       <div>
         <FilmCard />

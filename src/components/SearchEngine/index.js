@@ -92,6 +92,24 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
           }, 300);
         }}
       />
+      <input
+        placeholder="Search"
+        autoComplete="off"
+        className="searchBar__mobile"
+        type="text"
+        id="search"
+        onChange={handleInput}
+        onClick={() => {
+          if (menuOpen) {
+            setMenuOpen(!menuOpen);
+          }
+        }}
+        onBlur={() => {
+          setTimeout(() => {
+            setResults([]);
+          }, 300);
+        }}
+      />
       <Autocomplete
         results={results}
         searchQuery={searchQuery}

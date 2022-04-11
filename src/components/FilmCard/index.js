@@ -4,7 +4,7 @@ import totoroImage from "./images/Secondary_mark-totoro.png";
 import { FilmWatched } from "../FilmWatched";
 import { StarRating } from "../StarRating";
 
-function FilmCard({ film }) {
+function FilmCard({ film, callFilm }) {
   // BEM -> block element modifier
   // film-card-container
   // film-card__image
@@ -13,10 +13,10 @@ function FilmCard({ film }) {
     return (
       <>
         <div className="film-card-container">
-          <div className="film-card-image">
+          <div className="film-card-image" onClick={()=> {callFilm(film);document.getElementById("linkFilm").click()}}>
             <img src={film.movie_banner} alt="" />
           </div>
-          <div className="film-card-content">
+          <div className="film-card-content" onClick={()=> {callFilm(film);document.getElementById("linkFilm").click()}}>
             <div className="film-card-head">
               <div className="film-card-title">
                 <h2 onClick={(e) => console.log(e.target.value)}>

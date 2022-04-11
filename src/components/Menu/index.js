@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import openMenuButton from './images/openMenuButton.png';
+import homeIcon from './images/homeIcon.png';
+import profileIcon from './images/profileIcon.png';
+import rateIcon from './images/rateIcon.png';
+import watchedIcon from './images/watchedIcon.png';
 import './menu.scss';
 import { NavLinks } from "./NavLinks";
 import { motion } from 'framer-motion';
 
+
 function Menu({menuOpen,setMenuOpen, toggleFilter, setToggleFilter}) {
     const links = [
-        { pageRoute: '/home', page : 'home'}, 
-        { pageRoute: '/profile', page: 'profile'},
+        { pageRoute: '/home', page : 'home', icon: homeIcon},
+        { pageRoute: '/profile', page: 'profile', icon: profileIcon},
+        { pageRoute: '/watched', page: 'watched', icon: watchedIcon},
+        { pageRoute: '/scores', page: 'scores', icon: rateIcon},
     ];
     return(
         <React.Fragment>

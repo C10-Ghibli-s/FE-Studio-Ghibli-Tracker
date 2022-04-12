@@ -12,3 +12,16 @@
 .score-user-content{
     margin-top: 1rem;
 }
+
+.score-film-not-watched{
+    pointer-events: none;
+}
+
+.score-audience-content {
+    pointer-events: none;
+}
+
+.scoreactive{
+    pointer-events: none;
+}
+

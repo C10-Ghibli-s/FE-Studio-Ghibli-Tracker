@@ -1,14 +1,9 @@
-body{
-    margin: 0;
-}
+@import '../../routes/css/global-variables.scss';
 
 .film-component {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
     min-width: 300px;
-    background: #F4F4F4;
-    height: 100vh;
+    max-width: 800px;
+    background: $base-color--light-theme;
     height: 100%;
     padding: 0;
     min-height: 100vh;
@@ -16,6 +11,7 @@ body{
 
 .film-container{
     padding: 24px;
+    text-align: -webkit-center;
 }
 
 .film-head{
@@ -31,24 +27,21 @@ body{
 }
 
 .film-head h1{
-    font-size: 35px;
-    line-height: 41px;
+    font-size: $movie__title;
     margin-bottom: 1rem;
-    color: #111111;
+    color: $font-color--light-theme;
     margin: 10px;
 }
 
 .film-head h2{
-    font-size: 25px;
-    line-height: 29px;
+    font-size: $movie__year;
     margin-bottom: 1rem;
-    color: #111111;
+    color: $font-color--light-theme;
     margin: 10px;
 }
 
 .film-image{
     text-align: center;
-    
 }
 
 .film-image img{
@@ -56,7 +49,7 @@ body{
     height: 180px;
     max-width: 70ch;
     margin-bottom: 1rem;
-    background: #E5E5E5;
+    background: $background-color-images;
     border-radius: 8px;
     box-shadow: 0px 0px 15px -5px;
 }
@@ -71,10 +64,9 @@ body{
 }
 
 .film-body p{
-    font-size: 15px;
-    line-height: 18px;
+    font-size: $movie__description;
     text-align: left;
-    color: #111111;
+    color: $font-color--light-theme;
 }
 
 .film-btn{
@@ -107,6 +99,5 @@ body{
 
 .film-btn a{
     text-decoration: none;
-    text-decoration-color: #111111;
+    color: $font-color--light-theme;
 }
-

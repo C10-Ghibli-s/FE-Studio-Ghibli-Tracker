@@ -62,9 +62,6 @@ function Home() {
         ))}
         <a className="linkFilm" id="linkFilm" href="/film"></a>
       </div>
-      <div>
-        <FilmCard />
-      </div>
     </>
   );
 }

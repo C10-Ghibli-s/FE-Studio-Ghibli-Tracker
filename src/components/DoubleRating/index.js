@@ -24,7 +24,7 @@ function DoubleRating({filmWatched, scoreRatingUser, audienceScoreRating}){
                     <p>Audience Score</p>
                     <StarRating scoreRatingUser={audienceScoreRating} />
                 </div>
-                <div className={`score ${isWatched ? "active" : ""}`}>
+                <div> {/**className={`score ${isWatched ? "active" : ""}`} */}
                     <p>Your Score</p>
                     <StarRating scoreRatingUser={scoreRatingUser} />
                 </div>

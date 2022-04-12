@@ -11,7 +11,7 @@ describe("Profile page", ()=>{
     test("rendering all elements in the component but not the settings-subMenu", ()=> {
         render(<Profile/>);
         const userPhoto = screen.getByTestId("user--photo");
-        const userName = screen.getByAltText("userName");
+        const userName = screen.getByText("justin");
         const profileMenu = screen.getByTestId("options");
         const settingsOptions = screen.getAllByTestId("configOptions");
         expect(userPhoto).toBeInTheDocument();

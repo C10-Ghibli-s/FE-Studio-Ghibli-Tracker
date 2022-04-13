@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React, { useState, useContext } from "react";
 import { FaHeart } from 'react-icons/fa';
 import './FilmWatched.css'
+import { AppContext } from "../../context/AppContext";
 
 function FilmWatched({filmWatched}){
     const [watched, setWatched] = useState(filmWatched);
     const [hoverWatched, setHoverWatched] = useState(false);
+
+    // context
+    const { callIsWatched } = useContext(AppContext);
 
     return(
         //Add validation and restriction with StarRating
@@ -13,7 +17,18 @@ function FilmWatched({filmWatched}){
                 <input
                     type="checkbox"
                     name="watched"
-                    onClick={()=>{watched === true ? setWatched(false) : setWatched(true)}}
+                    //onClick={()=>{watched === true ? setWatched(false) : setWatched(true) }}
+                    onClick={
+                        ()=>{
+                            if (watched === true) {
+                                setWatched(false);
+                                callIsWatched(false);
+                            } else {
+                                setWatched(true);
+                                callIsWatched(true);
+                            }
+                        }
+                    }
                 />
                 <FaHeart
                     className="heart"

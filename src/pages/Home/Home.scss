@@ -42,8 +42,21 @@
   justify-content: center;
 }
 
-.film-cards-container {
-  & a {
-      display: none;
+.autocomplete--items-anchor {
+  text-decoration: none;
+}
+
+.autocomplete--items-anchor  {
+  & h2{
+    font-size: $card__title;
+    color: $font-color--light-theme;
+  }
+  & h3{
+    font-size: $card__year;
+    color: $font-color--light-theme;
+  }
+  & p{
+    font-size: $card__description;
+    color: $font-color--light-theme;
   }
 }

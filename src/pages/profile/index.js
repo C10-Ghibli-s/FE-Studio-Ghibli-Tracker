@@ -5,6 +5,7 @@ import './profile.scss';
 import userImageProfile from './images/user-image-profile.png';
 import linkArrow from './images/linkArrow.png'
 import { motion } from 'framer-motion';
+import { ProfileConfigOptions } from '../../components/profileConf/profileConfig/';
 
 function Profile() {
 
@@ -19,6 +20,8 @@ function Profile() {
   //   setUser(response.data);
   // });
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [chUserName, setChUserName] = useState(false);
+  const [chPassword, setChPassword] = useState(false);
   const linkAnimateFrom = {opacity: 0, y: -40};
   const linkAnimateTo = {opacity: 1, y: 0};
   return (
@@ -54,6 +57,7 @@ function Profile() {
                   animate={linkAnimateTo}
                   transition={{delay: 0.10}}
                   type="button"
+                  onClick={() => {setChUserName(!chUserName)}}
                 >
                   Change Username
                 </motion.button>
@@ -62,6 +66,7 @@ function Profile() {
                   animate={linkAnimateTo}
                   transition={{delay: 0.10}}
                   type="button"
+                  onClick={()=>setChPassword(!chPassword)}
                 >
                   Change Password
                 </motion.button>
@@ -73,6 +78,10 @@ function Profile() {
                 >
                   Connect with Facebook
                 </motion.button>
+                <ProfileConfigOptions 
+                chUserName={chUserName} 
+                setChUserName={setChUserName}chPassword={chPassword} 
+                setChPassword={setChPassword}/>
               </div>
             }
         </section>

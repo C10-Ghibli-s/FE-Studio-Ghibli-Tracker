@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./Film.css";
+import "./Film.scss";
 import { FaArrowRight } from "react-icons/fa";
 import { DoubleRating } from "../DoubleRating";
 import { FilmWatched } from "../FilmWatched";
@@ -10,6 +10,7 @@ function Film() {
   const {
     film: { film },
   } = useContext(AppContext);
+
   // console.log("film in film page", film[0].title);
   if (film) {
     return (
@@ -17,17 +18,15 @@ function Film() {
         <div className="film-container">
           <div className="film-head">
             <div className="film-title">
-                <h1>{film.title}</h1>
-                <h2>{film.release_date}</h2>
-                {/*We should sent films.movie_watched */}
-                <FilmWatched filmWatched={false} />
+              <h1>{film.title}</h1>
+              <h2>{film.release_date}</h2>
             </div>
+            {/*We should sent films.movie_watched */}
+            <FilmWatched filmWatched={true} />
           </div>
-        <div className="film-image">
-          <img src={film.movie_banner} alt="" />
-        </div>
-          {/*We should send films.score_by_stars */}
-          {/*<StarRating scoreRatingUser={2} />*/}
+          <div className="film-image">
+            <img src={film.movie_banner} alt="" />
+          </div>
           {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
           <DoubleRating filmWatched={true} scoreRatingUser={2} audienceScoreRating={4}/>
           <div className="film-body">
@@ -54,4 +53,3 @@ function Film() {
 }
 
 export { Film };
-

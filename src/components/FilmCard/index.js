@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./FilmCard.scss";
 import totoroImage from "./images/Secondary_mark-totoro.png";
 import { FilmWatched } from "../FilmWatched";
 import { StarRating } from "../StarRating";
+import { AppContext } from "../../context/AppContext";
+
+import add from "../EmojisRate/images/add.png";
+import happyActive from "../EmojisRate/images/happyActive.png";
+import neutralActive from "../EmojisRate/images/neutralActive.png";
+import sadActive from "../EmojisRate/images/sadActive.png";
+
 
 function FilmCard({ film, callFilm }) {
   // BEM -> block element modifier
   // film-card-container
   // film-card__image
   // film-card__text-content
+  const { emojiRate } = useContext(AppContext);
   if (film) {
     return (
       <>
@@ -24,7 +32,14 @@ function FilmCard({ film, callFilm }) {
                 </h2>
                 <h3>{film.release_date}</h3>
               </div>
-              <FilmWatched />
+              <div className="film-card--options">
+                <FilmWatched />
+                {/* THIS IS COMMENTED UNTIL THE API-DB WORKS FOR EMOJI-RATING -> USER
+                { (emojiRate == "add" && !emojiRating) && <button className="EmojiRating--add" onClick={()=> setEmojiRating(!emojiRating)}><img src={add}></img></button>}
+                { (emojiRate == "happy") && <button className="EmojiRating--add happy" onClick={()=> setEmojiRating(!emojiRating)}><img src={happyActive}></img></button>}
+                { (emojiRate == "neutral") && <button className="EmojiRating--add neutral" onClick={()=> setEmojiRating(!emojiRating)}><img src={neutralActive}></img></button>}
+                { (emojiRate == "sad") && <button className="EmojiRating--add sad" onClick={()=> setEmojiRating(!emojiRating)}><img src={sadActive}></img></button>} */}
+              </div>
             </div>
             <div className="film-card-body">
               <p>{film.description}</p>

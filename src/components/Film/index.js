@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { DoubleRating } from "../DoubleRating";
 import { FilmWatched } from "../FilmWatched";
 import { AppContext } from "../../context/AppContext";
+import { EmojisRate } from "../../components/EmojisRate";
 
 function Film() {
   // here it should receive an state of FILM.
@@ -22,7 +23,10 @@ function Film() {
               <h2>{film.release_date}</h2>
             </div>
             {/*We should sent films.movie_watched */}
-            <FilmWatched filmWatched={true} />
+            <div>
+              <FilmWatched filmWatched={true} />
+              <EmojisRate/>
+            </div>
           </div>
           <div className="film-image">
             <img src={film.movie_banner} alt="" />

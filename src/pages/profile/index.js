@@ -5,7 +5,7 @@ import './profile.scss';
 import userImageProfile from './images/user-image-profile.png';
 import linkArrow from './images/linkArrow.png'
 import { motion } from 'framer-motion';
-import { ProfileConfigOptions } from '../../components/profileConf/profileConfig/';
+import { ProfileConfigOptions } from '../../components/profileConf/profileConfig/index.js';
 
 function Profile() {
 

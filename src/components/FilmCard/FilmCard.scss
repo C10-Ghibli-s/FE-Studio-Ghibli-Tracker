@@ -39,6 +39,14 @@
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
+    height: 60px;
+    & .film-card--options {
+        display: flex;
+        & .film-watched-component { 
+            margin: 0;
+        }
+    }
+
 }
 
 .film-card-head h2{
@@ -60,7 +68,7 @@
     width: 80px;
     position: absolute;
     right: 10px;
-    bottom: -15px;
+    bottom: -20px;
     z-index: 2;
 }
 
@@ -73,9 +81,11 @@
 }
 
 .film-card-body p{
+    background-color: $base-color--light-theme;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     /* Limit the text block to three lines */
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
+    font-size: $movie__description;
 }

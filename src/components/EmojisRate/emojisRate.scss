@@ -1,0 +1,62 @@
+@import "../../routes/App.scss";
+
+.EmojiRating {
+    &--add {
+        width: 50px;
+        height: 50px;
+        &:hover {
+            background-color:#D8D8D8;
+            border-radius: 50%;
+        }
+        & img {
+            width: 40px;
+            height: 40px;
+            padding-inline-end: 2px;
+            padding-block-start: 2px;
+        }
+    }
+    &--adding {
+        width: 50px;
+        height: 50px;
+        background-color: $primary-color--light-theme;
+        border-radius: 50%;
+        & img {
+            width: 40px;
+            height: 40px;
+            padding-inline-end: 2px;
+            padding-block-start: 2px;
+        }
+    }
+}
+.happy, .neutral, .sad {
+    & img {
+        padding: 0;
+    }
+}
+
+
+.emojiRating__options {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: $primary-color--light-theme;
+    padding: 8px;
+    border-radius: 24px;
+    margin-block-start: 4px;
+    & button {
+        margin: 5px 0;
+        & img {
+            height: 40px;
+            width: 40px;
+        }
+        & .selectingActive {
+            background-color: $base-color--light-theme;
+            border-radius: 50%;
+            &:active {
+                height: 45px;
+                width: 45px;
+            }
+        }
+    }
+}
+

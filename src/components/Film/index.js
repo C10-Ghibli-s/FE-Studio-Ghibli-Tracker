@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Film.scss";
 import { FaArrowRight } from "react-icons/fa";
 import { DoubleRating } from "../DoubleRating";
@@ -12,6 +12,7 @@ function Film() {
     film: { film },
   } = useContext(AppContext);
 
+  const [watched, setWatched] = useState(false); // here should be the state from the DB
   // console.log("film in film page", film[0].title);
   if (film) {
     return (
@@ -24,15 +25,15 @@ function Film() {
             </div>
             {/*We should sent films.movie_watched */}
             <div>
-              <FilmWatched filmWatched={true} />
-              <EmojisRate/>
+              <FilmWatched watched={watched} setWatched={setWatched}/>
+              { watched &&  <EmojisRate/>}
             </div>
           </div>
           <div className="film-image">
             <img src={film.movie_banner} alt="" />
           </div>
           {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
-          <DoubleRating filmWatched={true} scoreRatingUser={2} audienceScoreRating={4}/>
+          <DoubleRating watched={watched} scoreRatingUser={2} audienceScoreRating={4}/>
           <div className="film-body">
             <p>{film.description}</p>
           </div>

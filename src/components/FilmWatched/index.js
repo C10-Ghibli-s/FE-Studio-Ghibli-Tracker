@@ -3,8 +3,7 @@ import { FaHeart } from 'react-icons/fa';
 import './FilmWatched.css'
 import { AppContext } from "../../context/AppContext";
 
-function FilmWatched({filmWatched}){
-    const [watched, setWatched] = useState(filmWatched);
+function FilmWatched({watched, setWatched}){
     const [hoverWatched, setHoverWatched] = useState(false);
 
     // context

@@ -8,9 +8,6 @@
         font-size: $card__year;
     }
 }
-.film-card-body p{
-    font-size: $card__description;
-}
 
 .film-card-container{
     position: relative;
@@ -87,5 +84,5 @@
     -webkit-box-orient: vertical;
     /* Limit the text block to three lines */
     -webkit-line-clamp: 3;
-    font-size: $movie__description;
+    font-size: $card__description;
 }

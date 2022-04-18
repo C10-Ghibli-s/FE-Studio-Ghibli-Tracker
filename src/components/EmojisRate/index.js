@@ -18,7 +18,7 @@ function EmojisRate() {
     const emojiTo = {opacity: 1, y: 0};
     return(
         <React.Fragment>
-            { (emojiRate == "add" && !emojiRating) && <button className="EmojiRating--add" onClick={()=> setEmojiRating(!emojiRating)}><img src={add}></img></button>}
+            { (emojiRate == "add" && !emojiRating) && <motion.button initial={emojiFrom} animate={emojiTo} className="EmojiRating--add" onClick={()=> setEmojiRating(!emojiRating)}><img src={add}></img></motion.button>}
             { (emojiRate == "happy") && <button className="EmojiRating--add happy" onClick={()=> setEmojiRating(!emojiRating)}><img src={happyActive}></img></button>}
             { (emojiRate == "neutral") && <button className="EmojiRating--add neutral" onClick={()=> setEmojiRating(!emojiRating)}><img src={neutralActive}></img></button>}
             { (emojiRate == "sad") && <button className="EmojiRating--add sad" onClick={()=> setEmojiRating(!emojiRating)}><img src={sadActive}></img></button>}

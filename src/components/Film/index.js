@@ -24,9 +24,10 @@ function Film() {
               <h2>{film.release_date}</h2>
             </div>
             {/*We should sent films.movie_watched */}
-            <div>
+            <div className="interactionContainer">
               <FilmWatched watched={watched} setWatched={setWatched}/>
-              { watched &&  <EmojisRate/>}
+              { !watched && <p> Mark as watched to rate this movie! </p> }
+              { watched &&  (<><p>Watched</p><EmojisRate/></>) }
             </div>
           </div>
           <div className="film-image">

@@ -1,7 +1,6 @@
 .film-watched-component{
-    display: flex;
     min-height: 5vh;
-    margin: 30px 10px 10px 10px;
+    margin: 30px 10px 0px 10px;
 }
 
 input[type="checkbox"]{

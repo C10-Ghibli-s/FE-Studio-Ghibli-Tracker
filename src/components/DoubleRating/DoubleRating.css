@@ -1,5 +1,6 @@
 .score-rating-container {
     align-items: center;
+    height: 100px;
 }
 
 .score-rating-container p{

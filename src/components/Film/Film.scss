@@ -10,15 +10,24 @@
 }
 
 .film-container{
-    padding: 24px;
+    padding: 20px;
     text-align: -webkit-center;
 }
 
 .film-head{
+    min-height: 150px;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    & .interactionContainer {
+        width: 110px;
+        & p {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-block-end: 5px;
+        }
+    }
 }
 
 .film-title{
@@ -100,4 +109,16 @@
 .film-btn a{
     text-decoration: none;
     color: $font-color--light-theme;
+}
+
+@media (min-width: 330px) {
+    .film-container {
+        padding: 24px;
+    }
+}
+@media (min-width: 520px) {
+    .film-image img {
+        height: 250px;
+        width: 80ch;
+    }
 }

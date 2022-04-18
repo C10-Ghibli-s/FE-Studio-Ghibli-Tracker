@@ -28,6 +28,17 @@ function Filter({ films, setFilms }) {
       release_date: "release_date",
       rt_score: "rt_score",
     };
+    /**
+     * This will replace lines 26-30 -> Object categories with our API.
+     * const categories = {
+        duration: "duration",
+        release_year: "release_year",
+        //this fields belong to Interactions entity. They are related to Movies entity.
+        audience_score: "audience_score",
+        score_by_stars: "score_by_stars",
+        score_by_emoji: "score_by_emoji",
+      };
+     */
     const sortProperty = categories[category];
     const sorted =
       order === "ascendant"
@@ -39,37 +50,44 @@ function Filter({ films, setFilms }) {
   };
   return (
     <motion.div 
-    initial={filterFrom} 
-    animate={filterTo} 
-    transition={{delay: 0.1}}
-    className="filter-container">
-      <label
-        className="filter--label"
-        aria-labelledby="filter-label"
-        onClick={() => sortArray(categories, adjust)}
-      >
-        <p className="select--text">Sort by:</p>
-        <select
-          onChange={(e) => {
-            setCategories(e.target.value);
-          }}
-          className="select"
+      initial={filterFrom} 
+      animate={filterTo} 
+      transition={{delay: 0.1}}
+      className="filter-container">
+        <label
+          className="filter--label"
+          aria-labelledby="filter-label"
+          onClick={() => sortArray(categories, adjust)}
         >
-          <option value="running_time">Duration</option>
-          <option value="rt_score">Rate</option>
-          <option value="release_date">Year</option>
-        </select>
-        <p className="select--text">Order:</p>
-        <select
-          onChange={(e) => {
-            setAdjust(e.target.value);
-          }}
-          className="select"
-        >
-          <option value="ascendant">Ascendant</option>
-          <option value="descendant">Descendant</option>
-        </select>
-      </label>
+          <p className="select--text">Sort by:</p>
+          <select
+            onChange={(e) => {
+              setCategories(e.target.value);
+            }}
+            className="select"
+          >
+            <option value="running_time">Duration</option>
+            <option value="rt_score">Rate</option>
+            <option value="release_date">Year</option>
+            {/** This will replace lines 70-73, these are the real names in the API
+             * <option value="duration">Duration</option>
+              <option value="release_year">Year</option>
+              <option value="audience_score">Audience Score</option>
+              <option value="score_by_stars">Users Rate</option>
+              <option value="score_by_emoji">Emojis Rate</option>
+            */}
+          </select>
+          <p className="select--text">Order:</p>
+          <select
+            onChange={(e) => {
+              setAdjust(e.target.value);
+            }}
+            className="select"
+          >
+            <option value="ascendant">Ascendant</option>
+            <option value="descendant">Descendant</option>
+          </select>
+        </label>
     </motion.div>
   );
 }

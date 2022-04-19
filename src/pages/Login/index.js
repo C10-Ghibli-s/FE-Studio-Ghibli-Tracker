@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react"
 import { Formik, Field, ErrorMessage, Form } from "formik"
 import axios from "axios"
 import { Navigate, Link } from "react-router-dom"
+import { Loader } from "../../components/Loader"
 
 // Context
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext"
 
 //social Media
 import { Facebook } from "../../components/FacebookLogin"
@@ -14,12 +15,21 @@ import image from "./images/tracker-totoro.png"
 function Login() {
   // State
   const [loginError, setLoginError] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(true)
   // Context
-  const { login, userSession } = useContext(UserContext);
+  const { login, userSession } = useContext(UserContext)
   // LocalStorage persisting userSession
-  window.localStorage.setItem("userSession", JSON.stringify(userSession));
+  window.localStorage.setItem("userSession", JSON.stringify(userSession))
 
-  console.log(userSession);
+  const handleLoginButton = () => {
+    if (!loginError) {
+      setLoading(true)
+    } else if (!login) {
+      setLoading(true)
+    }
+  }
+
   return (
     <>
       {userSession.access_token && <Navigate to="/home" replace={true} />}
@@ -46,6 +56,11 @@ function Login() {
               //Password validation
               errors.password = "Enter your password"
             }
+            if (!errors.user && !errors.password) {
+              setIsDisabled(false)
+            } else {
+              setIsDisabled(true)
+            }
             return errors
           }}
           onSubmit={values => {
@@ -60,14 +75,16 @@ function Login() {
               .then(response => {
                 let user = response.data
                 console.log(response.data)
+                setLoading(false)
                 login({
-                  username: user.user.nickname,
+                  nickname: user.user.nickname,
                   role: user.user.role,
                   access_token: user.access_token,
                 })
               })
               .catch(error => {
                 setLoginError(error.response.data.message)
+                setLoading(false)
                 setTimeout(() => {
                   setLoginError(false)
                 }, 2000)
@@ -106,13 +123,22 @@ function Login() {
                   )}
                 />
               </div>
-              {loginError && <div className="error">{loginError}</div>}
-              <button type="submit">Login</button>
-              <p className="registered-message">Are not registered yet? <Link to="/register" >Register</Link></p>
-              <Facebook />
+              <p className="registered-message">
+                Are not registered yet? <Link to="/register">Register</Link>
+              </p>
+              {loginError && <p className="error">{loginError}</p>}
+              <button
+                type="submit"
+                onClick={handleLoginButton}
+                disabled={isDisabled}
+              >
+                {loading && <Loader />}
+                {!loading && <p>Login</p>}
+              </button>
             </Form>
           )}
         </Formik>
+        <Facebook />
       </div>
     </>
   )

@@ -4,10 +4,10 @@ import { Navigate } from "react-router-dom";
 
 
 const UserSessionValidation = () => {
-  const { login, userSession } = useContext(UserContext)
+  // const { login, userSession } = useContext(UserContext)
   
   return (
-    <>{!userSession.access_token && <Navigate to="/login" replace={true} />}</>
+    <>{!window.localStorage.getItem("userSession") && <Navigate to="/" replace={true} />}</>
   );
 };
 

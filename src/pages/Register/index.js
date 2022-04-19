@@ -1,14 +1,32 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import axios from "axios";
-import "../Login/Login.scss";
-import image from "../Login/images/tracker-totoro.png";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import { Formik, Field, ErrorMessage, Form } from "formik"
+import axios from "axios"
+import "../Login/Login.scss"
+import image from "../Login/images/tracker-totoro.png"
+import { useNavigate } from "react-router-dom"
+import { Loader } from "../../components/Loader"
+
+
+
 function Register() {
-  const [ error, setError ] = useState(false);
-  const [ success, setSuccess ] = useState(false);
-  let navigate = useNavigate();
+  const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(true)
+
+  let navigate = useNavigate()
+  console.log(success)
+
+  const handleLoginButton = () => {
+    if (!error) {
+      setLoading(true)
+    } else if (!success) {
+      setLoading(true)
+    } else {
+      setLoading(false);
+    }
+  }
   return (
     <>
       <div className="contenedor">
@@ -23,47 +41,59 @@ function Register() {
             password: "",
             confirmPassword: "",
           }}
-          validate={(values) => {
-            let errors = {};
+          validate={values => {
+            let errors = {}
             if (!values.email) {
               //Email validation
-              errors.email = "Please enter your email";
+              errors.email = "Please enter your email"
             } else if (
               !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
                 values.email
               )
             ) {
-              errors.email = "This is not a valid email";
+              errors.email = "This is not a valid email"
             }
             //User validation
             if (!values.username) {
-              errors.username = "Please enter your username";
+              errors.username = "Please enter your username"
             } else if (
               !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.username
               )
             ) {
               errors.username =
-                "Username must contains: numbers, letters, 6 - 22 characters. Spaces are not allowed";
+                "Username must contains: numbers, letters, 6 - 22 characters. Spaces are not allowed"
             }
             // Password validation
             if (!values.password) {
-              errors.password = "Please enter your password";
+              errors.password = "Please enter your password"
             } else if (
               !/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
                 values.password
               )
             ) {
               errors.password =
-                "Password must have: 8 characters at least, a lowercase, an uppercase, a number, a symbol";
+                "Password must have: 8 characters at least, a lowercase, an uppercase, a number, a symbol"
             }
             // Confirm password validation
             if (!values.confirmPassword) {
-              errors.confirmPassword = "Confirm password required";
+              errors.confirmPassword = "Confirm password required"
             } else if (values.password !== values.confirmPassword) {
-              errors.confirmPassword = "Password not matched";
+              errors.confirmPassword = "Password not matched"
             }
-            return errors;
+            // Disable button validation
+            if (
+              !errors.username &&
+              !errors.password &&
+              !errors.email &&
+              !errors.confirmPassword
+            ) {
+              setIsDisabled(false)
+            } else {
+              setIsDisabled(true)
+            }
+
+            return errors
           }}
           onSubmit={(values, { resetForm }) => {
             axios
@@ -78,12 +108,14 @@ function Register() {
                 }
               )
               .then(response => {
-                setSuccess(response.statusText)
+                setLoading(false)
+                setSuccess(true)
               })
               .catch(error => {
+                setLoading(false)
                 setError(error.response.data.message)
               })
-            resetForm();
+            resetForm()
             // navigate("/login");
           }}
         >
@@ -114,9 +146,7 @@ function Register() {
                 <span className="user-icon"></span>
                 <ErrorMessage
                   name="username"
-                  component={() => (
-                    <p className="error">{errors.username}</p>
-                  )}
+                  component={() => <p className="error">{errors.username}</p>}
                 />
               </div>
               <div>
@@ -130,9 +160,7 @@ function Register() {
                 <span className="password-icon"></span>
                 <ErrorMessage
                   name="password"
-                  component={() => (
-                    <p className="error">{errors.password}</p>
-                  )}
+                  component={() => <p className="error">{errors.password}</p>}
                 />
               </div>
               <div>
@@ -151,21 +179,28 @@ function Register() {
                   )}
                 />
               </div>
-              {success && 
-              <p className="success">You have been registered successfully! 
-              <br />
-              <Link to="/login"> Go to login!</Link>
-              </p>}
-              {error && setTimeout(()=> (
-                <p className="error">{ error }</p>
-                ), 2500)}
-              <button type="submit">Register</button>
+              {success && (
+                <p className="success">
+                  You have been registered successfully!
+                  <br />
+                  <Link to="/login"> Go to login!</Link>
+                </p>
+              )}
+              {error &&
+                setTimeout(() => <p className="error">{error}</p>, 2500)}
+              <button
+                type="submit"
+                onClick={handleLoginButton}
+                disabled={isDisabled}>
+                {loading && <Loader />}
+                {!loading && <p>Register</p>}
+              </button>
             </Form>
           )}
         </Formik>
       </div>
     </>
-  );
+  )
 }
 
-export { Register };
+export { Register }

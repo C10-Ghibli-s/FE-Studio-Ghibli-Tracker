@@ -9,22 +9,32 @@ import { Link, Navigate } from "react-router-dom"
 import "./Home.scss";
 // Context
 import { AppContext } from "../../context/AppContext";
-import { UserContext } from "../../context/UserContext";
 
 function Home() {
   // fetch Data
   const [films, setFilms] = useState([]);
-  useEffect(async () => {
-    const response = await axios.get("https://ghibliapi.herokuapp.com/films");
-    setFilms(response.data);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    axios.get("https://ghibliapi.herokuapp.com/films")
+      .then(response => {
+        if ( isSubscribed ) {
+          setFilms(response.data);
+        }
+        return () => isSubscribed = false;
+      })
+      .catch( error => console.error(error));
   }, []);
+
   // context
   const { callFilm } = useContext(AppContext);
-  const { login, userSession } = useContext(UserContext)
+
   // Filter toggle state
   const [toggleFilter, setToggleFilter] = useState(false);
+
   // setting mainCurrPage
   localStorage.setItem("currMainPage", window.location.pathname);
+
   // Menu toggle
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -32,6 +42,7 @@ function Home() {
   const handleToggle = () => {
     setToggleFilter(!toggleFilter);
   };
+
 
   return (
     <>

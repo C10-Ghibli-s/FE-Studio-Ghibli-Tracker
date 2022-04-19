@@ -6,6 +6,7 @@ import userImageProfile from './images/user-image-profile.png';
 import linkArrow from './images/linkArrow.png'
 import { motion } from 'framer-motion';
 import { ProfileConfigOptions } from '../../components/profileConf/profileConfig/index.js';
+import { UserSessionValidation } from "../../components/UserSessionValidation";
 
 function Profile() {
 
@@ -25,6 +26,8 @@ function Profile() {
   const linkAnimateFrom = {opacity: 0, y: -40};
   const linkAnimateTo = {opacity: 1, y: 0};
   return (
+    <>
+    <UserSessionValidation/>
     <div className="profilePageContainer">
       <header className="profile-header"> <GoBackButton/> </header>
       <main className="profile-main">
@@ -95,6 +98,7 @@ function Profile() {
         </div>
       </main>
     </div>
+  </>
   );
 }
 

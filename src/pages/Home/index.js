@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { SearchEngine } from "../../components/SearchEngine";
 import { Filter } from "../../components/Filter";
 import { FilmCard } from "../../components/FilmCard";
+import { UserSessionValidation } from "../../components/UserSessionValidation";
 import axios from "axios";
 import { Menu } from "../../components/Menu";
 import { Link, Navigate } from "react-router-dom"
@@ -34,7 +35,7 @@ function Home() {
 
   return (
     <>
-      {!userSession.access_token && <Navigate to="/login" replace={true} />}
+      <UserSessionValidation/>
       <Menu
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}

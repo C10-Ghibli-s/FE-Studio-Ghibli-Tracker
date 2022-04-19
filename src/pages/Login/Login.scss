@@ -88,6 +88,17 @@
   font-weight: 600;
   font-size: 12px;
 }
+.formulario .success {
+  color: $success;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.formulario .registered-message {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 12px;
+}
 
 .formulario button[type="submit"] {
   display: block;

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import axios from "axios";
 import "../Login/Login.scss";
 import image from "../Login/images/tracker-totoro.png";
 import { useNavigate } from "react-router-dom";
 function Register() {
+  const [ error, setError ] = useState(false);
+  const [ success, setSuccess ] = useState(false);
   let navigate = useNavigate();
   return (
     <>
@@ -36,7 +39,7 @@ function Register() {
             if (!values.username) {
               errors.username = "Please enter your username";
             } else if (
-              !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
+              !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.username
               )
             ) {
@@ -64,23 +67,24 @@ function Register() {
           }}
           onSubmit={(values, { resetForm }) => {
             axios
-              .post("https://serene-coast-44000.herokuapp.com/users/signup", {
-                nickname: values.username,
-                password: values.password,
-                profilePicture: "imageurllol.com",
-                twitter: "twitter",
-                facebook: "facebook",
-                movieWatched: 1,
-                email: values.email,
+              .post(
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup",
+                {
+                  nickname: values.username,
+                  password: values.password,
+                  email: values.email,
+                  movieWatched: 0,
+                  role: "user",
+                }
+              )
+              .then(response => {
+                setSuccess(response.statusText)
               })
-              .then((response) => {
-                console.log(response);
+              .catch(error => {
+                setError(error.response.data.message)
               })
-              .catch((error) => {
-                console.log(error.response.data);
-              });
             resetForm();
-            navigate("/login");
+            // navigate("/login");
           }}
         >
           {({ errors }) => (
@@ -91,7 +95,7 @@ function Register() {
                   id="email"
                   name="email"
                   type="text"
-                  placeholder="yourmail@mail.com"
+                  placeholder="mail@example.com"
                 />
                 <span className="email-icon"></span>
                 <ErrorMessage
@@ -111,7 +115,7 @@ function Register() {
                 <ErrorMessage
                   name="username"
                   component={() => (
-                    <div className="error">{errors.username}</div>
+                    <p className="error">{errors.username}</p>
                   )}
                 />
               </div>
@@ -127,7 +131,7 @@ function Register() {
                 <ErrorMessage
                   name="password"
                   component={() => (
-                    <div className="error">{errors.password}</div>
+                    <p className="error">{errors.password}</p>
                   )}
                 />
               </div>
@@ -143,12 +147,19 @@ function Register() {
                 <ErrorMessage
                   name="confirmPassword"
                   component={() => (
-                    <div className="error">{errors.confirmPassword}</div>
+                    <p className="error">{errors.confirmPassword}</p>
                   )}
                 />
               </div>
+              {success && 
+              <p className="success">You have been registered successfully! 
+              <br />
+              <Link to="/login"> Go to login!</Link>
+              </p>}
+              {error && setTimeout(()=> (
+                <p className="error">{ error }</p>
+                ), 2500)}
               <button type="submit">Register</button>
-              {/* <Facebook /> */}
             </Form>
           )}
         </Formik>

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react"
 import { Formik, Field, ErrorMessage, Form } from "formik"
 import axios from "axios"
-import { Navigate } from "react-router-dom"
+import { Navigate, Link } from "react-router-dom"
 
 // Context
 import { UserContext } from "../../context/UserContext";
@@ -108,7 +108,8 @@ function Login() {
               </div>
               {loginError && <div className="error">{loginError}</div>}
               <button type="submit">Login</button>
-              {/* <Facebook /> */}
+              <p className="registered-message">Are not registered yet? <Link to="/register" >Register</Link></p>
+              <Facebook />
             </Form>
           )}
         </Formik>

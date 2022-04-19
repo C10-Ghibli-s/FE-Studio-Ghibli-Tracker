@@ -4,6 +4,7 @@ import { useState } from "react";
 import { debouncing } from "../../debouncing";
 import "./SearchEngine.scss";
 import { Autocomplete } from "../Autocomplete";
+import { UserSessionValidation } from "../UserSessionValidation"
 
 /* [NOTE] Maybe I will need to use react context and create a useInitialState
   Process to make the Search Engine
@@ -73,6 +74,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
  */
   return (
     <>
+      <UserSessionValidation/>
       <span className="search-icon"></span>
       <input
         placeholder="What movie are you looking for?"
@@ -83,13 +85,13 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         onChange={handleInput}
         onClick={() => {
           if (menuOpen) {
-            setMenuOpen(!menuOpen);
+            setMenuOpen(!menuOpen)
           }
         }}
         onBlur={() => {
           setTimeout(() => {
-            setResults([]);
-          }, 300);
+            setResults([])
+          }, 300)
         }}
       />
       <input
@@ -101,13 +103,13 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         onChange={handleInput}
         onClick={() => {
           if (menuOpen) {
-            setMenuOpen(!menuOpen);
+            setMenuOpen(!menuOpen)
           }
         }}
         onBlur={() => {
           setTimeout(() => {
-            setResults([]);
-          }, 300);
+            setResults([])
+          }, 300)
         }}
       />
       <Autocomplete
@@ -119,7 +121,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         setSearchQuery={setSearchQuery}
       />
     </>
-  );
+  )
 }
 
 export { SearchEngine };

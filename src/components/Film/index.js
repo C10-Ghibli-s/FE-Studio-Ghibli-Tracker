@@ -16,6 +16,7 @@ function Film() {
   // console.log("film in film page", film[0].title);
   if (film) {
     return (
+    <>
       <div className="film-component">
         <div className="film-container">
           <div className="film-head">
@@ -25,16 +26,25 @@ function Film() {
             </div>
             {/*We should sent films.movie_watched */}
             <div className="interactionContainer">
-              <FilmWatched watched={watched} setWatched={setWatched}/>
-              { !watched && <p> Mark as watched to rate this movie! </p> }
-              { watched &&  (<><p>Watched</p><EmojisRate/></>) }
+              <FilmWatched watched={watched} setWatched={setWatched} />
+              {!watched && <p> Mark as watched to rate this movie! </p>}
+              {watched && (
+                <>
+                  <p>Watched</p>
+                  <EmojisRate />
+                </>
+              )}
             </div>
           </div>
           <div className="film-image">
             <img src={film.movie_banner} alt="" />
           </div>
           {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
-          <DoubleRating watched={watched} scoreRatingUser={2} audienceScoreRating={4}/>
+          <DoubleRating
+            watched={watched}
+            scoreRatingUser={2}
+            audienceScoreRating={4}
+          />
           <div className="film-body">
             <p>{film.description}</p>
           </div>
@@ -52,7 +62,8 @@ function Film() {
           </footer>
         </div>
       </div>
-    );
+    </>
+    )
   } else {
     return <p>"error";</p>;
   }

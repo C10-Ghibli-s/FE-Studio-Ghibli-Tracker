@@ -115,11 +115,14 @@
   font-size: 16px;
   transition: .3s ease all;
   margin: 50px 0 0 0;
+  &:disabled {
+    background: #76B9F5;
+  }
+  &:active {
+    background: #005eb6;
+  }
 }
 
-.formulario button[type="submit"]:hover {
-  background: #0071db;
-}
 
 .formulario .exito {
   text-align: center;

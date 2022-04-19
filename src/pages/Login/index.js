@@ -1,34 +1,34 @@
-import React, { useState, useContext } from "react"
-import { Formik, Field, ErrorMessage, Form } from "formik"
-import axios from "axios"
-import { Navigate, Link } from "react-router-dom"
-import { Loader } from "../../components/Loader"
+import React, { useState, useContext } from "react";
+import { Formik, Field, ErrorMessage, Form } from "formik";
+import axios from "axios";
+import { Navigate, Link } from "react-router-dom";
+import { Loader } from "../../components/Loader";
 
 // Context
-import { UserContext } from "../../context/UserContext"
+import { UserContext } from "../../context/UserContext";
 
 //social Media
-import { Facebook } from "../../components/FacebookLogin"
+import { Facebook } from "../../components/FacebookLogin";
 
-import "./Login.scss"
-import image from "./images/tracker-totoro.png"
+import "./Login.scss";
+import image from "./images/tracker-totoro.png";
 function Login() {
   // State
-  const [loginError, setLoginError] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [isDisabled, setIsDisabled] = useState(true)
+  const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
   // Context
-  const { login, userSession } = useContext(UserContext)
+  const { login, userSession } = useContext(UserContext);
   // LocalStorage persisting userSession
-  window.localStorage.setItem("userSession", JSON.stringify(userSession))
+  window.localStorage.setItem("userSession", JSON.stringify(userSession));
 
   const handleLoginButton = () => {
     if (!loginError) {
-      setLoading(true)
+      setLoading(true);
     } else if (!login) {
-      setLoading(true)
+      setLoading(true);
     }
-  }
+  };
 
   return (
     <>
@@ -41,27 +41,27 @@ function Login() {
         <Formik
           initialValues={{ user: "", password: "" }}
           validate={values => {
-            let errors = {}
+            let errors = {};
             //User validation
             if (!values.user) {
-              errors.user = "Enter your username"
+              errors.user = "Enter your username";
             } else if (
               !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.user
               )
             ) {
-              errors.user = "Enter a valid username"
+              errors.user = "Enter a valid username";
             }
             if (!values.password) {
               //Password validation
-              errors.password = "Enter your password"
+              errors.password = "Enter your password";
             }
             if (!errors.user && !errors.password) {
-              setIsDisabled(false)
+              setIsDisabled(false);
             } else {
-              setIsDisabled(true)
+              setIsDisabled(true);
             }
-            return errors
+            return errors;
           }}
           onSubmit={values => {
             axios
@@ -73,22 +73,22 @@ function Login() {
                 }
               )
               .then(response => {
-                let user = response.data
-                console.log(response.data)
-                setLoading(false)
+                let user = response.data;
+                console.log(response.data);
+                setLoading(false);
                 login({
                   nickname: user.user.nickname,
                   role: user.user.role,
                   access_token: user.access_token,
-                })
+                });
               })
               .catch(error => {
-                setLoginError(error.response.data.message)
-                setLoading(false)
+                setLoginError(error.response.data.message);
+                setLoading(false);
                 setTimeout(() => {
-                  setLoginError(false)
-                }, 2000)
-              })
+                  setLoginError(false);
+                }, 2000);
+              });
           }}
         >
           {({ errors }) => (
@@ -141,7 +141,7 @@ function Login() {
         <Facebook />
       </div>
     </>
-  )
+  );
 }
 
-export { Login }
+export { Login };

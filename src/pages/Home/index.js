@@ -5,7 +5,7 @@ import { FilmCard } from "../../components/FilmCard";
 import { UserSessionValidation } from "../../components/UserSessionValidation";
 import axios from "axios";
 import { Menu } from "../../components/Menu";
-import { Link, Navigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom";
 import "./Home.scss";
 // Context
 import { AppContext } from "../../context/AppContext";
@@ -16,14 +16,15 @@ function Home() {
 
   useEffect(() => {
     let isSubscribed = true;
-    axios.get("https://ghibliapi.herokuapp.com/films")
+    axios
+      .get("https://ghibliapi.herokuapp.com/films")
       .then(response => {
-        if ( isSubscribed ) {
+        if (isSubscribed) {
           setFilms(response.data);
         }
-        return () => isSubscribed = false;
+        return () => (isSubscribed = false);
       })
-      .catch( error => console.error(error));
+      .catch(error => console.error(error));
   }, []);
 
   // context
@@ -43,10 +44,9 @@ function Home() {
     setToggleFilter(!toggleFilter);
   };
 
-
   return (
     <>
-      <UserSessionValidation/>
+      <UserSessionValidation />
       <Menu
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
@@ -61,9 +61,9 @@ function Home() {
         />
         <span
           onClick={() => {
-            handleToggle()
+            handleToggle();
             if (menuOpen) {
-              setMenuOpen(!menuOpen)
+              setMenuOpen(!menuOpen);
             }
           }}
           className="filter-icon"
@@ -79,7 +79,7 @@ function Home() {
         <Link className="linkFilm" id="linkFilm" to="/film"></Link>
       </div>
     </>
-  )
+  );
 }
 
 export { Home };

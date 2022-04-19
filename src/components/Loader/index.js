@@ -1,6 +1,6 @@
-import React from "react"
-import { motion } from "framer-motion"
-import "./Loader.scss"
+import React from "react";
+import { motion } from "framer-motion";
+import "./Loader.scss";
 
 const Loader = () => {
   return (
@@ -19,7 +19,7 @@ const Loader = () => {
     >
       Fetching data...
     </motion.p>
-  )
-}
+  );
+};
 
-export { Loader }
+export { Loader };

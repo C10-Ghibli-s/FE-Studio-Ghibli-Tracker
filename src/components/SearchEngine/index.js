@@ -4,7 +4,7 @@ import { useState } from "react";
 import { debouncing } from "../../debouncing";
 import "./SearchEngine.scss";
 import { Autocomplete } from "../Autocomplete";
-import { UserSessionValidation } from "../UserSessionValidation"
+import { UserSessionValidation } from "../UserSessionValidation";
 
 /* [NOTE] Maybe I will need to use react context and create a useInitialState
   Process to make the Search Engine
@@ -30,7 +30,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
   const [results, setResults] = useState([]);
   const [film, setFilm] = useState({});
   // Handles the input to makes querys
-  const handleInput = (e) => {
+  const handleInput = e => {
     const searchingQuery = e.target.value;
     setSearchQuery(searchingQuery);
 
@@ -38,7 +38,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
     // then, matches will filter using regex, and will returns the result.
     let matches = [];
     if (searchQuery.length > 0) {
-      matches = [...films].filter((film) => {
+      matches = [...films].filter(film => {
         const regex = new RegExp(`${searchQuery}`, "i");
         return film.title.match(regex);
       });
@@ -74,7 +74,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
  */
   return (
     <>
-      <UserSessionValidation/>
+      <UserSessionValidation />
       <span className="search-icon"></span>
       <input
         placeholder="What movie are you looking for?"
@@ -85,13 +85,13 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         onChange={handleInput}
         onClick={() => {
           if (menuOpen) {
-            setMenuOpen(!menuOpen)
+            setMenuOpen(!menuOpen);
           }
         }}
         onBlur={() => {
           setTimeout(() => {
-            setResults([])
-          }, 300)
+            setResults([]);
+          }, 300);
         }}
       />
       <input
@@ -103,13 +103,13 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         onChange={handleInput}
         onClick={() => {
           if (menuOpen) {
-            setMenuOpen(!menuOpen)
+            setMenuOpen(!menuOpen);
           }
         }}
         onBlur={() => {
           setTimeout(() => {
-            setResults([])
-          }, 300)
+            setResults([]);
+          }, 300);
         }}
       />
       <Autocomplete
@@ -121,7 +121,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
         setSearchQuery={setSearchQuery}
       />
     </>
-  )
+  );
 }
 
 export { SearchEngine };

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from 'framer-motion';
 import { NavLink } from "./navLink";
 import PropTypes from 'prop-types';
 import secondary_mark from '../../../pages/LandingPage/images/secondary_mark-logotype.png';
 import tracker from '../../../pages/LandingPage/images/tracker.png';
+import "../../Menu/menu.scss"
+
+// Context
+import { UserContext } from "../../../context/UserContext";
 
 NavLinks.propTypes = {
     links: PropTypes.array.isRequired,
@@ -15,6 +19,17 @@ const linkAnimateFrom = {opacity: 0, y: -40};
 const linkAnimateTo = {opacity: 1, y: 0};
 
 function NavLinks({links}) {
+    const { login, userSession } = useContext(UserContext);
+    const handleLogout = () => {
+        login({
+          username: null,
+          role: null,
+          access_token: null,
+        });
+        window.localStorage.clear();
+    };
+
+
     return (
         <motion.ul
         data-testid="navBar"
@@ -48,6 +63,17 @@ function NavLinks({links}) {
                 </motion.li>
                 )
             )}
+            <motion.li
+            initial={linkAnimateFrom}
+            animate={linkAnimateTo}
+            transition={{delay: 0.10}}
+            >
+                <button 
+                    className="logout-button" 
+                    onClick={handleLogout}>
+                    logout
+                </button>
+            </motion.li>
         </motion.ul>
     );
 }

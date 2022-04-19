@@ -1,15 +1,28 @@
-import React from "react";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import axios from "axios";
+import React, { useState, useContext } from "react"
+import { Formik, Field, ErrorMessage, Form } from "formik"
+import axios from "axios"
+import { Navigate } from "react-router-dom"
+
+// Context
+import { UserContext } from "../../context/UserContext";
 
 //social Media
-import { Facebook } from "../../components/FacebookLogin";
+import { Facebook } from "../../components/FacebookLogin"
 
-import "./Login.scss";
-import image from "./images/tracker-totoro.png";
+import "./Login.scss"
+import image from "./images/tracker-totoro.png"
 function Login() {
+  // State
+  const [loginError, setLoginError] = useState(false)
+  // Context
+  const { login, userSession } = useContext(UserContext);
+  // LocalStorage persisting userSession
+  window.localStorage.setItem("userSession", JSON.stringify(userSession));
+
+  console.log(userSession);
   return (
     <>
+      {userSession.access_token && <Navigate to="/home" replace={true} />}
       <div className="contenedor">
         <figure className="image--container">
           <img src={image} alt="" />
@@ -17,42 +30,48 @@ function Login() {
         </figure>
         <Formik
           initialValues={{ user: "", password: "" }}
-          validate={(values) => {
-            let errors = {};
+          validate={values => {
+            let errors = {}
             //User validation
             if (!values.user) {
-              errors.user = "Enter your username";
+              errors.user = "Enter your username"
             } else if (
               !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.user
               )
             ) {
-              errors.user = "Enter a valid username";
+              errors.user = "Enter a valid username"
             }
             if (!values.password) {
               //Password validation
-              errors.password = "Enter your password";
+              errors.password = "Enter your password"
             }
-            return errors;
+            return errors
           }}
-          onSubmit={(values, { resetForm }) => {
+          onSubmit={values => {
             axios
-              .post("https://serene-coast-44000.herokuapp.com/users/signup", {
-                nickname: values.username,
-                password: values.password,
-                profilePicture: "imageurllol.com",
-                twitter: "twitter",
-                facebook: "facebook",
-                movieWatched: 1,
-                email: values.email,
+              .post(
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname",
+                {
+                  nickname: values.user,
+                  password: values.password,
+                }
+              )
+              .then(response => {
+                let user = response.data
+                console.log(response.data)
+                login({
+                  username: user.user.nickname,
+                  role: user.user.role,
+                  access_token: user.access_token,
+                })
               })
-              .then((response) => {
-                console.log(response);
+              .catch(error => {
+                setLoginError(error.response.data.message)
+                setTimeout(() => {
+                  setLoginError(false)
+                }, 2000)
               })
-              .catch((error) => {
-                console.log(error.response.data);
-              });
-            resetForm();
           }}
         >
           {({ errors }) => (
@@ -87,14 +106,15 @@ function Login() {
                   )}
                 />
               </div>
+              {loginError && <div className="error">{loginError}</div>}
               <button type="submit">Login</button>
-              <Facebook />
+              {/* <Facebook /> */}
             </Form>
           )}
         </Formik>
       </div>
     </>
-  );
+  )
 }
 
-export { Login };
+export { Login }

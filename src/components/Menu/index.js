@@ -6,7 +6,6 @@ import './menu.scss';
 import { NavLinks } from "./NavLinks";
 import { motion } from 'framer-motion';
 
-
 function Menu({menuOpen,setMenuOpen, toggleFilter, setToggleFilter}) {
     const links = [
         { pageRoute: '/home', page : 'home', icon: homeIcon},

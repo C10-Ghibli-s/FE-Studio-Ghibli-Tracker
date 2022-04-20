@@ -42,7 +42,8 @@ button {
     & li {
         margin-block-start: 35px;
         padding-block-end: 10px;
-        & a{
+        & a,
+        .logout-button{
             font-size: $menu__font-size;
             color: $base-color--light-theme;
             text-decoration: none;
@@ -53,7 +54,8 @@ button {
                 height: 30px;
                 margin-inline-end: 10px;
             }
-            &:hover {
+            &:hover ,
+            .logout-button:hover {
                 background-color: $primary-color--light-theme;
                 border-radius: 8px;
                 padding: 10px 15px;

@@ -88,6 +88,18 @@
   font-weight: 600;
   font-size: 12px;
 }
+.formulario .success {
+  color: $success;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.formulario .registered-message {
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  margin: 0 0 16px;
+}
 
 .formulario button[type="submit"] {
   display: block;
@@ -103,11 +115,14 @@
   font-size: 16px;
   transition: .3s ease all;
   margin: 50px 0 0 0;
+  &:disabled {
+    background: #76B9F5;
+  }
+  &:active {
+    background: #005eb6;
+  }
 }
 
-.formulario button[type="submit"]:hover {
-  background: #0071db;
-}
 
 .formulario .exito {
   text-align: center;

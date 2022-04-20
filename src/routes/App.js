@@ -22,32 +22,39 @@ import { StarRating } from "../components/StarRating";
  * The context ables the components share information each other.
  */
 import { AppContext } from "../context/AppContext";
+import { UserContext } from "../context/UserContext";
+
+// Hooks
 import { useInitialState } from "../hooks/useInitialState";
+import { useUserSession } from "../hooks/useUserSession";
 
 function App() {
   const initialState = useInitialState();
+  const userSession = useUserSession();
 
   return (
-    <AppContext.Provider value={initialState}>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="home" element={<Home />} />
-          <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="profile" element={<Profile />} />
+    <UserContext.Provider value={ userSession }>
+      <AppContext.Provider value={ initialState }>
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="home" element={<Home />} />
+            <Route exact path="/" element={<LandingPage />} />
+            <Route exact path="profile" element={<Profile />} />
 
-          <Route exact path="scores" element={<Scores />} />
-          <Route exact path="watched" element={<Watched />} />
+            <Route exact path="scores" element={<Scores />} />
+            <Route exact path="watched" element={<Watched />} />
 
-          <Route exact path="login" element={<Login />} />
-          <Route exact path="register" element={<Register />} />
+            <Route exact path="login" element={<Login />} />
+            <Route exact path="register" element={<Register />} />
 
-          <Route exact path="fb" element={<Facebook />} />
-          <Route exact path="star-rating" element={<StarRating />} />
-          <Route exact path="film" element={<FilmView />} />
-        </Routes>
-      </BrowserRouter>
-    </AppContext.Provider>
-  );
+            <Route exact path="fb" element={<Facebook />} />
+            <Route exact path="star-rating" element={<StarRating />} />
+            <Route exact path="film" element={<FilmView />} />
+          </Routes>
+        </BrowserRouter>
+      </AppContext.Provider>
+    </UserContext.Provider>
+  )
 }
 
 export { App };

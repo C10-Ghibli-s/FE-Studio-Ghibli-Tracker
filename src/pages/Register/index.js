@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import axios from "axios";
 import "../Login/Login.scss";
 import image from "../Login/images/tracker-totoro.png";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../../components/Loader";
+
 function Register() {
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+
   let navigate = useNavigate();
+  console.log(success);
+
+  const handleLoginButton = () => {
+    if (!error) {
+      setLoading(true);
+    } else if (!success) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <div className="contenedor">
@@ -20,7 +39,7 @@ function Register() {
             password: "",
             confirmPassword: "",
           }}
-          validate={(values) => {
+          validate={values => {
             let errors = {};
             if (!values.email) {
               //Email validation
@@ -36,7 +55,7 @@ function Register() {
             if (!values.username) {
               errors.username = "Please enter your username";
             } else if (
-              !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
+              !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.username
               )
             ) {
@@ -60,27 +79,42 @@ function Register() {
             } else if (values.password !== values.confirmPassword) {
               errors.confirmPassword = "Password not matched";
             }
+            // Disable button validation
+            if (
+              !errors.username &&
+              !errors.password &&
+              !errors.email &&
+              !errors.confirmPassword
+            ) {
+              setIsDisabled(false);
+            } else {
+              setIsDisabled(true);
+            }
+
             return errors;
           }}
           onSubmit={(values, { resetForm }) => {
             axios
-              .post("https://serene-coast-44000.herokuapp.com/users/signup", {
-                nickname: values.username,
-                password: values.password,
-                profilePicture: "imageurllol.com",
-                twitter: "twitter",
-                facebook: "facebook",
-                movieWatched: 1,
-                email: values.email,
+              .post(
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup",
+                {
+                  nickname: values.username,
+                  password: values.password,
+                  email: values.email,
+                  movieWatched: 0,
+                  role: "user",
+                }
+              )
+              .then(response => {
+                setLoading(false);
+                setSuccess(true);
               })
-              .then((response) => {
-                console.log(response);
-              })
-              .catch((error) => {
-                console.log(error.response.data);
+              .catch(error => {
+                setLoading(false);
+                setError(error.response.data.message);
               });
             resetForm();
-            navigate("/login");
+            // navigate("/login");
           }}
         >
           {({ errors }) => (
@@ -91,7 +125,7 @@ function Register() {
                   id="email"
                   name="email"
                   type="text"
-                  placeholder="yourmail@mail.com"
+                  placeholder="mail@example.com"
                 />
                 <span className="email-icon"></span>
                 <ErrorMessage
@@ -110,9 +144,7 @@ function Register() {
                 <span className="user-icon"></span>
                 <ErrorMessage
                   name="username"
-                  component={() => (
-                    <div className="error">{errors.username}</div>
-                  )}
+                  component={() => <p className="error">{errors.username}</p>}
                 />
               </div>
               <div>
@@ -126,9 +158,7 @@ function Register() {
                 <span className="password-icon"></span>
                 <ErrorMessage
                   name="password"
-                  component={() => (
-                    <div className="error">{errors.password}</div>
-                  )}
+                  component={() => <p className="error">{errors.password}</p>}
                 />
               </div>
               <div>
@@ -143,12 +173,27 @@ function Register() {
                 <ErrorMessage
                   name="confirmPassword"
                   component={() => (
-                    <div className="error">{errors.confirmPassword}</div>
+                    <p className="error">{errors.confirmPassword}</p>
                   )}
                 />
               </div>
-              <button type="submit">Register</button>
-              {/* <Facebook /> */}
+              {success && (
+                <p className="success">
+                  You have been registered successfully!
+                  <br />
+                  <Link to="/login"> Go to login!</Link>
+                </p>
+              )}
+              {error &&
+                setTimeout(() => <p className="error">{error}</p>, 2500)}
+              <button
+                type="submit"
+                onClick={handleLoginButton}
+                disabled={isDisabled}
+              >
+                {loading && <Loader />}
+                {!loading && <p>Register</p>}
+              </button>
             </Form>
           )}
         </Formik>

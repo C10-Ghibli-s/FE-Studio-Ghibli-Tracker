@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import axios from "axios";
+import { Navigate, Link } from "react-router-dom";
+import { Loader } from "../../components/Loader";
+
+// Context
+import { UserContext } from "../../context/UserContext";
 
 //social Media
 import { Facebook } from "../../components/FacebookLogin";
@@ -8,8 +13,26 @@ import { Facebook } from "../../components/FacebookLogin";
 import "./Login.scss";
 import image from "./images/tracker-totoro.png";
 function Login() {
+  // State
+  const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+  // Context
+  const { login, userSession } = useContext(UserContext);
+  // LocalStorage persisting userSession
+  window.localStorage.setItem("userSession", JSON.stringify(userSession));
+
+  const handleLoginButton = () => {
+    if (!loginError) {
+      setLoading(true);
+    } else if (!login) {
+      setLoading(true);
+    }
+  };
+
   return (
     <>
+      {userSession.access_token && <Navigate to="/home" replace={true} />}
       <div className="contenedor">
         <figure className="image--container">
           <img src={image} alt="" />
@@ -17,13 +40,13 @@ function Login() {
         </figure>
         <Formik
           initialValues={{ user: "", password: "" }}
-          validate={(values) => {
+          validate={values => {
             let errors = {};
             //User validation
             if (!values.user) {
               errors.user = "Enter your username";
             } else if (
-              !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
+              !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.user
               )
             ) {
@@ -33,26 +56,39 @@ function Login() {
               //Password validation
               errors.password = "Enter your password";
             }
+            if (!errors.user && !errors.password) {
+              setIsDisabled(false);
+            } else {
+              setIsDisabled(true);
+            }
             return errors;
           }}
-          onSubmit={(values, { resetForm }) => {
+          onSubmit={values => {
             axios
-              .post("https://serene-coast-44000.herokuapp.com/users/signup", {
-                nickname: values.username,
-                password: values.password,
-                profilePicture: "imageurllol.com",
-                twitter: "twitter",
-                facebook: "facebook",
-                movieWatched: 1,
-                email: values.email,
+              .post(
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname",
+                {
+                  nickname: values.user,
+                  password: values.password,
+                }
+              )
+              .then(response => {
+                let user = response.data;
+                console.log(response.data);
+                setLoading(false);
+                login({
+                  nickname: user.user.nickname,
+                  role: user.user.role,
+                  access_token: user.access_token,
+                });
               })
-              .then((response) => {
-                console.log(response);
-              })
-              .catch((error) => {
-                console.log(error.response.data);
+              .catch(error => {
+                setLoginError(error.response.data.message);
+                setLoading(false);
+                setTimeout(() => {
+                  setLoginError(false);
+                }, 2000);
               });
-            resetForm();
           }}
         >
           {({ errors }) => (
@@ -87,11 +123,22 @@ function Login() {
                   )}
                 />
               </div>
-              <button type="submit">Login</button>
-              <Facebook />
+              <p className="registered-message">
+                Are not registered yet? <Link to="/register">Register</Link>
+              </p>
+              {loginError && <p className="error">{loginError}</p>}
+              <button
+                type="submit"
+                onClick={handleLoginButton}
+                disabled={isDisabled}
+              >
+                {loading && <Loader />}
+                {!loading && <p>Login</p>}
+              </button>
             </Form>
           )}
         </Formik>
+        <Facebook />
       </div>
     </>
   );

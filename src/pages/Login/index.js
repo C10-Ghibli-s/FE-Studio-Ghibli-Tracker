@@ -46,7 +46,7 @@ function Login() {
             if (!values.user) {
               errors.user = "Enter your username";
             } else if (
-              !/^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
+              !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
                 values.user
               )
             ) {

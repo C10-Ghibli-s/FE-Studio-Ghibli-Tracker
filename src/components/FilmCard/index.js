@@ -12,6 +12,7 @@ import sadActive from "../EmojisRate/images/sadActive.png";
 
 
 function FilmCard({ film, callFilm }) {
+  console.log(film);
   // BEM -> block element modifier
   // film-card-container
   // film-card__image
@@ -28,9 +29,9 @@ function FilmCard({ film, callFilm }) {
             <div className="film-card-head">
               <div className="film-card-title">
                 <h2 onClick={(e) => console.log(e.target.value)}>
-                  {film.title}
+                  {film.title.originalTitle}
                 </h2>
-                <h3>{film.release_date}</h3>
+                <h3>{film.releaseDate}</h3>
               </div>
               <div className="film-card--options">
                 <FilmWatched />

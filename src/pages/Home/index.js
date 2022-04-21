@@ -16,15 +16,27 @@ function Home() {
 
   useEffect(() => {
     let isSubscribed = true;
+    let user = window.localStorage.getItem("userSession");
+    console.log(user);
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YiI6MTAsImlhdCI6MTY1MDUxMTM4MCwiZXhwIjoxNjUxMzc1MzgwfQ.43-Fw-wzRr5K5-Z6m30Md7_CWBaoOFMNtIFpolUJkfk";
+    //console.log(token);
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
     axios
-      .get("https://ghibliapi.herokuapp.com/films")
+      //.get("https://ghibliapi.herokuapp.com/films")
+      .get("https://studio-ghibli-c10-platzimaster.herokuapp.com/movies",
+      config
+      )
       .then(response => {
+        console.log(response.data);
         if (isSubscribed) {
           setFilms(response.data);
         }
         return () => (isSubscribed = false);
       })
-      .catch(error => console.error(error));
+      .catch(error => console.error(error.message));
   }, []);
 
   // context

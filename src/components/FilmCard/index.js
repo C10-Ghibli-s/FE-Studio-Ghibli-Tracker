@@ -46,6 +46,8 @@ function FilmCard({ film, callFilm }) {
               <p>{film.description}</p>
             </div>
             <StarRating />
+            {/**Whe should send the user score */}
+            {/**<StarRating scoreRatingUser={film.userScore} />*/}
             <img className="img-background" src={totoroImage} alt="totoro" />
           </div>
         </div>

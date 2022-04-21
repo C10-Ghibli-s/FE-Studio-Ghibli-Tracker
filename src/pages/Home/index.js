@@ -16,10 +16,8 @@ function Home() {
 
   useEffect(() => {
     let isSubscribed = true;
-    let user = window.localStorage.getItem("userSession");
-    console.log(user);
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInN1YiI6MTAsImlhdCI6MTY1MDUxMTM4MCwiZXhwIjoxNjUxMzc1MzgwfQ.43-Fw-wzRr5K5-Z6m30Md7_CWBaoOFMNtIFpolUJkfk";
-    //console.log(token);
+    let user = JSON.parse(window.localStorage.getItem("userSession"));
+    let token = user.access_token;
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };

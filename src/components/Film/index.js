@@ -42,7 +42,7 @@ function Film() {
           <DoubleRating
             watched={watched}
             scoreRatingUser={2}
-            audienceScoreRating={4}
+            audienceScoreRating={film.audienceScore}
           />
           <div className="film-body">
             <p>{film.description}</p>

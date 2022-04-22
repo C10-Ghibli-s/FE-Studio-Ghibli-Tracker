@@ -168,7 +168,7 @@ function ChanginUsr({changingUsr, setChangingUsr}) {
                             src={closeModalButton}
                             onClick={()=> setChStatus("")}
                         ></img>
-                        <h2 className="chConf__title">Could't change password</h2>
+                        <h2 className="chConf__title">Could't change your UserName</h2>
                         <p className="chConf__Msg">Please, verify your current password</p>
                         <div className="chConf__Options">
                             <button

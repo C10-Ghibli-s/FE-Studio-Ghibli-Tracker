@@ -173,6 +173,15 @@
                         color: $base-color--light-theme;
                         background-color: $primary-color--light-theme;
                     }
+                    &--end {
+                        @extend .confirmButton;
+                        width: 100%;
+                        height: 70px;
+                        &:hover {
+                            color: $base-color--light-theme;
+                            background-color: $primary-color--light-theme;
+                        }
+                    }
                 }
                 & .cancelButton {
                     border: 2px solid $failure;

@@ -10,9 +10,12 @@ const useUserSession = () => {
   const login = payload => {
     if (payload) {
       setUserSession({
-        access_token: payload.access_token,
+        userId: payload.userId,
         nickname: payload.nickname,
+        profilePicture: payload.profilePicture,
         role: payload.role,
+        access_token: payload.access_token,
+        email: payload.email,
       });
     }
     return null;

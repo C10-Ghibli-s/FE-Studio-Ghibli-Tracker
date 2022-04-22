@@ -77,9 +77,12 @@ function Login() {
                 console.log(response.data);
                 setLoading(false);
                 login({
+                  userId: user.user.id,
                   nickname: user.user.nickname,
+                  profilePicture: user.user.profilePicture,
                   role: user.user.role,
                   access_token: user.access_token,
+                  email: user.user.email,
                 });
               })
               .catch(error => {
@@ -89,7 +92,8 @@ function Login() {
                   setLoginError(false);
                 }, 2000);
               });
-          }}
+              window.localStorage.setItem("usrCurrPass", values.password);
+            }}
         >
           {({ errors }) => (
             <Form className="formulario">

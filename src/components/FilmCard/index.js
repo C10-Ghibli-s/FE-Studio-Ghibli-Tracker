@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./FilmCard.scss";
 import totoroImage from "./images/Secondary_mark-totoro.png";
 import { FilmWatched } from "../FilmWatched";
 import { StarRating } from "../StarRating";
 import { AppContext } from "../../context/AppContext";
+import axios from "axios";
 
 import add from "../EmojisRate/images/add.png";
 import happyActive from "../EmojisRate/images/happyActive.png";
@@ -12,13 +13,38 @@ import sadActive from "../EmojisRate/images/sadActive.png";
 
 
 function FilmCard({ film, callFilm }) {
-  console.log(film);
   // BEM -> block element modifier
   // film-card-container
   // film-card__image
   // film-card__text-content
   const { emojiRate } = useContext(AppContext);
+
+  const [inter, setInter] = useState({});
+  console.log("inter", inter);
+  //console.log("scoreByStar", inter.scoreByStar);
+  //console.log("scoreByStar int", parseInt(inter.scoreByStar));
+
+
   if (film) {
+
+    useEffect(() => {
+      let user = JSON.parse(window.localStorage.getItem("userSession"));
+      let token = user.access_token;
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      };
+  
+      axios
+        .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/interactions/${film.id}`,
+        config
+        )
+        .then(response => {
+          setInter(response.data);
+        })
+        .catch(error => console.error(error.message));
+    }, []);
+
+
     return (
       <>
         <div className="film-card-container">
@@ -34,7 +60,7 @@ function FilmCard({ film, callFilm }) {
                 <h3>{film.releaseDate}</h3>
               </div>
               <div className="film-card--options">
-                <FilmWatched />
+                <FilmWatched watched={inter.seenMark}/>
                 {/* THIS IS COMMENTED UNTIL THE API-DB WORKS FOR EMOJI-RATING -> USER
                 { (emojiRate == "add" && !emojiRating) && <button className="EmojiRating--add" onClick={()=> setEmojiRating(!emojiRating)}><img src={add}></img></button>}
                 { (emojiRate == "happy") && <button className="EmojiRating--add happy" onClick={()=> setEmojiRating(!emojiRating)}><img src={happyActive}></img></button>}
@@ -45,7 +71,7 @@ function FilmCard({ film, callFilm }) {
             <div className="film-card-body">
               <p>{film.description}</p>
             </div>
-            <StarRating />
+            <StarRating scoreRatingUser={parseInt(inter.scoreByStar)} />
             {/**Whe should send the user score */}
             {/**<StarRating scoreRatingUser={film.userScore} />*/}
             <img className="img-background" src={totoroImage} alt="totoro" />

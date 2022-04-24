@@ -37,6 +37,7 @@ function Home() {
       .catch(error => console.error(error.message));
   }, []);
 
+
   // context
   const { callFilm } = useContext(AppContext);
 

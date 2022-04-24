@@ -3,8 +3,11 @@ import {FaStar} from 'react-icons/fa';
 import './StarRating.css'
 
 function StarRating({scoreRatingUser}){
+    console.log("scoreRatingUser", scoreRatingUser);
     const [rating, setRating] = useState(scoreRatingUser);
     const [hover, setHover] = useState(null);
+
+    console.log("rating",rating);
 
     return(
         <div className="star-rating-component">

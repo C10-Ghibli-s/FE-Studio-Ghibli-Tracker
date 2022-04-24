@@ -238,27 +238,27 @@
 }
 
 @media (min-width: 680px) {
-    .profile-main {
-        display: grid;
-        max-width: 700px;
-        margin: 0 auto;
-        & .user {
-            grid-area: userInfo;
-            margin-block-start: 50px;
-        }
-        & .options {
-            grid-area: optionLinks;
-            margin-block-start: 70px;
-        }
-        & .progressBar-container {
-            grid-area: watchedProgressBar;
-            margin-block-start: 70px;
-        }
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(2, 50%);
-        grid-template-areas: "userInfo userInfo"
-                             "optionLinks watchedProgressBar";
-    }
+    // .profile-main {
+    //     display: grid;
+    //     max-width: 700px;
+    //     margin: 0 auto;
+    //     & .user {
+    //         grid-area: userInfo;
+    //         margin-block-start: 50px;
+    //     }
+    //     & .options {
+    //         grid-area: optionLinks;
+    //         margin-block-start: 70px;
+    //     }
+    //     & .progressBar-container {
+    //         grid-area: watchedProgressBar;
+    //         margin-block-start: 70px;
+    //     }
+    //     grid-template-columns: repeat(2, 50%);
+    //     grid-template-rows: repeat(2, 50%);
+    //     grid-template-areas: "userInfo userInfo"
+    // //                          "optionLinks watchedProgressBar";
+    // }
     .modalBackground{
         & .modalConfig {
             width: 45%;

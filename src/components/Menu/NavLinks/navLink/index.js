@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom"; 
 
 NavLink.propTypes = {
     pageRoute: PropTypes.string.isRequired,
@@ -8,7 +9,7 @@ NavLink.propTypes = {
 
 
 function NavLink({pageRoute, page, icon}) {
-    return <a href={pageRoute}><img src={icon}></img>{page}</a>;
+    return <Link to={pageRoute}><img src={icon}></img>{page}</Link>;
 }
 
 export { NavLink };

@@ -35,13 +35,6 @@ function Profile() {
             animate={linkAnimateTo}
             transition={{delay: 0.10}}
           >
-            <a href="/scores"> Scores <img src={linkArrow}></img></a>
-          </motion.div>
-          <motion.div
-            initial={linkAnimateFrom}
-            animate={linkAnimateTo}
-            transition={{delay: 0.10}}
-          >
             <button type="button" onClick={()=> setSettingsOpen(!settingsOpen)}> Settings <img src={linkArrow}></img></button>
           </motion.div>
             { settingsOpen &&
@@ -64,14 +57,6 @@ function Profile() {
                 >
                   Change Password
                 </motion.button>
-                <motion.button 
-                  initial={linkAnimateFrom}
-                  animate={linkAnimateTo}
-                  transition={{delay: 0.10}}
-                  type="button"
-                >
-                  Connect with Facebook
-                </motion.button>
                 <ProfileConfigOptions 
                 chUserName={chUserName} 
                 setChUserName={setChUserName}chPassword={chPassword} 
@@ -82,8 +67,8 @@ function Profile() {
         <div className="progressBar-container">
           <label htmlFor="movies-watched--bar">Ghibli Movies you've watched</label>
           {/* <progress className="movies-watched--bar" id="movies-watched--bar" value={user.movieWatched} max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress> */}
-          <progress className="movies-watched--bar" id="movies-watched--bar" value="23" max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress>
-          <a id="scoresLink" href="/scores"></a>
+          <progress className="movies-watched--bar" id="movies-watched--bar" value="23" max="24"></progress>
+          {/* <a id="scoresLink" href="/scores"></a> */}
           {/* <span data-testid='moviesWatched'> {user.movieWatched}/24 </span> */}
           <span data-testid='moviesWatched'> 23/24 </span>
         </div>

@@ -23,13 +23,13 @@ function FilmCard({ film, callFilm }) {
       <>
         <div className="film-card-container">
           <div className="film-card-image" onClick={()=> {callFilm(film);document.getElementById("linkFilm").click()}}>
-            <img src={film.movie_banner} alt="" />
+            <img src={film.movieBanner} alt="" />
           </div>
           <div className="film-card-content" onClick={()=> {callFilm(film);document.getElementById("linkFilm").click()}}>
             <div className="film-card-head">
               <div className="film-card-title">
                 <h2 onClick={(e) => console.log(e.target.value)}>
-                  {film.title.originalTitle}
+                  {film.title.title}
                 </h2>
                 <h3>{film.releaseDate}</h3>
               </div>

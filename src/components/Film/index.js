@@ -20,7 +20,7 @@ function Film() {
         <div className="film-container">
           <div className="film-head">
             <div className="film-title">
-              <h1>{film.title.originalTitle}</h1>
+              <h1>{film.title.title}</h1>
               <h2>{film.releaseDate}</h2>
             </div>
             {/*We should sent films.movie_watched */}
@@ -36,7 +36,7 @@ function Film() {
             </div>
           </div>
           <div className="film-image">
-            <img src={film.movie_banner} alt="" />
+            <img src={film.movieBanner} alt="" />
           </div>
           {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
           <DoubleRating

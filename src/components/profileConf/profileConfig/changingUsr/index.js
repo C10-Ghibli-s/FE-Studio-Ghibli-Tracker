@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ProfileConf } from '../../index.js';
 import { motion } from "framer-motion";
 import closeModalButton from '../../images/cancel.png';
+import axios from "axios";
 
 function ChanginUsr({changingUsr, setChangingUsr}) {
     const linkAnimateFrom = {opacity: 0, y: -40};
     const linkAnimateTo = {opacity: 1, y: 0};
+    const [chStatus, setChStatus] = useState("");
+    // const { login, userSession } = useContext(UserContext);
+    let currPass = window.localStorage.getItem("usrCurrPass");
+    let user = JSON.parse(window.localStorage.getItem("userSession"));
+    let userId = user.userId;
+    let token = user.access_token;
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
     return (
         <>
             { changingUsr && (
@@ -37,22 +48,37 @@ function ChanginUsr({changingUsr, setChangingUsr}) {
                             errors.newUserName = "Username must contains: 6 - 12 characters (letters, numbers). Spaces and special characters are not allowed";
                         }
                         if (!values.password) {
-                            //Password validation
+                            //Password validation 
                             errors.password = "Enter your password";
                         }
                         return errors;
                         }}
                         onSubmit={(values, { resetForm }) => {
-                        axios.put("https://serene-coast-44000.herokuapp.com/users/signup", {
-                            nickname: values.newUserName,
-                            })
-                            .then((response) => {
-                            console.log(response);
-                            })
-                            .catch((error) => {
-                            console.log(error.response.data);
-                            });
-                        resetForm();
+                            if(values.password === currPass) {
+                                axios.put(
+                                    `http://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/${userId}/update`,
+                                    {
+                                        nickname: values.newUserName,
+                                    },
+                                    config
+                                )
+                                .then((response) => {
+                                    console.log(response);
+                                    setChStatus("success");
+                                    setChangingUsr(!changingUsr);
+                                    window.localStorage.setItem("userSession", JSON.stringify({...user, nickname: values.newUserName}))
+                                    resetForm();
+                                })
+                                .catch((error) => {
+                                    console.log(error.response.data);
+                                    if(error) {
+                                        setChStatus("failure");
+                                    }
+                                });
+                            } else {
+                                setChStatus("failure");
+                                setChangingUsr(!changingUsr);
+                            }
                         }}
                     >
                         {({errors})=> (
@@ -102,6 +128,59 @@ function ChanginUsr({changingUsr, setChangingUsr}) {
                     </Formik>
                     </motion.div>
                 </ProfileConf>)
+            }
+            { (chStatus == "success") &&
+                <ProfileConf>
+                    <motion.div
+                        initial={linkAnimateFrom}
+                        animate={linkAnimateTo}
+                        transition={{delay: 0.10}}
+                        className="configModal"
+                    >
+                        <img
+                            className="closeModalButton" 
+                            src={closeModalButton}
+                            onClick={()=> setChStatus("")}
+                        ></img>
+                        <h2 className="chConf__title">UserName Changed successfully</h2>
+                        <div className="chConf__Options">
+                            <button
+                            type="button"
+                            className="confirmButton--end"
+                            onClick={()=> {setChStatus("");window.location.reload(true);}}
+                            >
+                            Accept
+                            </button>
+                        </div>
+                    </motion.div>
+                </ProfileConf>
+            }
+            { (chStatus == "failure") &&
+                <ProfileConf>
+                    <motion.div
+                        initial={linkAnimateFrom}
+                        animate={linkAnimateTo}
+                        transition={{delay: 0.10}}
+                        className="configModal"
+                    >
+                        <img
+                            className="closeModalButton" 
+                            src={closeModalButton}
+                            onClick={()=> setChStatus("")}
+                        ></img>
+                        <h2 className="chConf__title">Could't change your UserName</h2>
+                        <p className="chConf__Msg">Please, verify your current password</p>
+                        <div className="chConf__Options">
+                            <button
+                            type="button"
+                            className="confirmButton--end"
+                            onClick={()=> {setChStatus("");}}
+                            >
+                            Accept
+                            </button>
+                        </div>
+                    </motion.div>
+                </ProfileConf>
             }
         </>
     )

@@ -8,7 +8,17 @@ import axios from "axios";
 function ChanginPass({changingPass, setChangingPass}) {
     const linkAnimateFrom = {opacity: 0, y: -40};
     const linkAnimateTo = {opacity: 1, y: 0};
-    const [changeStatus, setChangeStatus] = useState("");
+    const [chStatus, setChStatus] = useState("");
+
+    let currPass = window.localStorage.getItem("usrCurrPass");
+    let user = JSON.parse(window.localStorage.getItem("userSession"));
+    let userId = user.userId;
+    let token = user.access_token;
+    let userMail = user.email;
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
     return (
         <>
             { changingPass && (
@@ -51,23 +61,58 @@ function ChanginPass({changingPass, setChangingPass}) {
                             return errors;
                         }}
                         onSubmit={(values, { resetForm }) => {
-                            // when we have the user auth-token, here will be the logic for getting the specific profile
-                            const getPass = axios.get("https://stark-bayou-90480.herokuapp.com/users/profile/1");
-                            if(values.currentPassword == getPass.password) {
-                                axios.put("https://stark-bayou-90480.herokuapp.com/users/profile/1/update", {
-                                    password: values.newPassword,
-                                    })
-                                    .then((response) => {
-                                    console.log(response);
-                                    })
-                                    .catch((error) => {
+                            if (values.currentPassword === currPass) {
+                                axios.patch(
+                                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/request-reset-password",
+                                    { 
+                                        email: `${userMail}`
+                                    },
+                                    config
+                                )
+                                .then((response) => {
+                                    if(response.status === 200){
+                                        axios.get(
+                                            `https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/${userId}`,
+                                            config
+                                        )
+                                        .then((response) => {
+                                            if(response.data.resetPasswordToken !== null) {
+                                                axios.patch(
+                                                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/reset-password",
+                                                    {
+                                                        resetPasswordToken: `${response.data.resetPasswordToken}`,
+                                                        password: `${values.newPassword}`
+                                                    },
+                                                    config
+                                                )
+                                                .then((response) => {
+                                                    console.log(response);
+                                                    if(response.status === 200) {
+                                                        setChStatus("success");
+                                                        setChangingPass(!changingPass);
+                                                        window.localStorage.setItem("usrCurrPass",values.newPassword)
+                                                    }
+                                                })
+                                                .catch((error) => {
+                                                    console.log(error);
+                                                    if(error) {
+                                                        setChStatus("failure");
+                                                    }
+                                                })
+                                            }
+                                        })
+                                        .catch((error) => {
+                                            console.log(error);
+                                        })
+                                    }
+                                })
+                                .catch((error) => {
                                     console.log(error);
-                                    });
+                                })
                                 resetForm();
-                                setChangingPass(!changingPass);
-                                setChangeStatus("success");
                             } else {
-                                setChangeStatus("failure");
+                                setChStatus("failure");
+                                setChangingPass(!changingPass);
                             }
                         }}
                     >
@@ -127,60 +172,60 @@ function ChanginPass({changingPass, setChangingPass}) {
                         )}
                     </Formik>
                     </motion.div>
-                    { (changeStatus == "sucess") &&
-                        <>
-                            <motion.div
-                                initial={linkAnimateFrom}
-                                animate={linkAnimateTo}
-                                transition={{delay: 0.10}}
-                                className="changingModal"
-                            >
-                                <img
-                                    className="closeModalButton" 
-                                    src={closeModalButton}
-                                    onClick={()=> setChangeStatus("")}
-                                ></img>
-                                <h2 className="chConf__title">Password Changed successfully</h2>
-                                <div className="chConf__Options">
-                                    <button
-                                    type="button"
-                                    className="confirmButton"
-                                    onClick={()=> setChangeStatus("")}
-                                    >
-                                    Accept
-                                    </button>
-                                </div>
-                            </motion.div>
-                        </>
-                    }
-                    { (changeStatus == "failure") &&
-                        <>
-                            <motion.div
-                                initial={linkAnimateFrom}
-                                animate={linkAnimateTo}
-                                transition={{delay: 0.10}}
-                                className="changingModal"
-                            >
-                                <img
-                                    className="closeModalButton" 
-                                    src={closeModalButton}
-                                    onClick={()=> setChangeStatus("")}
-                                ></img>
-                                <h2 className="chConf__title">Could't change password</h2>
-                                <p className="chConf__Msg">Please, verify your current password</p>
-                                <div className="chConf__Options">
-                                    <button
-                                    type="button"
-                                    className="confirmButton"
-                                    onClick={()=> setChangeStatus("")}
-                                    >
-                                    Accept
-                                    </button>
-                                </div>
-                            </motion.div>
-                        </>
-                    }
                 </ProfileConf>)
+            }
+            { (chStatus == "success") &&
+                <ProfileConf>
+                    <motion.div
+                        initial={linkAnimateFrom}
+                        animate={linkAnimateTo}
+                        transition={{delay: 0.10}}
+                        className="configModal"
+                    >
+                        <img
+                            className="closeModalButton" 
+                            src={closeModalButton}
+                            onClick={()=> setChStatus("")}
+                        ></img>
+                        <h2 className="chConf__title">Password Changed successfully</h2>
+                        <div className="chConf__Options">
+                            <button
+                            type="button"
+                            className="confirmButton--end"
+                            onClick={()=> setChStatus("")}
+                            >
+                            Accept
+                            </button>
+                        </div>
+                    </motion.div>
+                </ProfileConf>
+            }
+            { (chStatus == "failure") &&
+                <ProfileConf>
+                    <motion.div
+                        initial={linkAnimateFrom}
+                        animate={linkAnimateTo}
+                        transition={{delay: 0.10}}
+                        className="configModal"
+                    >
+                        <img
+                            className="closeModalButton" 
+                            src={closeModalButton}
+                            onClick={()=> setChStatus("")}
+                        ></img>
+                        <h2 className="chConf__title">Could't change password</h2>
+                        <p className="chConf__Msg">Please, verify your current password</p>
+                        <div className="chConf__Options">
+                            <button
+                            type="button"
+                            className="confirmButton--end"
+                            onClick={()=> setChStatus("")}
+                            >
+                            Accept
+                            </button>
+                        </div>
+                    </motion.div>
+                </ProfileConf>
             }
         </>
     )

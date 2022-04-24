@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { GoBackButton } from '../../components/BackLink';
 import './profile.scss';
@@ -7,19 +7,11 @@ import linkArrow from './images/linkArrow.png'
 import { motion } from 'framer-motion';
 import { ProfileConfigOptions } from '../../components/profileConf/profileConfig/index.js';
 import { UserSessionValidation } from "../../components/UserSessionValidation";
+import { UserContext } from "../../context/UserContext";
 
 function Profile() {
+  const { login, userSession } = useContext(UserContext);
 
-  // THI IS COMMENTED UNTIL WE CAN USE THE DB CORRECTLY
-  // to test //
-    // localStorage.setItem("userId", "2");
-  //
-  // const [user, setUser] = useState({});
-
-  // useEffect(async () => {
-  //   const response = await axios.get(`https://serene-coast-44000.herokuapp.com/users/profile/${localStorage.getItem("userId")}`);
-  //   setUser(response.data);
-  // });
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [chUserName, setChUserName] = useState(false);
   const [chPassword, setChPassword] = useState(false);
@@ -35,8 +27,7 @@ function Profile() {
           <picture>
             <img alt="user photo" data-testid="user--photo" src={userImageProfile}></img>
           </picture>
-          {/* <h1>{user.nickname}</h1> */}
-          <h1 alt="userName">xXSearchEngineXx</h1>
+          <h1>{userSession.nickname}</h1>
         </div>
         <section className="options" data-testid="options">
           <motion.div

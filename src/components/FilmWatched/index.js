@@ -8,6 +8,11 @@ function FilmWatched({watched, setWatched}){
 
     // context
     const { callIsWatched } = useContext(AppContext);
+    //console.log("im callIsWatched", callIsWatched);
+
+    const handleChangeWatched = () => {
+        console.log("my actual value is", watched );
+    };
 
     return(
         //Add validation and restriction with StarRating
@@ -26,6 +31,7 @@ function FilmWatched({watched, setWatched}){
                                 setWatched(true);
                                 callIsWatched(true);
                             }
+                            handleChangeWatched();
                         }
                     }
                 />

@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 301
+  force = false
+  query = {path = ":path"}

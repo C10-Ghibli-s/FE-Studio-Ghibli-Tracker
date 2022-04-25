@@ -37,6 +37,7 @@ function App() {
       <AppContext.Provider value={initialState}>
         <BrowserRouter>
           <Routes>
+            <Route exact path="/*" element={<LandingPage />} />
             <Route exact path="home" element={<Home />} />
             <Route exact path="/" element={<LandingPage />} />
             <Route exact path="profile" element={<Profile />} />
@@ -50,7 +51,6 @@ function App() {
             <Route exact path="fb" element={<Facebook />} />
             <Route exact path="star-rating" element={<StarRating />} />
             <Route exact path="film" element={<FilmView />} />
-            <Route exact path="*" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
       </AppContext.Provider>

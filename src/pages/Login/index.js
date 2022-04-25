@@ -73,7 +73,6 @@ function Login() {
               )
               .then(response => {
                 let user = response.data;
-                console.log(response.data);
                 setLoading(false);
                 login({
                   userId: user.user.id,

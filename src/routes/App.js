@@ -33,8 +33,8 @@ function App() {
   const userSession = useUserSession();
 
   return (
-    <UserContext.Provider value={ userSession }>
-      <AppContext.Provider value={ initialState }>
+    <UserContext.Provider value={userSession}>
+      <AppContext.Provider value={initialState}>
         <BrowserRouter>
           <Routes>
             <Route exact path="home" element={<Home />} />
@@ -50,11 +50,12 @@ function App() {
             <Route exact path="fb" element={<Facebook />} />
             <Route exact path="star-rating" element={<StarRating />} />
             <Route exact path="film" element={<FilmView />} />
+            <Route exact path="*" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
       </AppContext.Provider>
     </UserContext.Provider>
-  )
+  );
 }
 
 export { App };

@@ -46,7 +46,6 @@ function Filter({ films, setFilms }) {
         : [...films].sort((a, b) => a[sortProperty] - b[sortProperty]);
 
     setFilms(sorted);
-    console.log("films sorted", films);
   };
   return (
     <motion.div 

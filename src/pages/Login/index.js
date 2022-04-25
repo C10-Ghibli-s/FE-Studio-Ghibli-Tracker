@@ -9,6 +9,7 @@ import { UserContext } from "../../context/UserContext";
 
 //social Media
 import { Facebook } from "../../components/FacebookLogin";
+import { Twitter } from "../../components/TwitterLogin";
 
 import "./Login.scss";
 import image from "./images/tracker-totoro.png";
@@ -19,8 +20,6 @@ function Login() {
   const [isDisabled, setIsDisabled] = useState(true);
   // Context
   const { login, userSession } = useContext(UserContext);
-  // LocalStorage persisting userSession
-  window.localStorage.setItem("userSession", JSON.stringify(userSession));
 
   const handleLoginButton = () => {
     if (!loginError) {
@@ -32,7 +31,7 @@ function Login() {
 
   return (
     <>
-      {userSession.access_token && <Navigate to="/home" replace={true} />}
+      {userSession && <Navigate to="/home" replace={true} />}
       <div className="contenedor">
         <figure className="image--container">
           <img src={image} alt="" />
@@ -84,6 +83,22 @@ function Login() {
                   access_token: user.access_token,
                   email: user.user.email,
                 });
+                // LocalStorage persisting userSession
+                window.localStorage.setItem(
+                  "userSession",
+                  JSON.stringify({
+                    userId: user.user.id,
+                    nickname: user.user.nickname,
+                    profilePicture: user.user.profilePicture,
+                    role: user.user.role,
+                    access_token: user.access_token,
+                    email: user.user.email,
+                  })
+                );
+                window.localStorage.setItem(
+                  "token_credentials",
+                  JSON.stringify(user.access_token)
+                );
               })
               .catch(error => {
                 setLoginError(error.response.data.message);
@@ -92,8 +107,8 @@ function Login() {
                   setLoginError(false);
                 }, 2000);
               });
-              window.localStorage.setItem("usrCurrPass", values.password);
-            }}
+            window.localStorage.setItem("usrCurrPass", values.password);
+          }}
         >
           {({ errors }) => (
             <Form className="formulario">
@@ -143,6 +158,7 @@ function Login() {
           )}
         </Formik>
         <Facebook />
+        <Twitter />
       </div>
     </>
   );

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
+import { axios } from "axios";
 
 const useUserSession = () => {
-  const [userSession, setUserSession] = useState({
-    nickname: null,
-    access_token: null,
-    role: null,
-  });
+  const [userSession, setUserSession] = useState(() =>
+    window.localStorage.getItem("userSession")
+  );
 
   const login = payload => {
     if (payload) {
@@ -24,10 +23,11 @@ const useUserSession = () => {
   useEffect(async () => {
     let activeSession = window.localStorage.getItem("userSession");
     let localData = await JSON.parse(activeSession);
-    if (localData) {
+    if (activeSession) {
       login(localData);
+    } else {
+      return null;
     }
-    return null;
   }, []);
 
   return {

@@ -1,6 +1,4 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 404
-  force = false
-  query = {path = ":path"}
+  status = 200

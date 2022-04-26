@@ -43,13 +43,13 @@ function Home() {
     let isSubscribed = true;
     let user = JSON.parse(window.localStorage.getItem("userSession"));
     let token = user.access_token;
-    console.log("user id", user);
+    console.log("user id", user.id);
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
 
     axios
-      .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/9`,
+      .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/${user.id}`,
       config
       )
       .then(res =>{

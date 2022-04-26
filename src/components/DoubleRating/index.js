@@ -5,6 +5,7 @@ import { AppContext } from "../../context/AppContext";
 import { motion } from "framer-motion";
 
 function DoubleRating({watched, scoreRatingUser, audienceScoreRating}){
+    console.log("audienceScoreRating", audienceScoreRating);
  // here it should receive an state of isWatched.
     const {
         isWatched: { isWatched },

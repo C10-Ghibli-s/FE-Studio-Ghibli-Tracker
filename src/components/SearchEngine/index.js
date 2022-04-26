@@ -40,7 +40,7 @@ function SearchEngine({ films, menuOpen, setMenuOpen }) {
     if (searchQuery.length > 0) {
       matches = [...films].filter(film => {
         const regex = new RegExp(`${searchQuery}`, "i");
-        return film.title.match(regex);
+        return film.title.title.match(regex);
       });
       setResults(matches);
     }

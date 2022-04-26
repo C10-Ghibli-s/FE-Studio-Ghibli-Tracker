@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./FilmCard.scss";
 import totoroImage from "./images/Secondary_mark-totoro.png";
 import { FilmWatched } from "../FilmWatched";
 import { StarRating } from "../StarRating";
 import { AppContext } from "../../context/AppContext";
+import axios from "axios";
 
 import add from "../EmojisRate/images/add.png";
 import happyActive from "../EmojisRate/images/happyActive.png";
@@ -17,23 +18,46 @@ function FilmCard({ film, callFilm }) {
   // film-card__image
   // film-card__text-content
   const { emojiRate } = useContext(AppContext);
+
+  const [inter, setInter] = useState({});
+  console.log("inter", inter);
+
   if (film) {
+
+    useEffect(() => {
+      let user = JSON.parse(window.localStorage.getItem("userSession"));
+      let token = user.access_token;
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      };
+  
+      axios
+        .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/interactions/${film.id}`,
+        config
+        )
+        .then(response => {
+          setInter(response.data);
+        })
+        .catch(error => console.error(error.message));
+    }, []);
+
+
     return (
       <>
         <div className="film-card-container">
           <div className="film-card-image" onClick={()=> {callFilm(film);document.getElementById("linkFilm").click()}}>
-            <img src={film.movie_banner} alt="" />
+            <img src={film.movieBanner} alt="" />
           </div>
           <div className="film-card-content" onClick={()=> {callFilm(film);document.getElementById("linkFilm").click()}}>
             <div className="film-card-head">
               <div className="film-card-title">
                 <h2 onClick={(e) => console.log(e.target.value)}>
-                  {film.title}
+                  {film.title.title}
                 </h2>
-                <h3>{film.release_date}</h3>
+                <h3>{film.releaseDate}</h3>
               </div>
-              <div className="film-card--options">
-                <FilmWatched />
+              <div className="film-card--options" >
+                <FilmWatched watched={inter.seenMark}/>
                 {/* THIS IS COMMENTED UNTIL THE API-DB WORKS FOR EMOJI-RATING -> USER
                 { (emojiRate == "add" && !emojiRating) && <button className="EmojiRating--add" onClick={()=> setEmojiRating(!emojiRating)}><img src={add}></img></button>}
                 { (emojiRate == "happy") && <button className="EmojiRating--add happy" onClick={()=> setEmojiRating(!emojiRating)}><img src={happyActive}></img></button>}
@@ -44,7 +68,9 @@ function FilmCard({ film, callFilm }) {
             <div className="film-card-body">
               <p>{film.description}</p>
             </div>
-            <StarRating />
+            <StarRating scoreRatingUser={parseInt(inter.scoreByStar)} />
+            {/**Whe should send the user score, should be in the interactions entity*/}
+            {/**<StarRating scoreRatingUser={film.userScore} />*/}
             <img className="img-background" src={totoroImage} alt="totoro" />
           </div>
         </div>

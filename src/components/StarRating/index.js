@@ -3,7 +3,7 @@ import {FaStar} from 'react-icons/fa';
 import './StarRating.css'
 
 function StarRating({scoreRatingUser}){
-    console.log("scoreRatingUser", scoreRatingUser);
+    console.log("scoreRatingUser from StarRatingComponent", scoreRatingUser);
     const [rating, setRating] = useState(scoreRatingUser);
     const [hover, setHover] = useState(null);
 
@@ -12,7 +12,9 @@ function StarRating({scoreRatingUser}){
     return(
         <div className="star-rating-component">
             {[...Array(5)].map((star, i)=>{
-                const ratingValue = i + 1;
+                i *=20;
+                const ratingValue = (i + 20);
+                console.log(i, ratingValue);
 
                 return(
                     <label key={i}>
@@ -31,7 +33,7 @@ function StarRating({scoreRatingUser}){
                         />
                     </label>
                 ); 
-            })}
+            }) }
         </div>
     );
 }

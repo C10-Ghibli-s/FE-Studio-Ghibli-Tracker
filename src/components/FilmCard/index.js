@@ -21,9 +21,6 @@ function FilmCard({ film, callFilm }) {
 
   const [inter, setInter] = useState({});
   console.log("inter", inter);
-  //console.log("scoreByStar", inter.scoreByStar);
-  //console.log("scoreByStar int", parseInt(inter.scoreByStar));
-
 
   if (film) {
 
@@ -59,7 +56,7 @@ function FilmCard({ film, callFilm }) {
                 </h2>
                 <h3>{film.releaseDate}</h3>
               </div>
-              <div className="film-card--options">
+              <div className="film-card--options" >
                 <FilmWatched watched={inter.seenMark}/>
                 {/* THIS IS COMMENTED UNTIL THE API-DB WORKS FOR EMOJI-RATING -> USER
                 { (emojiRate == "add" && !emojiRating) && <button className="EmojiRating--add" onClick={()=> setEmojiRating(!emojiRating)}><img src={add}></img></button>}
@@ -72,7 +69,7 @@ function FilmCard({ film, callFilm }) {
               <p>{film.description}</p>
             </div>
             <StarRating scoreRatingUser={parseInt(inter.scoreByStar)} />
-            {/**Whe should send the user score */}
+            {/**Whe should send the user score, should be in the interactions entity*/}
             {/**<StarRating scoreRatingUser={film.userScore} />*/}
             <img className="img-background" src={totoroImage} alt="totoro" />
           </div>

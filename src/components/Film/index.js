@@ -43,7 +43,6 @@ function Film() {
             watched={watched}
             scoreRatingUser={2}
             audienceScoreRating={parseInt(film.audienceScore)}
-            
           />
           <div className="film-body">
             <p>{film.description}</p>

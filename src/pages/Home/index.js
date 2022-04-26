@@ -13,6 +13,7 @@ import { AppContext } from "../../context/AppContext";
 function Home() {
   // fetch Data
   const [films, setFilms] = useState([]);
+  const [interUser, setInterUser] = useState({});
 
   useEffect(() => {
     let isSubscribed = true;
@@ -35,6 +36,31 @@ function Home() {
         return () => (isSubscribed = false);
       })
       .catch(error => console.error(error.message));
+  }, []);
+
+
+  useEffect(() =>{
+    let isSubscribed = true;
+    let user = JSON.parse(window.localStorage.getItem("userSession"));
+    let token = user.access_token;
+    console.log("user id", user);
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    axios
+      .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/9`,
+      config
+      )
+      .then(res =>{
+        console.log("interactions",res.data);
+        if (isSubscribed) {
+          setInterUser(res.data);
+        }
+        return () => (isSubscribed = false);
+      }).catch(err =>{
+        console.log(err)
+      })
   }, []);
 
 

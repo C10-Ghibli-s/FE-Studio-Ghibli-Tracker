@@ -1,20 +1,26 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import axios from "axios";
 import "../Login/Login.scss";
 import image from "../Login/images/tracker-totoro.png";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loader";
+import { UserContext } from "../../context/UserContext";
+import { Modal } from "../../components/Modal";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
 function Register() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
+  const { login, userSession } = useContext(UserContext);
+
+  console.log("State context:", userSession);
   let navigate = useNavigate();
-  console.log(success);
 
   const handleLoginButton = () => {
     if (!error) {
@@ -27,6 +33,7 @@ function Register() {
   };
   return (
     <>
+      {/* {userSession && <Navigate to="/home" replace={true} />} */}
       <div className="contenedor">
         <figure className="image--container">
           <img src={image} alt="" />
@@ -94,6 +101,7 @@ function Register() {
             return errors;
           }}
           onSubmit={(values, { resetForm }) => {
+            // Register
             axios
               .post(
                 "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup",
@@ -106,8 +114,50 @@ function Register() {
                 }
               )
               .then(response => {
+                console.log(response);
                 setLoading(false);
                 setSuccess(true);
+                // Login after register
+                axios
+                  .post(
+                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname",
+                    {
+                      nickname: values.username,
+                      password: values.password,
+                    }
+                  )
+                  .then(response => {
+                    console.log("Axios login", response.data);
+                    // Saving credentials into variable.
+                    let credentials = response.data;
+                    // Setting React.Context with the credentials.
+                    login({
+                      access_token: credentials.access_token,
+                      nickname: credentials.user.nickname,
+                      role: credentials.user.role,
+                    });
+                    // Persisting user session in localStorage.
+                    window.localStorage.setItem(
+                      "userSession",
+                      JSON.stringify({
+                        access_token: credentials.access_token,
+                        nickname: credentials.user.nickname,
+                        role: credentials.user.role,
+                      })
+                    );
+                    // Persisting only the token in localStorage.
+                    window.localStorage.setItem(
+                      "token_credentials",
+                      JSON.stringify({
+                        access_token: credentials.access_token,
+                      })
+                    );
+                    // Setting true the Modal state to open it.
+                    setOpenModal(true);
+                  })
+                  .catch(error => {
+                    console.error("Something went wrong:", error);
+                  });
               })
               .catch(error => {
                 setLoading(false);
@@ -177,13 +227,6 @@ function Register() {
                   )}
                 />
               </div>
-              {success && (
-                <p className="success">
-                  You have been registered successfully!
-                  <br />
-                  <Link to="/login"> Go to login!</Link>
-                </p>
-              )}
               {error &&
                 setTimeout(() => <p className="error">{error}</p>, 2500)}
               <button
@@ -198,6 +241,18 @@ function Register() {
           )}
         </Formik>
       </div>
+      <Modal openModal={openModal} setOpenModal={setOpenModal}>
+        <h2>Register successfully!</h2>
+        <BsFillCheckCircleFill className="icon-check" />
+        <button
+          onClick={() => {
+            setOpenModal(false);
+            navigate("/home");
+          }}
+        >
+          Go to Home
+        </button>
+      </Modal>
     </>
   );
 }

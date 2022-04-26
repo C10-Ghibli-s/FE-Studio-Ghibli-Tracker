@@ -1,12 +1,12 @@
 @import '../../routes/App.scss';
 @import '../../routes/css/Mixins/buttons.scss';
 
-.facebook-button{
+.twitter-button{
     @include SocialMediaButton--LightTheme;
     font-size: $socialmedia-button;
     font-weight: 600;
     display: block;
-    margin-top: 90px;
+    margin-top: 15px;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -22,7 +22,7 @@
     }
 }
 
-.facebook-icon {
+.twitter-icon {
     position: absolute;
     left: 10px;
     top: 7px;

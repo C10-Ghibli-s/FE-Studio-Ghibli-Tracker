@@ -17,7 +17,7 @@ function Autocomplete({ results }) {
             key={index}
           >
             <Link className="autocomplete--items-anchor" to={"/film"}>
-              {film.title}
+              {film.title.title}
             </Link>
           </li>
         ))}

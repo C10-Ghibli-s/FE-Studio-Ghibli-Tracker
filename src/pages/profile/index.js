@@ -19,89 +19,86 @@ function Profile() {
   if (!userSession) {
     return <UserSessionValidation />;
   } else {
-
     return (
-    <>
-      <div className="profilePageContainer">
-        <header className="profile-header">
-          {" "}
-          <GoBackButton />{" "}
-        </header>
-        <main className="profile-main">
-          <div className="user">
-            <picture>
-              <img
-                alt="user photo"
-                data-testid="user--photo"
-                src={userImageProfile}
-              ></img>
-            </picture>
-            <h1>{userSession.nickname}</h1>
-          </div>
-          <section className="options" data-testid="options">
-            <motion.div
-              initial={linkAnimateFrom}
-              animate={linkAnimateTo}
-              transition={{ delay: 0.1 }}
-            >
-              <button
-                type="button"
-                onClick={() => setSettingsOpen(!settingsOpen)}
+      <>
+        <div className="profilePageContainer">
+          <header className="profile-header">
+            <GoBackButton />
+          </header>
+          <main className="profile-main">
+            <div className="user">
+              <picture>
+                <img
+                  alt="user photo"
+                  data-testid="user--photo"
+                  src={userImageProfile}
+                ></img>
+              </picture>
+              <h1>{userSession.nickname}</h1>
+            </div>
+            <section className="options" data-testid="options">
+              <motion.div
+                initial={linkAnimateFrom}
+                animate={linkAnimateTo}
+                transition={{ delay: 0.1 }}
               >
-                {" "}
-                Settings <img src={linkArrow}></img>
-              </button>
-            </motion.div>
-            {settingsOpen && (
-              <div className="config" data-testid="configOptions">
-                <motion.button
-                  initial={linkAnimateFrom}
-                  animate={linkAnimateTo}
-                  transition={{ delay: 0.1 }}
+                <button
                   type="button"
-                  onClick={() => {
-                    setChUserName(!chUserName);
-                  }}
+                  onClick={() => setSettingsOpen(!settingsOpen)}
                 >
-                  Change Username
-                </motion.button>
-                <motion.button
-                  initial={linkAnimateFrom}
-                  animate={linkAnimateTo}
-                  transition={{ delay: 0.1 }}
-                  type="button"
-                  onClick={() => setChPassword(!chPassword)}
-                >
-                  Change Password
-                </motion.button>
-                <ProfileConfigOptions
-                  chUserName={chUserName}
-                  setChUserName={setChUserName}
-                  chPassword={chPassword}
-                  setChPassword={setChPassword}
-                />
-              </div>
-            )}
-          </section>
-          <div className="progressBar-container">
-            <label htmlFor="movies-watched--bar">
-              Ghibli Movies you've watched
-            </label>
-            {/* <progress className="movies-watched--bar" id="movies-watched--bar" value={user.movieWatched} max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress> */}
-            <progress
-              className="movies-watched--bar"
-              id="movies-watched--bar"
-              value="23"
-              max="24"
-            ></progress>
-            {/* <a id="scoresLink" href="/scores"></a> */}
-            {/* <span data-testid='moviesWatched'> {user.movieWatched}/24 </span> */}
-            <span data-testid="moviesWatched"> 23/24 </span>
-          </div>
-        </main>
-      </div>
-    </>
-  );
+                  Settings <img src={linkArrow}></img>
+                </button>
+              </motion.div>
+              {settingsOpen && (
+                <div className="config" data-testid="configOptions">
+                  <motion.button
+                    initial={linkAnimateFrom}
+                    animate={linkAnimateTo}
+                    transition={{ delay: 0.1 }}
+                    type="button"
+                    onClick={() => {
+                      setChUserName(!chUserName);
+                    }}
+                  >
+                    Change Username
+                  </motion.button>
+                  <motion.button
+                    initial={linkAnimateFrom}
+                    animate={linkAnimateTo}
+                    transition={{ delay: 0.1 }}
+                    type="button"
+                    onClick={() => setChPassword(!chPassword)}
+                  >
+                    Change Password
+                  </motion.button>
+                  <ProfileConfigOptions
+                    chUserName={chUserName}
+                    setChUserName={setChUserName}
+                    chPassword={chPassword}
+                    setChPassword={setChPassword}
+                  />
+                </div>
+              )}
+            </section>
+            <div className="progressBar-container">
+              <label htmlFor="movies-watched--bar">
+                Ghibli Movies you've watched
+              </label>
+              {/* <progress className="movies-watched--bar" id="movies-watched--bar" value={user.movieWatched} max="24" onClick={()=>{document.getElementById("scoresLink").click();}}></progress> */}
+              <progress
+                className="movies-watched--bar"
+                id="movies-watched--bar"
+                value="23"
+                max="24"
+              ></progress>
+              {/* <a id="scoresLink" href="/scores"></a> */}
+              {/* <span data-testid='moviesWatched'> {user.movieWatched}/24 </span> */}
+              <span data-testid="moviesWatched"> 23/24 </span>
+            </div>
+          </main>
+        </div>
+      </>
+    );
   }
 }
 

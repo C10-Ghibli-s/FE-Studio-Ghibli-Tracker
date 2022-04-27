@@ -59,6 +59,6 @@ npm run lint
 ---
 ⌨️ [C10-Squad-Search-Engine] Platzi Master
 
-
+URL: https://studio-ghibli-se.netlify.app 
 ![image](https://user-images.githubusercontent.com/73669701/165537137-1b298af7-18e7-4d30-ba34-f35900aaf69a.png)
 

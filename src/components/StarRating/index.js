@@ -3,18 +3,18 @@ import {FaStar} from 'react-icons/fa';
 import './StarRating.css'
 
 function StarRating({scoreRatingUser}){
-    console.log("scoreRatingUser from StarRatingComponent", scoreRatingUser);
+    //console.log("scoreRatingUser from StarRatingComponent", scoreRatingUser);
     const [rating, setRating] = useState(scoreRatingUser);
     const [hover, setHover] = useState(null);
 
-    console.log("rating",rating);
+    //console.log("rating",rating);
 
     return(
         <div className="star-rating-component">
             {[...Array(5)].map((star, i)=>{
                 i *=20;
                 const ratingValue = (i + 20);
-                console.log(i, ratingValue);
+                //console.log(i, ratingValue);
 
                 return(
                     <label key={i}>

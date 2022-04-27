@@ -24,21 +24,14 @@ function Filter({ films, setFilms }) {
 
   const sortArray = (category, order) => {
     const categories = {
-      running_time: "running_time",
-      release_date: "release_date",
-      rt_score: "rt_score",
+      duration: "duration",
+      releaseDate: "releaseDate",
+      audienceScore: "audienceScore",
+      //this fields belong to Interactions entity. They are related to Movies entity.
+      //score_by_stars: "score_by_stars",
+      //score_by_emoji: "score_by_emoji",
     };
-    /**
-     * This will replace lines 26-30 -> Object categories with our API.
-     * const categories = {
-        duration: "duration",
-        release_year: "release_year",
-        //this fields belong to Interactions entity. They are related to Movies entity.
-        audience_score: "audience_score",
-        score_by_stars: "score_by_stars",
-        score_by_emoji: "score_by_emoji",
-      };
-     */
+    
     const sortProperty = categories[category];
     const sorted =
       order === "ascendant"
@@ -65,16 +58,15 @@ function Filter({ films, setFilms }) {
             }}
             className="select"
           >
-            <option value="running_time">Duration</option>
-            <option value="rt_score">Rate</option>
-            <option value="release_date">Year</option>
-            {/** This will replace lines 70-73, these are the real names in the API
-             * <option value="duration">Duration</option>
-              <option value="release_year">Year</option>
-              <option value="audience_score">Audience Score</option>
-              <option value="score_by_stars">Users Rate</option>
+            <option value="duration">Duration</option>
+            <option value="releaseDate">Year</option>
+            <option value="audienceScore">Audience Score</option>
+            {/**
+             * <option value="score_by_stars">Users Rate</option>
               <option value="score_by_emoji">Emojis Rate</option>
-            */}
+             */
+            }  
+            
           </select>
           <p className="select--text">Order:</p>
           <select

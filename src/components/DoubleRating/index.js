@@ -5,12 +5,12 @@ import { AppContext } from "../../context/AppContext";
 import { motion } from "framer-motion";
 
 function DoubleRating({watched, scoreRatingUser, audienceScoreRating}){
-    console.log("audienceScoreRating", audienceScoreRating);
- // here it should receive an state of isWatched.
+    //console.log("audienceScoreRating", audienceScoreRating);
+    // here it should receive an state of isWatched.
     const {
         isWatched: { isWatched },
     } = useContext(AppContext);
-    console.log("isWatched result",isWatched);
+    //console.log("isWatched result",isWatched);
     const animationFrom = {opacity: 0.6, y: -10};
     const animationTo = {opacity: 1, y: 0};   
     return (

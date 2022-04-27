@@ -13,19 +13,57 @@ import { AppContext } from "../../context/AppContext";
 function Home() {
   // fetch Data
   const [films, setFilms] = useState([]);
+  const [interUser, setInterUser] = useState({});
 
   useEffect(() => {
     let isSubscribed = true;
+    let user = JSON.parse(window.localStorage.getItem("userSession"));
+    let token = user.access_token;
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
     axios
-      .get("https://ghibliapi.herokuapp.com/films")
+      //.get("https://ghibliapi.herokuapp.com/films")
+      .get("https://studio-ghibli-c10-platzimaster.herokuapp.com/movies",
+      config
+      )
       .then(response => {
+        console.log(response.data);
         if (isSubscribed) {
           setFilms(response.data);
         }
         return () => (isSubscribed = false);
       })
-      .catch(error => console.error(error));
+      .catch(error => console.error(error.message));
   }, []);
+
+
+  useEffect(() =>{
+    let isSubscribed = true;
+    let user = JSON.parse(window.localStorage.getItem("userSession"));
+    let token = user.access_token;
+    let id = user.userId;
+    console.log("user id", user.userId);
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    axios
+      .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/${id}`,
+      config
+      )
+      .then(res =>{
+        console.log("interactions",res.data);
+        if (isSubscribed) {
+          setInterUser(res.data);
+        }
+        return () => (isSubscribed = false);
+      }).catch(err =>{
+        console.log(err)
+      })
+  }, []);
+
 
   // context
   const { callFilm } = useContext(AppContext);

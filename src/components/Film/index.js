@@ -20,8 +20,8 @@ function Film() {
         <div className="film-container">
           <div className="film-head">
             <div className="film-title">
-              <h1>{film.title}</h1>
-              <h2>{film.release_date}</h2>
+              <h1>{film.title.title}</h1>
+              <h2>{film.releaseDate}</h2>
             </div>
             {/*We should sent films.movie_watched */}
             <div className="interactionContainer">
@@ -36,13 +36,13 @@ function Film() {
             </div>
           </div>
           <div className="film-image">
-            <img src={film.movie_banner} alt="" />
+            <img src={film.movieBanner} alt="" />
           </div>
           {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
           <DoubleRating
             watched={watched}
             scoreRatingUser={2}
-            audienceScoreRating={4}
+            audienceScoreRating={parseInt(film.audienceScore)}
           />
           <div className="film-body">
             <p>{film.description}</p>
@@ -51,7 +51,7 @@ function Film() {
             <button className="film-btn">
               {/*This URL should be replaced by the object film.link_wiki that this component will receive*/}
               <a
-                href="https://ghibli.fandom.com/wiki/My_Neighbor_Totoro"
+                href={film.linkWiki}
                 target={"_blank"}
               >
                 <span>More info</span>

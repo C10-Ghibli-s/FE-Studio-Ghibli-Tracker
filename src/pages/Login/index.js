@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import { Navigate, Link } from "react-router-dom";
 import { Loader } from "../../components/Loader";
 
@@ -32,6 +32,7 @@ function Login() {
   return (
     <>
       {userSession && <Navigate to="/home" replace={true} />}
+
       <div className="contenedor">
         <figure className="image--container">
           <img src={image} alt="" />

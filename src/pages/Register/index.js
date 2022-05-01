@@ -94,7 +94,7 @@ function Register() {
 
             axios
               .post(
-                "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup",
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup/",
                 {
                   nickname: values.username,
                   password: values.password,
@@ -110,7 +110,7 @@ function Register() {
                 // Login after register
                 axios
                   .post(
-                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname",
+                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname/",
                     {
                       nickname: values.username,
                       password: values.password,

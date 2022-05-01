@@ -58,7 +58,7 @@ function Login() {
           onSubmit={values => {
             axios
               .post(
-                "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname",
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname/",
                 {
                   nickname: values.user,
                   password: values.password,

@@ -17,7 +17,6 @@ function Login() {
   // State
   const [loginError, setLoginError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
   // Context
   const { login, userSession } = useContext(UserContext);
 
@@ -42,26 +41,19 @@ function Login() {
           initialValues={{ user: "", password: "" }}
           validate={values => {
             let errors = {};
+            let regex = new RegExp(
+              "^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+            );
             //User validation
             if (!values.user) {
               errors.user = "Enter your username";
-            } else if (
-              !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
-                values.user
-              )
-            ) {
+            } else if (!regex.test(values.user)) {
               errors.user = "Enter a valid username";
             }
             if (!values.password) {
               //Password validation
               errors.password = "Enter your password";
             }
-            if (!errors.user && !errors.password) {
-              setIsDisabled(false);
-            } else {
-              setIsDisabled(true);
-            }
-            return errors;
           }}
           onSubmit={values => {
             axios
@@ -146,11 +138,7 @@ function Login() {
                 Are not registered yet? <Link to="/register">Register</Link>
               </p>
               {loginError && <p className="error">{loginError}</p>}
-              <button
-                type="submit"
-                onClick={handleLoginButton}
-                disabled={isDisabled}
-              >
+              <button onClick={handleLoginButton} type="submit">
                 {loading && <Loader />}
                 {!loading && <p>Login</p>}
               </button>

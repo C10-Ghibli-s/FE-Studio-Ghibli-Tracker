@@ -19,15 +19,19 @@ _Studio Ghibli Tracker is a web application that allows us to view the catalog o
 
 
 
-## Config-environment <a name="Config-environment"></a>
+## ⚙Config-environment <a name="Config-environment"></a>
 
-This is custom environment using react.
+This is custom environment configured from scratch using **Webpack** and **React.js**, we decided this to optimize the load of the frontend.
 
 ### Built With
 
-These are the technologies we used to build this project.
+These are the technologies and libraries we used to build this project.
 
 - React.js
+- Webpack 
+- Linter
+- Formik
+- SASS
 <!-- GETTING STARTED -->
 
 ### Getting Started

@@ -87,7 +87,7 @@ npm run lint
 [**Studio Ghibli Tracker**](https://studio-ghibli-se.netlify.app)
 
 ## ⭐Acknowledgements <a name="acknowledgements"></a>
-For build the entire application:
+The whole application was built with 💚 by:
 - ⭐ [JuanCa](https://github.com/NousCode)
 - ⭐ [Liliana](https://github.com/LilianaRestrepoTorres)
 - ⭐ [Guillermo](https://github.com/Hai5edfm)

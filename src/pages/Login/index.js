@@ -41,9 +41,14 @@ function Login() {
           initialValues={{ user: "", password: "" }}
           validate={values => {
             let errors = {};
+            let regex = new RegExp(
+              "^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+            );
             //User validation
             if (!values.user) {
               errors.user = "Enter your username";
+            } else if (!regex.test(values.user)) {
+              errors.user = "Enter a valid username";
             }
             if (!values.password) {
               //Password validation

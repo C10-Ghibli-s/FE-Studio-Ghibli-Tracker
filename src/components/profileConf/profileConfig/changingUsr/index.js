@@ -37,15 +37,15 @@ function ChanginUsr({changingUsr, setChangingUsr}) {
                         initialValues={{newUserName: "", password: ""}}
                         validate={(values) => {
                         let errors = {};
+                        let regex = new RegExp(
+                          "^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+                        );
                         //new user name validation
                         if (!values.newUserName) {
                             errors.newUserName = "Enter your new username";
-                        } else if (
-                            !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
-                            values.newUserName
-                            )
-                        ) {
-                            errors.newUserName = "Username must contains: 6 - 12 characters (letters, numbers). Spaces and special characters are not allowed";
+                        } else if (!regex.test(values.newUserName)) {
+                          errors.newUserName =
+                            "Username must contains: 6 - 12 characters (letters, numbers). Spaces and special characters are not allowed";
                         }
                         if (!values.password) {
                             //Password validation 

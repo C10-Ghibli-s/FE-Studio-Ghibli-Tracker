@@ -7,8 +7,8 @@ const filterFrom = {opacity: 0, y:40};
 const filterTo = {opacity: 1, y: 60};
 
 function Filter({ films, setFilms }) {
-  const [adjust, setAdjust] = useState("");
-  const [categories, setCategories] = useState("");
+  const [adjust, setAdjust] = useState("ascendant");
+  const [categories, setCategories] = useState("duration");
 
   /*  sortArray Function
     - sortArray receives two arguments 'category' and 'order'.

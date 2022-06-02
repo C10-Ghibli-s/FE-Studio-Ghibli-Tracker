@@ -14,15 +14,13 @@ function Register() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
   const [openModal, setOpenModal] = useState(false);
 
   const { login, userSession } = useContext(UserContext);
 
-  console.log("State context:", userSession);
   let navigate = useNavigate();
 
-  const handleLoginButton = () => {
+  const handleLoadingMotion = () => {
     if (!error) {
       setLoading(true);
     } else if (!success) {
@@ -31,9 +29,9 @@ function Register() {
       setLoading(false);
     }
   };
+
   return (
     <>
-      {/* {userSession && <Navigate to="/home" replace={true} />} */}
       <div className="contenedor">
         <figure className="image--container">
           <img src={image} alt="" />
@@ -48,6 +46,9 @@ function Register() {
           }}
           validate={values => {
             let errors = {};
+            let regex = new RegExp(
+              "^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+            );
             if (!values.email) {
               //Email validation
               errors.email = "Please enter your email";
@@ -61,11 +62,7 @@ function Register() {
             //User validation
             if (!values.username) {
               errors.username = "Please enter your username";
-            } else if (
-              !/^(?=.{4,22}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(
-                values.username
-              )
-            ) {
+            } else if (!regex.test(values.username)) {
               errors.username =
                 "Username must contains: numbers, letters, 6 - 22 characters. Spaces are not allowed";
             }
@@ -86,25 +83,18 @@ function Register() {
             } else if (values.password !== values.confirmPassword) {
               errors.confirmPassword = "Password not matched";
             }
-            // Disable button validation
-            if (
-              !errors.username &&
-              !errors.password &&
-              !errors.email &&
-              !errors.confirmPassword
-            ) {
-              setIsDisabled(false);
-            } else {
-              setIsDisabled(true);
-            }
 
-            return errors;
+            if (!values.password, !values.email, !values.username) {
+              setLoading(false)
+            }
+              return errors;
           }}
           onSubmit={(values, { resetForm }) => {
             // Register
+
             axios
               .post(
-                "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup",
+                "https://studio-ghibli-c10-platzimaster.herokuapp.com/users/signup/",
                 {
                   nickname: values.username,
                   password: values.password,
@@ -120,14 +110,13 @@ function Register() {
                 // Login after register
                 axios
                   .post(
-                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname",
+                    "https://studio-ghibli-c10-platzimaster.herokuapp.com/auth/login/nickname/",
                     {
                       nickname: values.username,
                       password: values.password,
                     }
                   )
                   .then(response => {
-                    console.log("Axios login", response.data);
                     // Saving credentials into variable.
                     let credentials = response.data;
                     // Setting React.Context with the credentials.
@@ -229,11 +218,7 @@ function Register() {
               </div>
               {error &&
                 setTimeout(() => <p className="error">{error}</p>, 2500)}
-              <button
-                type="submit"
-                onClick={handleLoginButton}
-                disabled={isDisabled}
-              >
+              <button type="submit" onClick={handleLoadingMotion}>
                 {loading && <Loader />}
                 {!loading && <p>Register</p>}
               </button>

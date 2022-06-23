@@ -50,7 +50,7 @@ function App() {
 
             <Route exact path="fb" element={<Facebook />} />
             <Route exact path="star-rating" element={<StarRating />} />
-            <Route exact path="film" element={<FilmView />} />
+            <Route path={`/film/:id`} element={<FilmView />} />
           </Routes>
         </BrowserRouter>
       </AppContext.Provider>

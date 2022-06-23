@@ -20,13 +20,14 @@ function Home() {
     let user = JSON.parse(window.localStorage.getItem("userSession"));
     let token = user.access_token;
     const config = {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     };
 
     axios
       //.get("https://ghibliapi.herokuapp.com/films")
-      .get("https://studio-ghibli-c10-platzimaster.herokuapp.com/movies",
-      config
+      .get(
+        "https://studio-ghibli-c10-platzimaster.herokuapp.com/movies",
+        config
       )
       .then(response => {
         console.log(response.data);
@@ -38,32 +39,32 @@ function Home() {
       .catch(error => console.error(error.message));
   }, []);
 
-
-  useEffect(() =>{
+  useEffect(() => {
     let isSubscribed = true;
     let user = JSON.parse(window.localStorage.getItem("userSession"));
     let token = user.access_token;
     let id = user.userId;
     console.log("user id", user.userId);
     const config = {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     };
 
     axios
-      .get(`https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/${id}`,
-      config
+      .get(
+        `https://studio-ghibli-c10-platzimaster.herokuapp.com/users/profile/${id}`,
+        config
       )
-      .then(res =>{
-        console.log("interactions",res.data);
+      .then(res => {
+        console.log("interactions", res.data);
         if (isSubscribed) {
           setInterUser(res.data);
         }
         return () => (isSubscribed = false);
-      }).catch(err =>{
-        console.log(err)
       })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
-
 
   // context
   const { callFilm } = useContext(AppContext);
@@ -110,11 +111,12 @@ function Home() {
       {!!toggleFilter && <Filter films={films} setFilms={setFilms} />}
       <div className="film-cards-container">
         {films.map((film, key) => (
-          <React.Fragment key={key}>
-            <FilmCard film={film} callFilm={callFilm} />
-          </React.Fragment>
+          <Link className="linkFilm" id="linkFilm" to={`/film/${key}`}>
+            <React.Fragment key={key}>
+              <FilmCard film={film} callFilm={callFilm} />
+            </React.Fragment>
+          </Link>
         ))}
-        <Link className="linkFilm" id="linkFilm" to="/film"></Link>
       </div>
     </>
   );

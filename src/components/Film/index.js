@@ -5,9 +5,11 @@ import { DoubleRating } from "../DoubleRating";
 import { FilmWatched } from "../FilmWatched";
 import { AppContext } from "../../context/AppContext";
 import { EmojisRate } from "../../components/EmojisRate";
+import { FilmVideo } from "../../components/FilmVideo";
 
 function Film() {
   // here it should receive an state of FILM.
+
   const {
     film: { film },
   } = useContext(AppContext);
@@ -17,48 +19,50 @@ function Film() {
   if (film) {
     return (
       <div className="film-component">
-        <div className="film-container">
-          <div className="film-head">
-            <div className="film-title">
-              <h1>{film.title.title}</h1>
-              <h2>{film.releaseDate}</h2>
-            </div>
-            {/*We should sent films.movie_watched */}
-            <div className="interactionContainer">
-              <FilmWatched watched={watched} setWatched={setWatched} />
-              {!watched && <p> Mark as watched to rate this movie! </p>}
-              {watched && (
-                <>
-                  <p>Watched</p>
-                  <EmojisRate />
-                </>
-              )}
-            </div>
+        <div className="film-title-container">
+          <h1>{film.title.title}</h1>
+          <p>
+            {film.releaseDate} • {film.duration}m
+          </p>
+        </div>
+        {/*We should sent films.movie_watched */}
+        <div className="film-video_container">
+          <FilmVideo />
+          <figure className="film-image">
+            <img src={film.movieBanner} alt={film.title.title} />
+          </figure>
+        </div>
+        <div className="film-description-container">
+          <p>{film.description}</p>
+        </div>
+        <div className="film-interactions-container">
+          <div>
+            <FilmWatched watched={watched} setWatched={setWatched} />
+            {watched && <EmojisRate />}
           </div>
-          <div className="film-image">
-            <img src={film.movieBanner} alt="" />
-          </div>
-          {/*We should send films.movie_watched, films.score_by_stars, films.audence_score */}
           <DoubleRating
             watched={watched}
             scoreRatingUser={2}
             audienceScoreRating={parseInt(film.audienceScore)}
           />
-          <div className="film-body">
-            <p>{film.description}</p>
-          </div>
-          <footer className="film-footer">
-            <button className="film-btn">
-              {/*This URL should be replaced by the object film.link_wiki that this component will receive*/}
-              <a
-                href={film.linkWiki}
-                target={"_blank"}
-              >
-                <span>More info</span>
-                <FaArrowRight />
-              </a>
-            </button>
-          </footer>
+          <a href={film.linkWiki} target={"_blank"}>
+            <span>More info</span>
+            <FaArrowRight />
+          </a>
+        </div>
+        <div className="film-credits-container">
+          <h3>
+            <span>&gt;</span>Top credits
+          </h3>
+          <ol>
+            <li>Writers {`• John Doe • John Doe • John Doe`}</li>
+            <li className="separator">
+              Directors {`• John Doe • John Doe • John Doe`}
+            </li>
+            <li className="separator">
+              Musicians {`• John Doe • John Doe • John Doe`}
+            </li>
+          </ol>
         </div>
       </div>
     );

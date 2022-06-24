@@ -110,11 +110,9 @@ function Home() {
       </div>
       {!!toggleFilter && <Filter films={films} setFilms={setFilms} />}
       <div className="film-cards-container">
-        {films.map((film, key) => (
+        {films.map((film, key = film.id) => (
           <Link className="linkFilm" id="linkFilm" to={`/film/${key}`}>
-            <React.Fragment key={key}>
-              <FilmCard film={film} callFilm={callFilm} />
-            </React.Fragment>
+            <FilmCard film={film} callFilm={callFilm} />
           </Link>
         ))}
       </div>

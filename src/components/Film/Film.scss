@@ -1,124 +1,228 @@
-@import '../../routes/css/global-variables.scss';
+@import "../../routes/css/global-variables.scss";
 
 .film-component {
-    min-width: 300px;
-    max-width: 800px;
-    background: $base-color--light-theme;
-    height: 100%;
-    padding: 0;
-    min-height: 100vh;
+  // min-width: 300px;
+  // max-width: 800px;
+  background: $base-color--light-theme;
+  height: 100%;
+
+  // min-height: 100vh;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
 }
 
-.film-container{
-    padding: 20px;
-    text-align: -webkit-center;
+// .film-container {
+//   padding: 20px;
+//   text-align: -webkit-center;
+// }
+
+// .film-head {
+//   min-height: 150px;
+//   margin-bottom: 1rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   & .interactionContainer {
+//     width: 110px;
+//     & p {
+//       font-size: 1.4rem;
+//       font-weight: 400;
+//       margin-block-end: 5px;
+//     }
+//   }
+// }
+
+.film-title-container {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  max-width: 550px;
+  position: relative;
+  margin: 10px 0;
+
+  &::after {
+    content: "";
+    width: calc(100% - 50px);
+    height: 2px;
+    position: absolute;
+    background-color: #d3d3d3;
+    bottom: 18px;
+    left: 15px;
+  }
+
+  h1 {
+    margin: 5px;
+    font-size: 2.8rem;
+    color: #474747;
+
+    padding: 0 12px;
+  }
+  p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #474747;
+    margin: 10px 20px 0;
+  }
 }
 
-.film-head{
-    min-height: 150px;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    & .interactionContainer {
-        width: 110px;
-        & p {
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-block-end: 5px;
-        }
-    }
+// .film-head h1 {
+//   font-size: $movie__title;
+//   margin-bottom: 1rem;
+//   color: $font-color--light-theme;
+//   margin: 10px;
+// }
+
+// .film-head h2 {
+//   font-size: $movie__year;
+//   margin-bottom: 1rem;
+//   color: $font-color--light-theme;
+//   margin: 10px;
+// }
+.film-video_container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  iframe {
+    width: calc(100% - 25px);
+    height: 220px;
+  }
 }
 
-.film-title{
-    display: flex;
-    align-items: center;
+.film-image img {
+  // overflow: hidden;
+  // height: 180px;
+  width: 122px;
+  // margin-bottom: 1rem;
+  position: absolute;
+  border-radius: 4px;
+  box-shadow: 0px 8px 18px 6px rgba(109, 127, 224, 0.25);
+  left: 22px;
+  bottom: 10px;
 }
 
-.film-head h1{
-    font-size: $movie__title;
-    margin-bottom: 1rem;
-    color: $font-color--light-theme;
-    margin: 10px;
-}
-
-.film-head h2{
-    font-size: $movie__year;
-    margin-bottom: 1rem;
-    color: $font-color--light-theme;
-    margin: 10px;
-}
-
-.film-image{
-    text-align: center;
-}
-
-.film-image img{
-    overflow: hidden;
-    height: 180px;
-    max-width: 60ch;
-    margin-bottom: 1rem;
-    background: $background-color-images;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px -5px;
-}
-
-.film-image img:hover{
-    transform: scale(1.01);
-}
-
-.film-body{
-    margin-bottom: 4rem;
-    margin-top: 1rem;
-}
-
-.film-body p{
-    font-size: $movie__description;
+.film-description-container {
+  color: #474747;
+  position: relative;
+  p {
+    margin: 1.1em;
+    font-size: 16px;
     text-align: left;
-    color: $font-color--light-theme;
+    padding: 6px;
+    overflow: hidden;
+    height: 100px;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
+  &::after {
+    content: "read more...";
+    line-height: 30px;
+    font-size: 16px;
+    color: #474747;
+    // width: 30px;
+    height: 30px;
+    bottom: -9px;
+    left: 25px;
+    // background-color: black;
+    position: absolute;
+  }
 }
 
-.film-btn{
-    display: flex;
-    justify-content: right;
+// .film-btn {
+//   display: flex;
+//   justify-content: right;
+// }
+
+// .film-btn {
+//   padding: 0.5rem;
+//   background-color: transparent;
+//   border: none;
+//   transition: 0.2s;
+//   margin-bottom: 0.5rem;
+//   cursor: pointer;
+//   display: flex;
+// }
+
+// .film-btn span {
+//   margin-right: 8px;
+// }
+
+// .film-btn button:hover {
+//   font-weight: bold;
+// }
+
+// .film-footer {
+//   display: flex;
+//   justify-content: flex-end;
+// }
+
+// .film-btn a {
+//   text-decoration: none;
+//   color: $font-color--light-theme;
+// }
+.film-interactions-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0 0;
+  position: relative;
+  // &::after {
+  //   content: "";
+  //   width: calc(100% - 50px);
+  //   height: 2px;
+  //   background-color: #d3d3d3;
+  //   position: absolute;
+  //   bottom: 10px;
+  // }
 }
 
-.film-btn{
-    padding: 0.5rem;
-    background-color: transparent;
-    border: none;
-    transition: 0.2s;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    display: flex;
-}
+.film-credits-container {
+  position: relative;
+  color: #474747;
+  width: fit-content;
 
-.film-btn span{
-    margin-right: 8px;
-}
-
-.film-btn button:hover{
-    font-weight: bold;
-}
-
-.film-footer{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.film-btn a{
-    text-decoration: none;
-    color: $font-color--light-theme;
-}
-
-@media (min-width: 330px) {
-    .film-container {
-        padding: 24px;
+  li {
+    font-size: 14px;
+    margin: 10px 5px;
+    padding: 5px 25px;
+    position: relative;
+    // &::after {
+    //     content: "";
+    //     width: calc(100% - 50px);
+    //     height: 2px;
+    //     background-color: #d3d3d3;
+    //     position: absolute;
+    //     bottom: 58px;
+    //     left: 25px;
+    //   }
+  }
+  .separator {
+    &::before {
+      content: "";
+      width: calc(100% - 50px);
+      height: 2px;
+      background-color: #d3d3d3;
+      position: absolute;
+      top: -6px;
+      left: 25px;
     }
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 10px 25px;
+  }
+}
+
+@media (min-width: 500px) {
+  .film-image img {
+    // overflow: hidden;
+    // height: 180px;
+    // margin-bottom: 1rem;
+  }
 }
 @media (min-width: 520px) {
-    .film-image img {
-        height: 250px;
-        width: 80ch;
-    }
 }

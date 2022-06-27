@@ -6,13 +6,18 @@ import { FilmWatched } from "../FilmWatched";
 import { AppContext } from "../../context/AppContext";
 import { EmojisRate } from "../../components/EmojisRate";
 import { FilmVideo } from "../../components/FilmVideo";
+import { FaAngleUp } from "react-icons/fa";
 
 function Film() {
-  // here it should receive an state of FILM.
-
   const {
     film: { film },
   } = useContext(AppContext);
+  const [openCredits, setOpenCredits] = useState(false);
+  // here it should receive an state of FILM.
+
+  const handleCredits = () => {
+    setOpenCredits(!openCredits);
+  };
 
   const [watched, setWatched] = useState(false); // here should be the state from the DB
   // console.log("film in film page", film[0].title);
@@ -36,33 +41,38 @@ function Film() {
           <p>{film.description}</p>
         </div>
         <div className="film-interactions-container">
-          <div>
+          {/* <div> */}
             <FilmWatched watched={watched} setWatched={setWatched} />
             {watched && <EmojisRate />}
-          </div>
+          {/* </div> */}
           <DoubleRating
             watched={watched}
             scoreRatingUser={2}
             audienceScoreRating={parseInt(film.audienceScore)}
           />
           <a href={film.linkWiki} target={"_blank"}>
-            <span>More info</span>
-            <FaArrowRight />
+            More info
+            <FaAngleUp />
           </a>
         </div>
         <div className="film-credits-container">
-          <h3>
-            <span>&gt;</span>Top credits
+          <h3 onClick={handleCredits}>
+            <span>
+              <FaAngleUp className={`${openCredits ? "arrow-rotate" : ""} `} />
+            </span>
+            Top credits
           </h3>
-          <ol>
-            <li>Writers {`• John Doe • John Doe • John Doe`}</li>
-            <li className="separator">
-              Directors {`• John Doe • John Doe • John Doe`}
-            </li>
-            <li className="separator">
-              Musicians {`• John Doe • John Doe • John Doe`}
-            </li>
-          </ol>
+          {openCredits && (
+            <ol>
+              <li>Writers {`• John Doe • John Doe • John Doe`}</li>
+              <li className="separator">
+                Directors {`• John Doe • John Doe • John Doe`}
+              </li>
+              <li className="separator">
+                Musicians {`• John Doe • John Doe • John Doe`}
+              </li>
+            </ol>
+          )}
         </div>
       </div>
     );

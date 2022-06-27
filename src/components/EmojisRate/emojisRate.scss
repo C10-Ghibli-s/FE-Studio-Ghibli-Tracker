@@ -1,62 +1,71 @@
 @import "../../routes/App.scss";
 
 .EmojiRating {
-    &--add {
-        width: 50px;
-        height: 50px;
-        &:hover {
-            background-color:#D8D8D8;
-            border-radius: 50%;
-        }
-        & img {
-            width: 40px;
-            height: 40px;
-            padding-inline-end: 2px;
-            padding-block-start: 2px;
-        }
+  &--add {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 40px;
+    left: -2px;
+    &:hover {
+      background-color: #d8d8d8;
+      border-radius: 50%;
     }
-    &--adding {
-        width: 50px;
-        height: 50px;
-        background-color: $primary-color--light-theme;
-        border-radius: 50%;
-        & img {
-            width: 40px;
-            height: 40px;
-            padding-inline-end: 2px;
-            padding-block-start: 2px;
-        }
-    }
-}
-.happy, .neutral, .sad {
     & img {
-        padding: 0;
+      width: 30px;
+      height: 30px;
+      padding-inline-end: 2px;
+      padding-block-start: 2px;
     }
+  }
+  &--adding {
+    width: 50px;
+    height: 50px;
+    background-color: $primary-color--light-theme;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    left: -2px;
+    & img {
+      width: 30px;
+      height: 30px;
+      padding-inline-end: 2px;
+      padding-block-start: 2px;
+    }
+  }
 }
-
+.happy,
+.neutral,
+.sad {
+  & img {
+    padding: 0;
+  }
+}
 
 .emojiRating__options {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: $primary-color--light-theme;
-    padding: 8px;
-    border-radius: 24px;
-    margin-block-start: 4px;
-    & button {
-        margin: 5px 0;
-        & img {
-            height: 40px;
-            width: 40px;
-        }
-        & .selectingActive {
-            background-color: $base-color--light-theme;
-            border-radius: 50%;
-            &:active {
-                height: 45px;
-                width: 45px;
-            }
-        }
+  display: flex;
+  flex-direction: column;
+  background-color: $primary-color--light-theme;
+  padding: 8px;
+  border-radius: 24px;
+  margin-block-start: 4px;
+  position: absolute;
+  top: 90px;
+  left: 0px;
+  z-index: 10;
+  & button {
+    margin: 5px 0;
+    & img {
+      width: 30px;
+      height: 30px;
     }
+    & .selectingActive {
+      background-color: $base-color--light-theme;
+      border-radius: 50%;
+      &:active {
+        height: 45px;
+        width: 45px;
+      }
+    }
+  }
 }
-

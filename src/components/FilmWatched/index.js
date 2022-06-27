@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { FaHeart } from "react-icons/fa";
-import "./FilmWatched.css";
+import "./FilmWatched.scss";
 import { AppContext } from "../../context/AppContext";
 
 function FilmWatched({ watched, setWatched }) {

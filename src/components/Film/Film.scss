@@ -10,29 +10,26 @@
   margin-top: 60px;
   display: flex;
   flex-direction: column;
+  a {
+    text-decoration: none;
+    color: #3472de;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 3px 0 0;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      color: #3472de;
+    }
+    svg {
+      width: 12px;
+      height: 12px;
+      transform: rotate(90deg);
+      padding-left: 4px;
+    }
+  }
 }
-
-// .film-container {
-//   padding: 20px;
-//   text-align: -webkit-center;
-// }
-
-// .film-head {
-//   min-height: 150px;
-//   margin-bottom: 1rem;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   & .interactionContainer {
-//     width: 110px;
-//     & p {
-//       font-size: 1.4rem;
-//       font-weight: 400;
-//       margin-block-end: 5px;
-//     }
-//   }
-// }
-
 .film-title-container {
   // display: flex;
   // flex-direction: column;
@@ -66,19 +63,6 @@
   }
 }
 
-// .film-head h1 {
-//   font-size: $movie__title;
-//   margin-bottom: 1rem;
-//   color: $font-color--light-theme;
-//   margin: 10px;
-// }
-
-// .film-head h2 {
-//   font-size: $movie__year;
-//   margin-bottom: 1rem;
-//   color: $font-color--light-theme;
-//   margin: 10px;
-// }
 .film-video_container {
   display: flex;
   position: relative;
@@ -131,44 +115,24 @@
   }
 }
 
-// .film-btn {
-//   display: flex;
-//   justify-content: right;
-// }
-
-// .film-btn {
-//   padding: 0.5rem;
-//   background-color: transparent;
-//   border: none;
-//   transition: 0.2s;
-//   margin-bottom: 0.5rem;
-//   cursor: pointer;
-//   display: flex;
-// }
-
-// .film-btn span {
-//   margin-right: 8px;
-// }
-
-// .film-btn button:hover {
-//   font-weight: bold;
-// }
-
-// .film-footer {
-//   display: flex;
-//   justify-content: flex-end;
-// }
-
-// .film-btn a {
-//   text-decoration: none;
-//   color: $font-color--light-theme;
-// }
 .film-interactions-container {
   display: flex;
-  // justify-content: space-around;
-  align-items: center;
-  margin: 20px 0 0;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 20px 20px 0;
   position: relative;
+  height: 100px;
+  max-width: 320px;
+  &:after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: #d3d3d3;
+    top: 37px;
+    left: 5px;
+  }
+  // width: auto;
   // &::after {
   //   content: "";
   //   width: calc(100% - 50px);

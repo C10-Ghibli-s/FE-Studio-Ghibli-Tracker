@@ -17,7 +17,6 @@ function DoubleRating({ watched, scoreRatingUser, audienceScoreRating }) {
   return (
     <>
       <div className="score-rate">
-        <p>Rate</p>
         <FaStar
           className="star"
           //   color={ratingValue <= (hover || rating) ? "#ffc107" : "#D2D2D2"}
@@ -25,17 +24,18 @@ function DoubleRating({ watched, scoreRatingUser, audienceScoreRating }) {
           onMouseEnter={() => setHover(ratingValue)}
           onMouseLeave={() => setHover(null)}
         />
+        <p>Rate</p>
       </div>
       <div className="score-rating-audience">
         <StarRating scoreRatingUser={audienceScoreRating} />
       </div>
       {watched && (
-        <motion.div initial={animationFrom} animate={animationTo}>
-          <div className="score-rating-user">
-          {/**className={`score ${isWatched ? "active" : ""}`} */}
-          <StarRating scoreRatingUser={scoreRatingUser} />
-          </div>
-        </motion.div>
+        <div className="score-rating-user">
+          <motion.div initial={animationFrom} animate={animationTo}>
+            {/**className={`score ${isWatched ? "active" : ""}`} */}
+            <StarRating scoreRatingUser={scoreRatingUser} />
+          </motion.div>
+        </div>
       )}
     </>
   );

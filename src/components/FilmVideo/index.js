@@ -6,10 +6,10 @@ function FilmVideo() {
       <iframe
         src="https://www.youtube.com/embed/ByXuk9QqQkk"
         title="Spirited Away - Official Trailer"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        onPlay={() => console.log('play')}
+        allowFullScreen
+        onPlay={() => console.log("play")}
       ></iframe>
     </>
   );

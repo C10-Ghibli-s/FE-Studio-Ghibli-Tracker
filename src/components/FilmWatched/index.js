@@ -1,19 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import "./FilmWatched.scss";
 import { AppContext } from "../../context/AppContext";
+import axios from "axios";
 
-function FilmWatched({ watched, setWatched }) {
+function FilmWatched({
+  interaction,
+  setInteraction,
+  watched,
+  setWatched,
+  film,
+}) {
   const [hoverWatched, setHoverWatched] = useState(false);
 
-  // context
-  const { callIsWatched } = useContext(AppContext);
-  //console.log("im callIsWatched", callIsWatched);
-
   const handleChangeWatched = () => {
-    console.log("my actual value is", watched);
+    setWatched(!watched);
+    console.log(!watched)
   };
-
   return (
     //Add validation and restriction with StarRating
     <div className="film-watched-component">
@@ -22,16 +25,7 @@ function FilmWatched({ watched, setWatched }) {
           type="checkbox"
           name="watched"
           //onClick={()=>{watched === true ? setWatched(false) : setWatched(true) }}
-          onClick={() => {
-            if (watched === true) {
-              setWatched(false);
-              callIsWatched(false);
-            } else {
-              setWatched(true);
-              callIsWatched(true);
-            }
-            handleChangeWatched();
-          }}
+          onClick={handleChangeWatched}
         />
         <FaHeart
           className="heart"

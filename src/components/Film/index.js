@@ -8,19 +8,24 @@ import { EmojisRate } from "../../components/EmojisRate";
 import { FilmVideo } from "../../components/FilmVideo";
 import { FaAngleUp } from "react-icons/fa";
 
+// Update interaction for user: https://studio-ghibli-c10-platzimaster.herokuapp.com/users/{userid}/update/{movieId}/interaction/{InteractionId}
+// Filter interaction by user: https://studio-ghibli-c10-platzimaster.herokuapp.com/interactions/filter/{userId}
+// Create interaction: https://studio-ghibli-c10-platzimaster.herokuapp.com/interactions
+
 function Film() {
   const {
     film: { film },
   } = useContext(AppContext);
   const [openCredits, setOpenCredits] = useState(false);
-  // here it should receive an state of FILM.
+
+  const [scoreRatingUser, setScoreRatingUser] = useState("");
+  const [interaction, setInteraction] = useState({});
+  const [watched, setWatched] = useState(false);
 
   const handleCredits = () => {
     setOpenCredits(!openCredits);
   };
 
-  const [watched, setWatched] = useState(false); // here should be the state from the DB
-  // console.log("film in film page", film[0].title);
   if (film) {
     return (
       <div className="film-component">
@@ -42,13 +47,30 @@ function Film() {
         </div>
         <div className="film-interactions-container">
           {/* <div> */}
-            <FilmWatched watched={watched} setWatched={setWatched} />
-            {watched && <EmojisRate />}
+          <FilmWatched
+            watched={watched}
+            setWatched={setWatched}
+            film={film}
+            setInteraction={setInteraction}
+            interaction={interaction}
+          />
+          {watched && (
+            <EmojisRate
+              film={film}
+              interaction={interaction}
+              scoreRatingUser={scoreRatingUser}
+              watched={watched}
+              setWatched={setWatched}
+              setInteraction={setInteraction}
+            />
+          )}
           {/* </div> */}
           <DoubleRating
             watched={watched}
-            scoreRatingUser={2}
-            audienceScoreRating={parseInt(film.audienceScore)}
+            scoreRatingUser={scoreRatingUser}
+            film={film}
+            audienceScoreRating={parseInt(film?.audienceScore)}
+            setScoreRatingUser={setScoreRatingUser}
           />
           <a href={film.linkWiki} target={"_blank"}>
             More info

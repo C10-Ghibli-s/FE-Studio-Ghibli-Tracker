@@ -17,7 +17,7 @@
     margin-left: 0.3rem;
   }
 }
-.score-rating-user{
+.score-rating-user {
   position: absolute;
   left: 55px;
   // border: 1px solid transparent;
@@ -28,6 +28,6 @@
   z-index: 10;
   top: 48px;
 }
-// .score-rating-audience{
-
-// }
+.score-rating-audience {
+  pointer-events: none;
+}

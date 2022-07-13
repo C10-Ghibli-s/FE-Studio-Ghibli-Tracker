@@ -9,6 +9,7 @@ function FilmVideo() {
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
+        onPlay={() => console.log('play')}
       ></iframe>
     </>
   );

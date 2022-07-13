@@ -4,7 +4,7 @@ const initialState = {};
 
 const useInitialState = () => {
   const [film, setFilm] = useState(initialState);
-  const [isWatched, setIsWatched] = useState(initialState);
+  // const [isWatched, setIsWatched] = useState(initialState);
 
   const callFilm = payload => {
     setFilm({ film: payload });
@@ -17,8 +17,8 @@ const useInitialState = () => {
   return {
     film,
     callFilm,
-    isWatched,
-    callIsWatched,
+    // isWatched,
+    // callIsWatched,
   };
 };
 

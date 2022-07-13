@@ -5,12 +5,17 @@ import { AppContext } from "../../context/AppContext";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 
-function DoubleRating({ watched, scoreRatingUser, audienceScoreRating }) {
+function DoubleRating({
+  watched,
+  scoreRatingUser,
+  audienceScoreRating,
+  setScoreRatingUser,
+}) {
   //console.log("audienceScoreRating", audienceScoreRating);
   // here it should receive an state of isWatched.
-  const {
-    isWatched: { isWatched },
-  } = useContext(AppContext);
+  // const {
+  //   isWatched: { isWatched },
+  // } = useContext(AppContext);
   //console.log("isWatched result",isWatched);
   const animationFrom = { opacity: 0.6, y: -10 };
   const animationTo = { opacity: 1, y: 0 };
@@ -33,7 +38,10 @@ function DoubleRating({ watched, scoreRatingUser, audienceScoreRating }) {
         <div className="score-rating-user">
           <motion.div initial={animationFrom} animate={animationTo}>
             {/**className={`score ${isWatched ? "active" : ""}`} */}
-            <StarRating scoreRatingUser={scoreRatingUser} />
+            <StarRating
+              scoreRatingUser={scoreRatingUser}
+              setScoreRatingUser={setScoreRatingUser}
+            />
           </motion.div>
         </div>
       )}

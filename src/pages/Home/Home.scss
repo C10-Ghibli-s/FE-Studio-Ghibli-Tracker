@@ -1,5 +1,8 @@
 @import '../../routes/App.scss';
-
+ a{
+  text-decoration: none;
+  color: inherit;
+ }
 .searchContainer {
   z-index: 6;
   display: flex;

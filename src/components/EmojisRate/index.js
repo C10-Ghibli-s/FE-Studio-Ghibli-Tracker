@@ -27,23 +27,30 @@ function EmojisRate({
   const emojiFrom = { opacity: 0.6, y: -10 };
   const emojiTo = { opacity: 1, y: 0 };
 
+
+  console.log(selectingEmoji, "selectingEmoji");
+
+
+
+
   const handleChangeEmoji = () => {
     let user = JSON.parse(window.localStorage.getItem("userSession"));
     let token = user.access_token;
+    let ratingUser = scoreRatingUser.toString();
+    
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-
+    
     const body = {
       scoreByEmoji: selectingEmoji,
-      scoreByStar: scoreRatingUser.toString(),
+      scoreByStar: ratingUser,
       seenMark: watched,
       movieId: film?.id,
     };
     axios
       .post(`${process.env.API_URL}interactions`, body, config)
       .then(res => {
-        console.log(res.data);
         setInteraction(res.data);
       })
       .catch(err => {
@@ -51,9 +58,9 @@ function EmojisRate({
       });
     setTrigger(true);
   };
-  trigger ? updateUserInteraction(film?.id, interaction?.id) : null;
-  console.log("scoreRatingUser:", scoreRatingUser);
-  console.log("selectingEmoji:", selectingEmoji);
+  setTimeout(() => {
+    trigger ? updateUserInteraction(film?.id, interaction?.id) : null;
+  }, 1000);
   return (
     <React.Fragment>
       {emojiRate == "add" && !emojiRating && (
@@ -110,7 +117,9 @@ function EmojisRate({
               onClick={() => {
                 setEmojiRate("happy");
                 setEmojiRating(!emojiRating);
-                handleChangeEmoji();
+                setTimeout(() => {
+                  handleChangeEmoji();
+                }, 800);
               }}
               onMouseEnter={() => setSelectingEmoji("happy")}
               onMouseLeave={() => setSelectingEmoji("")}
@@ -124,7 +133,9 @@ function EmojisRate({
               onClick={() => {
                 setEmojiRate("neutral");
                 setEmojiRating(!emojiRating);
-                handleChangeEmoji();
+                setTimeout(() => {
+                  handleChangeEmoji();
+                }, 800);
               }}
               onMouseEnter={() => setSelectingEmoji("neutral")}
               onMouseLeave={() => setSelectingEmoji("")}
@@ -138,7 +149,9 @@ function EmojisRate({
               onClick={() => {
                 setEmojiRate("sad");
                 setEmojiRating(!emojiRating);
-                handleChangeEmoji();
+                setTimeout(() => {
+                  handleChangeEmoji();
+                }, 800);
               }}
               onMouseEnter={() => setSelectingEmoji("sad")}
               onMouseLeave={() => setSelectingEmoji("")}

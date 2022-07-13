@@ -15,7 +15,6 @@ function FilmWatched({
 
   const handleChangeWatched = () => {
     setWatched(!watched);
-    console.log(!watched)
   };
   return (
     //Add validation and restriction with StarRating

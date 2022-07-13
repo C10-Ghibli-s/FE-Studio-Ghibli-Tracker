@@ -1,10 +1,10 @@
 import React from "react";
 
-function FilmVideo() {
+function FilmVideo({url}) {
   return (
     <>
       <iframe
-        src="https://www.youtube.com/embed/ByXuk9QqQkk"
+        src={url}
         title="Spirited Away - Official Trailer"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

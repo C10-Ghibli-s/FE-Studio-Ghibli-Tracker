@@ -10,9 +10,9 @@ const useInitialState = () => {
     setFilm({ film: payload });
   };
 
-  const callIsWatched = payload => {
-    setIsWatched({ isWatched: payload });
-  };
+  // const callIsWatched = payload => {
+  //   setIsWatched({ isWatched: payload });
+  // };
 
   return {
     film,

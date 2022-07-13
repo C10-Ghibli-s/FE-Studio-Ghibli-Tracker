@@ -8,7 +8,9 @@
     font-size: $card__year;
   }
 }
-
+.disable{
+  pointer-events: none;
+}
 .film-card-container {
   position: relative;
   display: flex;

@@ -7,6 +7,7 @@ import { AppContext } from "../../context/AppContext";
 import { EmojisRate } from "../../components/EmojisRate";
 import { FilmVideo } from "../../components/FilmVideo";
 import { FaAngleUp } from "react-icons/fa";
+import linkMovies from "../../helpers/linkMovies";
 
 // Update interaction for user: https://studio-ghibli-c10-platzimaster.herokuapp.com/users/{userid}/update/{movieId}/interaction/{InteractionId}
 // Filter interaction by user: https://studio-ghibli-c10-platzimaster.herokuapp.com/interactions/filter/{userId}
@@ -37,7 +38,7 @@ function Film() {
         </div>
         {/*We should sent films.movie_watched */}
         <div className="film-video_container">
-          <FilmVideo />
+          <FilmVideo url={film?.linkMovie?.url_youtube} />
           <figure className="film-image">
             <img src={film.movieBanner} alt={film.title.title} />
           </figure>
@@ -77,7 +78,7 @@ function Film() {
             <FaAngleUp />
           </a>
         </div>
-        <div className="film-credits-container">
+        {/* <div className="film-credits-container">
           <h3 onClick={handleCredits}>
             <span>
               <FaAngleUp className={`${openCredits ? "arrow-rotate" : ""} `} />
@@ -95,7 +96,7 @@ function Film() {
               </li>
             </ol>
           )}
-        </div>
+        </div> */}
       </div>
     );
   } else {

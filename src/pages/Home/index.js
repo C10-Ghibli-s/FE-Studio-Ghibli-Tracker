@@ -9,11 +9,12 @@ import { Link, Navigate } from "react-router-dom";
 import "./Home.scss";
 // Context
 import { AppContext } from "../../context/AppContext";
+import linkMovies from "../../helpers/linkMovies";
 
 function Home() {
   // fetch Data
   const [films, setFilms] = useState([]);
-  const [interUser, setInterUser] = useState({});
+  const [allUserInteractions, setAllUserInteractions] = useState([]);
   let user = JSON.parse(window.localStorage.getItem("userSession"));
   let token = user.access_token;
   const config = {
@@ -29,36 +30,43 @@ function Home() {
     axios
       .get(`${process.env.API_URL}interactions/filter/${user.userId}`, config)
       .then(response => {
-        setInterUser(response.data);
+        setAllUserInteractions(response.data);
       })
       .catch(error => console.error(error.message));
   }, [setFilms]);
 
-  console.log(interUser);
+  const idFilms = films.map(film => film.id);
+  const idInteractions = allUserInteractions.map(
+    interaction => interaction.movie.id
+  );
+  // match idFilms and idInteractions
+  const idFilmsInteractions = idFilms.filter(id => idInteractions.includes(id));
+  const idFilmsInteractionsFiltered = films.filter(film =>
+    idFilmsInteractions.includes(film.id)
+  );
+  // filter films with userInteractions
+  const filmsWithInteractions = idFilmsInteractionsFiltered.map(film => {
+    const userInteraction = allUserInteractions.find(
+      interaction => interaction.movie.id === film.id
+    );
+    return { ...film, userInteraction };
+  });
+  // take the films without interactions in the same array as well
+  const filmsWithoutInteractions = films.filter(
+    film => !idFilmsInteractions.includes(film.id)
+  );
+  // merge the two arrays
+  const filmsWithAndWithoutInteractions = [
+    ...filmsWithInteractions,
+    ...filmsWithoutInteractions,
+  ];
 
-  // useEffect(() => {
-  //   // let isSubscribed = true;
-  //   // let user = JSON.parse(window.localStorage.getItem("userSession"));
-  //   // let token = user.access_token;
-  //   // let id = user.userId;
-  //   // console.log("user id", user.userId);
-  //   const config = {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   };
-
-  //   axios
-  //     .get(`${process.env.API_URL}interactions/filter/${id}`, config)
-  //     .then(res => {
-  //       console.log("interactions", res.data);
-  //       // if (isSubscribed) {
-  //       //   setInterUser(res.data);
-  //       // }
-  //       // return () => (isSubscribed = false);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  // merge filmsWithAndWithoutInteractions and linkMovies if they have the same id
+  const filmsWithAndWithoutInteractionsAndLinkMovies =
+    filmsWithAndWithoutInteractions.map(film => {
+      const linkMovie = linkMovies.find(linkMovie => linkMovie.id === film.id);
+      return { ...film, linkMovie };
+    });
 
   // context
   const { callFilm } = useContext(AppContext);
@@ -88,7 +96,7 @@ function Home() {
       />
       <div className="searchContainer">
         <SearchEngine
-          films={films}
+          films={filmsWithAndWithoutInteractionsAndLinkMovies}
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
         />
@@ -104,8 +112,8 @@ function Home() {
       </div>
       {!!toggleFilter && <Filter films={films} setFilms={setFilms} />}
       <div className="film-cards-container">
-        {films?.map((film, key) => (
-          <Link className="linkFilm" key={film?.id} to={`/film/${key}`}>
+        {filmsWithAndWithoutInteractionsAndLinkMovies?.map((film, key) => (
+          <Link className="linkFilm" key={key} to={`/film/${film?.id}`}>
             <FilmCard film={film} callFilm={callFilm} />
           </Link>
         ))}

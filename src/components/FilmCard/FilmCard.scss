@@ -1,88 +1,90 @@
-@import '../../routes/App.scss';
+@import "../../routes/App.scss";
 
 .film-card-title {
-    & h2{
+  & h2 {
     font-size: $card__title;
-    }
-    & h3{
-        font-size: $card__year;
-    }
+  }
+  & h3 {
+    font-size: $card__year;
+  }
 }
-
-.film-card-container{
-    position: relative;
-    display: flex;
-    background-color: $base-color--light-theme;
-    border-radius: 10px;
-    width: 90%;
-    height: 200px;
-    z-index: 1;
-    box-shadow: 2px 2px 12px 2px #0000001A;
-    margin: 12px auto;
-    overflow: hidden;
-    cursor: pointer;
+.disable{
+  pointer-events: none;
 }
+.film-card-container {
+  position: relative;
+  display: flex;
+  background-color: $base-color--light-theme;
+  border-radius: 10px;
+  width: 90%;
+  height: 200px;
+  z-index: 1;
+  box-shadow: 2px 2px 12px 2px #0000001a;
+  margin: 12px auto;
+  overflow: hidden;
+  cursor: pointer;
 
-.film-card-image{
+  .film-card-image {
     width: 30%;
-}
+  }
 
-.film-card-content{
+  .film-card-content {
     width: 70%;
     padding: 15px;
+    text-decoration: none;
+  }
 }
 
-.film-card-head{
-    margin-bottom: 1rem;
+.film-card-head {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  & .film-card--options {
     display: flex;
-    justify-content: space-between;
-    height: 60px;
-    & .film-card--options {
-        display: flex;
-        & .film-watched-component { 
-            margin: 0;
-        }
+    & .film-watched-component {
+      margin: 0;
     }
-
+  }
 }
 
-.film-card-head h2{
-    text-align: left;
+.film-card-head h2 {
+  text-align: left;
 }
 
-.film-card-image img{
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    background: #E5E5E5;
-    border-radius: 8px;
-    box-shadow: 0px 0px 12px -5px;
+.film-card-image img {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  background: #e5e5e5;
+  border-radius: 8px;
+  box-shadow: 0px 0px 12px -5px;
 }
 
 .img-background {
-    width: 80px;
-    position: absolute;
-    right: 10px;
-    bottom: -20px;
-    z-index: 2;
+  width: 80px;
+  position: absolute;
+  right: 10px;
+  bottom: -20px;
+  z-index: 2;
 }
 
-.film-card-image img:hover{
-    transform: scale(1.01);
+.film-card-image img:hover {
+  transform: scale(1.01);
 }
 
-.film-card-title{
-    align-items: center;
+.film-card-title {
+  align-items: center;
 }
 
-.film-card-body p{
-    background-color: $base-color--light-theme;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    /* Limit the text block to three lines */
-    -webkit-line-clamp: 3;
-    font-size: $card__description;
+.film-card-body p {
+  background-color: $base-color--light-theme;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* Limit the text block to three lines */
+  -webkit-line-clamp: 3;
+  font-size: $card__description;
 }

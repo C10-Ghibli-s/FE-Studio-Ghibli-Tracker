@@ -16,7 +16,7 @@ function Autocomplete({ results }) {
             onClick={() => callFilm(film)}
             key={index}
           >
-            <Link className="autocomplete--items-anchor" to={"/film"}>
+            <Link className="autocomplete--items-anchor" to={`/film/${film?.id}`}>
               {film.title.title}
             </Link>
           </li>

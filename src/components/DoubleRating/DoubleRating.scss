@@ -1,0 +1,33 @@
+.score-rate {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  // width: 120px;
+  .star {
+    color: #3472de;
+    // filter: drop-shadow(0px 0px 2px #3472de);
+  }
+  p {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #3472de;
+    text-align: center;
+    margin-left: 0.3rem;
+  }
+}
+.score-rating-user {
+  position: absolute;
+  left: 55px;
+  // border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 4px;
+  background-color: white;
+  // box-shadow: 0px 8px 18px -12px #6D7FE0;
+  z-index: 10;
+  top: 48px;
+}
+.score-rating-audience {
+  pointer-events: none;
+}

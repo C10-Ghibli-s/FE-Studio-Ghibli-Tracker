@@ -33,9 +33,7 @@ function FilmView() {
       >
         <SearchEngine films={films} />
       </div>
-      <div className="film-container">
-          <Film />
-      </div>
+      <Film />
     </>
   );
 }
